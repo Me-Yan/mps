@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>完善并确认订单信息</title>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<link rel="stylesheet" href="fontAwesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/orderForm.css">
+	<script type="text/javascript" src="plugins/scrollTop/jquery.toTop.js"></script>
+	<script type="text/javascript" src="plugins/scrollTop/jquery.toTop.min.js"></script>
+	<script src="js/orderForm.js"></script>
+</head>
+<body>
+	<div class="header">
+		<!--头部 链接导向栏-->
+		<div class="headerTop">
+			<div class="topNav">
+				<div class="topNavWel"><span>欢迎来到Me家！</span></div>
+				<ul class="topNavLogin">
+					<li><a href="login.html" class="topNavLoginLiA">登录</a></li>
+					<li><a href="register.html">注册</a></li>
+				</ul>
+				<ul class="topNavEntry">
+					<li class="topNavEntryA"><a href="order.html">我的订单</a></li>
+					<li class="topNavEntryA"><a href="collection.html">我的收藏</a></li>
+					<li><a href="">帮助中心</a>&nbsp;<i class="fa fa-angle-down fa-lg"></i></li>
+				</ul>
+			</div>
+			<!--购物车状态栏-->
+			<div class="status">
+				<a href="index.html" class="logo"><img src="images/logo.png" alt=""></a>
+				<span class="cartImg"><img src="images/two.png" alt=""></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearBoth"></div>
+	
+
+	<!--遮罩层-->
+	<div class="mask"></div>
+
+	<!--添加地址-->
+	<div class="addPop">
+		<div class="popTitle">
+			添加地址
+		</div>
+
+		<div class="popup">
+			<form action="">
+				<p class="popReceiver">
+					<span>&nbsp;&nbsp;&nbsp;收货人：</span><input type="text" name="receiver">
+				</p>
+				<p class="popPhone">
+					<span>联系电话：<input type="text" name="phone"></span>
+				</p>
+				<p class="popAddr">
+					<span>收货地址：<input type="text" name="address"></span>
+				</p>
+				<p class="popEdit">
+					<a>保存</a>
+				</p>
+			</form>
+		</div>
+		<!--关闭按钮-->
+		<a class="fa fa-close fa-2x close"></a>
+	</div>
+	
+
+
+	<!--中间详细内容-->
+	<div class="center">
+		<div class="orderForm">
+			<div class="title">
+				完善并核对订单信息
+			</div>
+			<div class="addAddr">
+				<a>添加新地址</a>
+			</div>
+			<form action="" class="order" name="orderForm" id="orderForm">			
+				<div class="address">
+					<div class="addrList">
+						<div class="choose">
+							选择地址
+						</div>
+						<div class="clearBoth"></div>
+						<div class="list">
+							<input type="hidden" name="aid" value="1">
+							<ul>
+								<li class="user"><span class="name">严杨鸿</span><span class="phone">18380448173</span></li>
+								<li class="addr">重庆市沙坪坝区覃家岗街道新桥村金竹沟社区金竹工业园</li>
+							</ul>
+							<div class="addrId">
+								<input type="hidden" name="addrId" value="">
+							</div>
+						</div>
+						<div class="list">
+							<input type="hidden" name="aid" value="1">
+							<ul>
+								<li class="user"><span class="name">严杨鸿</span><span class="phone">18380448173</span></li>
+								<li class="addr">重庆市沙坪坝区覃家岗街道新桥村金竹沟社区金竹工业园</li>
+							</ul>
+							<div class="addrId">
+								<input type="hidden" name="addrId" value="">
+							</div>
+						</div>
+						<div class="list">
+							<input type="hidden" name="aid" value="1">
+							<ul>
+								<li class="user"><span class="name">严杨鸿</span><span class="phone">18380448173</span></li>
+								<li class="addr">重庆市沙坪坝区覃家岗街道新桥村金竹沟社区金竹工业园</li>
+							</ul>
+							<div class="addrId">
+								<input type="hidden" name="addrId" value="">
+							</div>
+						</div>
+						<div class="list">
+							<input type="hidden" name="aid" value="1">
+							<ul>
+								<li class="user"><span class="name">严杨鸿</span><span class="phone">18380448173</span></li>
+								<li class="addr">重庆市沙坪坝区覃家岗街道新桥村金竹沟社区金竹工业园</li>
+							</ul>
+							<div class="addrId">
+								<input type="hidden" name="addrId" value="">
+							</div>
+						</div>		
+						<div class="clearBoth"></div>				
+					</div>
+				</div>
+
+
+
+				<!--具体商品内容-->
+				<div class="details">
+					<div class="topTitle">
+						<span class="goods">商品</span>
+						<span class="price">单价(元)</span>
+						<span class="number">数量</span>
+						<span class="total">小计(元)</span>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="pid" value="1">
+						<div class="proImg">
+							<img src="images/products/103.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							69.8
+						</div>
+						<div class="proNumber">
+							<span>1</span>
+							<span class="dw">斤</span>
+						</div>
+						<div class="proTotal">
+							69.8
+						</div>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="pid" value="1">
+						<div class="proImg">
+							<img src="images/products/105.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							69.8
+						</div>
+						<div class="proNumber">
+							<span>1</span>
+							<span class="dw">斤</span>
+						</div>
+						<div class="proTotal">
+							69.8
+						</div>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="pid" value="1">
+						<div class="proImg">
+							<img src="images/products/101.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							69.8
+						</div>
+						<div class="proNumber">
+							<span class="ds">1</span>
+							<span class="dw">斤</span>
+						</div>
+						<div class="proTotal">
+							69.8
+						</div>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="pid" value="1">
+						<div class="proImg">
+							<img src="images/products/102.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							69.8
+						</div>
+						<div class="proNumber">
+							<span>1</span>
+							<span class="dw">斤</span>
+						</div>
+						<div class="proTotal">
+							69.8
+						</div>
+					</div>
+					<div class="clearBoth"></div>
+				</div>
+				
+				<!--费用详情-->
+				<div class="cost">
+					<div class="costRight">
+						<span>商品金额：￥146.70元</span>
+						<span>配送费：￥15元</span>
+					</div>
+					<div class="clearBoth"></div>
+				</div>
+
+				<!--提交订单-->
+				<div class="conCart">
+					<div class="conRight">
+						<span class="subtotal">总计：<span>250.00</span>元</span>
+						<span class="conClick"><a>提交订单</a></span>
+					</div>
+					<div class="clearBoth"></div>
+				</div>
+			</form>	
+		</div>
+	</div>
+	<!--底部-->
+	<div class="clearBoth"></div>
+	<div class="footer">
+		<!--关于我们-->
+		<div class="aboutUs">
+			<ul>
+				<li class="fi"><a href="">关于我们</a></li>
+				<li class="fi"><a href="">法律声明</a></li>
+				<li class="fi"><a href="">服务协议</a></li>
+				<li><a href="">隐私声明</a></li>
+			</ul>
+			<p>
+				Copyright©Me家版权所有,违者必究
+			</p>
+		</div>
+	</div>
+
+
+	<!--回到顶部-->
+	<a class="to-top fa fa-arrow-circle-o-up fa-4x toTop"></a>
+
+
+	<script type="text/javascript">
+		/*回到顶部*/
+		$('.to-top').toTop();
+	</script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品名称</title>
+	<link rel="stylesheet" href="fontAwesome/css/font-awesome.min.css">
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<link rel="stylesheet" href="css/top.css">
+	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/product.css">	
+	<link rel="stylesheet" type="text/css" href="plugins/productSwitch/zoom.css">	
+	<script type="text/javascript" src="plugins/productSwitch/zoom.js"></script>
+	<script type="text/javascript" src="plugins/scrollTop/jquery.toTop.js"></script>
+	<script type="text/javascript" src="plugins/scrollTop/jquery.toTop.min.js"></script>
+	<script src="js/sameNav.js"></script>
+	<script src="js/product.js"></script>
+</head>
+<body>
+
+	<div class="header">
+		<!--头部 链接导向栏-->
+		<div class="headerTop">
+			<div class="topNav">
+				<div class="topNavWel"><span>欢迎来到Me家！</span></div>
+				<ul class="topNavLogin">
+					<li><a href="login.html" class="topNavLoginLiA">登录</a></li>
+					<li><a href="register.html">注册</a></li>
+				</ul>
+				<ul class="topNavEntry">
+					<li class="topNavEntryA"><a href="order.html">我的订单</a></li>
+					<li class="topNavEntryA"><a href="collection.html">我的收藏</a></li>
+					<li><a href="">帮助中心</a>&nbsp;<i class="fa fa-angle-down fa-lg"></i></li>
+				</ul>
+			</div>
+		</div>
+		<div class="clearBoth"></div>
+		<!--头部 搜索栏-->	
+		<div class="headerBody">
+			<div class="bodySearch">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt=""></a>
+				</div>
+				<div class="searchKey">
+					<input name="keyword" type="text" class="keywords" placeholder="请输入关键词">
+					<button class="searchButton"><i class="fa fa-search fa-2x" style="color:red"></i></button>
+				</div>
+				<div class="cart">
+					<div class="mycart">
+						<i class="fa fa-cart-arrow-down fa-2x" style="color:red"></i>
+						<a href="cart.html">我的购物车</a>
+					</div>					
+					<span><strong>4</strong></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearBoth"></div>
+		<!--菜单分类-->	
+		<div class="headerMenu">
+			<div class="menuTop">
+				<ul class="headerNav">
+					<li class="category"><i class="fa fa-reorder"></i><strong>&nbsp;&nbsp;商品分类</strong></li>
+					<li class="navList"><a href="productList.html">首&nbsp;&nbsp;页</a></li>
+					<li class="navList"><a href="">新品尝鲜</a></li>
+					<li class="navList"><a href="">优选国际</a></li>
+					<li class="navList"><a href="">产地直采</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="headerBottom" style="display:none">
+			<div class="menuList">
+				<ul class="menuListUl">
+					<li><a href="">时令果蔬</a></li>
+					<li><a href="">肉禽蛋品</a></li>
+					<li><a href="">水产海鲜</a></li>
+					<li><a href="">乳品面点</a></li>
+					<li><a href="">粮油干货</a></li>
+					<li><a href="">零食酒饮</a></li>
+					<li><a href="">母婴呵护</a></li>
+					<li><a href="">家居日用</a></li>
+					<li><a href="">厨具电器</a></li>
+				</ul>
+				<div class="menuDetailList">
+					<ul class="menuDetail">
+						<li><a href="">新鲜叶菜</a></li>
+						<li><a href="">根茎豆瓜</a></li>
+						<li><a href="">调味蔬菜</a></li>
+						<li><a href="">新鲜菌菇</a></li>
+						<li><a href="">特色蔬菜</a></li>
+						<li><a href="">加工蔬菜</a></li>
+						<li><a href="">进口水果</a></li>
+						<li><a href="">国产水果</a></li>
+						<li><a href="">水果礼盒</a></li>
+						<li><a href="">当季畅销</a></li>						
+					</ul>
+				</div>
+				<ul class="menuRight" style="display:none">
+					<li>
+						<a href=""><img src="images/orange.png" alt=""></a>
+					</li>
+					<li>
+						<a href=""><img src="images/toothbrush.png" alt=""></a>
+					</li>
+				</ul>	
+			</div>
+		</div>
+	</div>
+	<div class="clearBoth"></div>
+	<!--**************************************************-->
+	
+	<!--主体-->
+	<div class="proInfo">
+		<div class="product">
+			<div class="proRoute">
+				<a href="">首页</a><i class="fa fa-angle-right"></i><a href="">肉禽蛋品</a><i class="fa fa-angle-right"></i><a href="">猪肉</a><i class="fa fa-angle-right"></i><a href="">前排骨</a>
+			</div>
+			<div class="proIntroduce">
+				<div class="introLeft">
+					<div id="vertical" class="bigImg">
+						<img src="images/products/big/01.jpg" width="420" height="420" alt="" id="midimg" />
+						<div style="display:none;" id="winSelector"></div>
+					</div><!--bigImg end-->	
+					<div class="smallImg">
+						<div class="scrollbutton smallImgUp disabled"></div>
+						<div id="imageMenu">
+							<ul>
+								<li id="onlickImg"><img src="images/products/big/01.jpg"/></li>
+								<li><img src="images/products/big/02.jpg"/></li>
+								<li><img src="images/products/big/03.jpg"/></li>
+								<li><img src="images/products/big/04.jpg"/></li>
+								<li><img src="images/products/big/01.jpg"/></li>
+								<li><img src="images/products/big/06.jpg"/></li>
+							</ul>
+						</div>
+						<div class="scrollbutton smallImgDown"></div>
+					</div><!--smallImg end-->	
+					<div id="bigView" style="display:none;"><img width="800" height="800" alt="" src="" /></div>
+				</div>
+				<div class="introRight">
+					<span class="name">土猪特级排骨（约500g/盒）</span>
+					<p class="price"><span class="pr">价格</span><span class="sm">￥<span class="sPrice">64.80</span></span></p>
+					<p class="require">
+						<span>起订量：20</span>
+						<span>计量单位：斤</span>
+					</p>
+					<div class="count">
+						<span class="sl">数量</span>
+						<a class="less fa fa-minus fa-0.1x"></a>
+						<input type="text" class="countInput" value="1">
+						<a class="add fa fa-plus"></a>
+						<span class="dw">斤</span>
+						<span class="qd">20</span>
+					</div>
+					<div class="buy">
+						<a href="" class="bNow bnc"><span>立即购买</span></a>
+						<a class="bCart bnc"><i class="fa fa-cart-arrow-down fa-1x"></i><span>加入购物车</span></a>
+						<a class="bCollection bnc"><i class="fa fa-star-o"></i><span>收藏</span></a>
+					</div>
+					<p class="describle">
+						<span class="dValue">功效</span>
+						<span class="dContent">
+							⑴解毒：南瓜内含有维生素和果胶，果胶有很好的吸附性，能粘结和消除体内细菌毒素和其他有害物质，如重金属中的铅、汞和放射性元素，起到解毒作用。⑵保护胃粘膜，帮助消化：南瓜所含果胶还可以保护胃肠道粘膜，免受粗糙食品刺激，促进溃疡面愈合，适宜于胃病患者。南瓜所含成分能促进胆汁分泌，加强胃肠蠕动。帮助食物消化。⑶消除致癌物质：南瓜能消除致癌物质亚硝胺的突变作用，有防癌功效，并能帮助肝、肾功能的恢复，增强肝、肾细胞的再生能力。
+						</span>
+					</p>
+				</div>
+			</div>
+			<div class="proLeft">
+				<span class="recTitle">相关搭配</span>
+				<div class="recommend">
+					<a href="" class="recImg">
+						<img src="images/products/105.jpg" alt="">
+					</a>
+					<p class="recName"><a href="">土猪特级排骨</a></p>
+					<p class="recPrice">￥<span>54.6</span></p>
+				</div>
+
+				<div class="recommend">
+					<a href="" class="recImg">
+						<img src="images/products/104.jpg" alt="">
+					</a>
+					<p class="recName"><a href="">土猪特级排骨</a></p>
+					<p class="recPrice">￥<span>54.6</span></p>
+				</div>
+
+				<div class="recommend">
+					<a href="" class="recImg">
+						<img src="images/products/103.jpg" alt="">
+					</a>
+					<p class="recName"><a href="">土猪特级排骨</a></p>
+					<p class="recPrice">￥<span>54.6</span></p>
+				</div>
+			</div>
+
+
+
+			<div class="proRight">
+				<div class="tabList">
+					<ul class="tabControl">
+				        <li class="detail tClick">商品详情</li>
+				        <li class="evaluate">评论(10)</li>
+				    </ul>
+				</div>
+
+			    <div class="tabContent">
+			        <div class="tabImg">
+			            <p class="tabP">
+							<img src="images/products/details/01.jpg" alt="">
+							<img src="images/products/details/02.jpg" alt="">
+							<img src="images/products/details/03.jpg" alt="">
+							<img src="images/products/details/04.jpg" alt="">
+							<img src="images/products/details/05.jpg" alt="">
+							<img src="images/products/details/06.jpg" alt="">
+							<img src="images/products/details/07.jpg" alt="">
+							<img src="images/products/details/08.jpg" alt="">
+							<img src="images/products/details/09.jpg" alt="">
+							<img src="images/products/details/10.jpg" alt="">
+							<img src="images/products/details/11.jpg" alt="">
+						</p>
+			        </div>
+			        <div class="tabWord">
+			            <ul class="tabUl">
+							<li>
+								<span class="tabEvaluate">手机很不错，操作很简便，买过几款华为的手机，也算是忠实消费者了，这次选择荣耀7，也是看中其高性价比。发货速度超快，昨天下单，今天上午就送到，很赞！</span>
+								<span class="tabDate">2016-01-10 22:02:20</span>
+								<span class="tabName"><i class="fa fa-user fa-lg"></i>我***你</span>
+							</li>
+							<li>
+								<span class="tabEvaluate">手机很好，用了几天没发现有什么问题，运行很流畅，发热控制得很好，就算是玩游戏也不会发高烧，然后就是续航，基本上能用一天多，还算满意，拍照的话光线足够的情况下还不错，晚上不怎么行，总体来说还不错</span>
+								<span class="tabDate">2016-01-10 22:02:20</span>
+								<span class="tabName"><i class="fa fa-user fa-lg"></i>你***操</span>
+							</li>
+							<li>
+								<span class="tabEvaluate">外包装确实仔细，买的套装4，一大堆没用的东西，因为别的套装没有了，照相清楚但失真，颜色怪怪的，和三星苹果没法比，2000万像素就那么回事，其他感觉还好，用些天再来评价</span>
+								<span class="tabDate">2016-01-10 22:02:20</span>
+								<span class="tabName"><i class="fa fa-user fa-lg"></i>哈***怎</span>
+							</li>
+							<li>
+								<span class="tabEvaluate">宝贝不错，因手机卡不能用，得到营业厅办理新卡。顾还没有试用，关于商品的几个问题没有回答，请见谅</span>
+								<span class="tabDate">2016-01-10 22:02:20</span>
+								<span class="tabName"><i class="fa fa-user fa-lg"></i>严***好</span>
+							</li>
+							<li>
+								<span class="tabEvaluate">用了几天来评价，运行比较快，外观大气，功能强大，就是不太会用；美中不足的是后摄像凸出太多，拍照像素不错；电池第一次用用的很快，一天都不到，冲放了几天，现在不怎么用的话够1.5天用了；指关节截图不好用，音质一般，总体感觉还是蛮意外的，第一次用华为，国产手机，不错，总之支持华为支持国产，希望国产手机越做越好，超过国外货</span>
+								<span class="tabDate">2016-01-10 22:02:20</span>
+								<span class="tabName"><i class="fa fa-user fa-lg"></i>杨***鸿</span>
+							</li>
+							<li>
+								<span class="tabEvaluate">客服很有耐心，回复很及时。物流超给力，第二天就到了~手机用了才评价的，成色很好，全新原厂，不卡，用着很顺，送的保护套超薄，很好~啊啊···很满意的一次啊~靠谱~</span>
+								<span class="tabDate">2016-01-10 22:02:20</span>
+								<span class="tabName"><i class="fa fa-user fa-lg"></i>鸿***严</span>
+							</li>
+							<li>
+								<span class="tabEvaluate">用了三天才评价。确实可以，功能强大，运行流畅，我不玩游戏，64内存足够我用了。拍照调到2000万很给力。好评，全五星</span>
+								<span class="tabDate">2016-01-10 22:02:20</span>
+								<span class="tabName"><i class="fa fa-user fa-lg"></i>杨***严</span>
+							</li>
+							<li>
+								<span class="tabEvaluate">物流超级快，一天就到了。用了两三天才来评价，手机很好，完全没有所谓红屏出现。指纹很灵敏，拍照像素很大，信号一般，但是也不会太差，电池来说基本上这么大屏的手机也还可以了，没有那么费电，但是也绝对不会太省电。总体来说性价比还是相当不错的！</span>
+								<span class="tabDate">2016-01-10 22:02:20</span>
+								<span class="tabName"><i class="fa fa-user fa-lg"></i>严***荣</span>
+							</li>
+							<li>
+								<span class="tabEvaluate">手机做工很精致，感觉刚到手时指纹识别还蛮快的，这两天不知怎么的感觉反应慢了些。手机比较流畅，玩狂野飙车等游戏无卡顿，但玩功夫熊猫卡顿比较严重，可能是优化问题。整个系统用起来很顺手，相机色彩解析度很好，夜景呵呵。屏幕细腻色彩很好。快充很快，也不用担心电池续航能力差了。送的套也不错。</span>
+								<span class="tabDate">2016-01-10 22:02:20</span>
+								<span class="tabName"><i class="fa fa-user fa-lg"></i>严***祥</span>
+							</li>
+							<li>
+								<span class="tabEvaluate">系统流畅，反应快，设计人性化，目前没有卡机死机情况，中度使用电池可以一天多到两天。虚拟键占屏幕用不太习惯，手机握感不好，拍照清晰度还可以，但可视范围小，做工还有待提升。</span>
+								<span class="tabDate">2016-01-10 22:02:20</span>
+								<span class="tabName"><i class="fa fa-user fa-lg"></i>春***容</span>
+							</li>
+						</ul>
+						<div class="page">
+							<a href="" class="first">首页</a>
+							<a href="" class="pre">上一页</a>
+							<a href="">1</a>
+							<a href="">2</a>
+							<a href="">3</a>
+							<a href="" class="next">下一页</a>
+							<a href="" class="last">末页</a>
+						</div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+	<!--回到顶部-->
+	<a class="to-top fa fa-arrow-circle-o-up fa-4x toTop"></a>
+
+	
+	<div class="clearBoth"></div>
+	<!--底部-->
+	<!--个人企业信息-->
+	<div class="footer">
+		<div class="footerPromise">
+			<ul class="promise">
+				<li class='fl'>
+					<div>
+						<img src="images/hour.png" alt="" class="f1">
+						<span class="f1">
+							全天营业
+							<br>
+							全年无休
+						</span>
+					</div>
+				</li>
+				<li class='fl'>
+					<img src="images/line.png" alt="" class="f1">
+					<span class="f1">
+						新鲜直达
+						<br>
+						全程冷链
+					</span>
+				</li>
+				<li class='fl'>
+					<img src="images/promise.png" alt="" class="f1">
+					<span class="f1">
+						正品承诺
+						<br>
+						严格把关
+					</span>
+				</li>
+				<li>
+					<img src="images/fast.png" alt="" class="f1">
+					<span class="f1">
+						次日送达
+						<br>
+						方便快捷
+					</span>
+				</li>
+			</ul>
+			<!--购物指南-->
+			<div class="shopHelp">
+				<ul class="shopUl">
+					<li>
+						<ul class="helpUl">
+							<li><span>购物指南</span></li>
+							<li><a href="">收货贴士</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul class="helpUl">
+							<li><span>配送信息</span></li>
+							<li><a href="">配送政策</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul class="helpUl">
+							<li><span>支付方式</span></li>
+							<li><a href="">在线支付</a></li>
+							<li><a href="">支付遇到问题</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul class="helpUl">
+							<li><span>售后服务</span></li>
+							<li><a href="">退款说明</a></li>
+							<li><a href="">消费者告知书</a></li>
+						</ul>
+					</li>
+				</ul>									
+			</div>
+
+			<!--关于我们-->
+			<div class="aboutUs">
+				<ul>
+					<li class="fi"><a href="">关于我们</a></li>
+					<li class="fi"><a href="">法律声明</a></li>
+					<li class="fi"><a href="">服务协议</a></li>
+					<li><a href="">隐私声明</a></li>
+				</ul>
+				<p>
+					Copyright©Me家版权所有,违者必究
+				</p>
+			</div>
+		</div>
+	</div>
+
+
+
+	
+	<!-- 如果未登录，提示登录 -->
+	
+
+
+	<script>
+		/*商品图片放大*/
+		$(function(){	
+			scrolltotop.offset(100,120);
+			scrolltotop.init(); 
+		});
+
+		/*回到顶部*/
+		$('.to-top').toTop();
+
+
+	</script>
+</body>
+</html>

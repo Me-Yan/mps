@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<link rel="stylesheet" href="fontAwesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/cart.css">
+	<script type="text/javascript" src="plugins/scrollTop/jquery.toTop.js"></script>
+	<script type="text/javascript" src="plugins/scrollTop/jquery.toTop.min.js"></script>
+	<script src="js/cart.js"></script>
+</head>
+<body>
+	<div class="header">
+		<!--头部 链接导向栏-->
+		<div class="headerTop">
+			<div class="topNav">
+				<div class="topNavWel"><span>欢迎来到Me家！</span></div>
+				<ul class="topNavLogin">
+					<li><a href="login.html" class="topNavLoginLiA">登录</a></li>
+					<li><a href="register.html">注册</a></li>
+				</ul>
+				<ul class="topNavEntry">
+					<li class="topNavEntryA"><a href="order.html">我的订单</a></li>
+					<li class="topNavEntryA"><a href="collection.html">我的收藏</a></li>
+					<li><a href="">帮助中心</a>&nbsp;<i class="fa fa-angle-down fa-lg"></i></li>
+				</ul>
+			</div>
+			<!--购物车状态栏-->
+			<div class="status">
+				<a href="index.html" class="logo"><img src="images/logo.png" alt=""></a>
+				<span class="cartImg"><img src="images/one.png" alt=""></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearBoth"></div>
+	
+
+
+	<!--主要部分-->
+	<div class="center">
+		<div class="cart">
+			<form action="" id="cartForm">
+				<div class="title">
+					购物车
+				</div>
+				<div class="details">
+					<div class="topTitle">
+						<span class="goods">商品</span>
+						<span class="price">单价(元)</span>
+						<span class="number">数量</span>
+						<span class="total">小计(元)</span>
+						<span class="operate">操作</span>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="id" value="1">
+						<div class="proImg">
+							<img src="images/products/103.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							10.0
+						</div>
+						<div class="proNumber">
+							<a class="less fa fa-minus fa-0.1x"></a>
+							<input type="text" class="countInput" name="count" value="30">
+							<a class="add fa fa-plus"></a>
+							<span class="dw">斤</span>
+							<span class="qd">20</span>
+							<span style="display:none" class="buy">30</span>
+						</div>
+						<div class="proTotal">
+							10.0
+						</div>
+						<div class="proOperate">
+							<a href="">删除</a>
+						</div>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="id" value="2">
+						<div class="proImg">
+							<img src="images/products/105.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							10.0
+						</div>
+						<div class="proNumber">
+							<a class="less fa fa-minus fa-0.1x"></a>
+							<input type="text" class="countInput" name="count" value="20">
+							<a class="add fa fa-plus"></a>
+							<span class="dw">斤</span>
+							<span class="qd">20</span>
+						</div>
+						<div class="proTotal">
+							20.0
+						</div>
+						<div class="proOperate">
+							<a href="">删除</a>
+						</div>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="id" value="3">
+						<div class="proImg">
+							<img src="images/products/101.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							10.0
+						</div>
+						<div class="proNumber">
+							<a class="less fa fa-minus fa-0.1x"></a>
+							<input type="text" class="countInput" name="count" value="20">
+							<a class="add fa fa-plus"></a>
+							<span class="dw">斤</span>
+							<span class="qd">20</span>
+						</div>
+						<div class="proTotal">
+							30.0
+						</div>
+						<div class="proOperate">
+							<a href="">删除</a>
+						</div>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="id" value="4">
+						<div class="proImg">
+							<img src="images/products/102.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							10.0
+						</div>
+						<div class="proNumber">
+							<a class="less fa fa-minus fa-0.1x"></a>
+							<input type="text" class="countInput" name="count" value="20">
+							<a class="add fa fa-plus"></a>
+							<span class="dw">斤</span>
+							<span class="qd">20</span>
+						</div>
+						<div class="proTotal">
+							40.0
+						</div>
+						<div class="proOperate">
+							<a href="">删除</a>
+						</div>
+					</div>
+					<div class="clearBoth"></div>
+				</div>
+				<div class="conCart">
+					<div class="conRight">
+						<span class="subtotal">总计：<span>250.00</span>元</span>
+						<span class="conClick"><a>结算</a></span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	
+	<div class="clearBoth"></div>
+	<div class="footer">
+		<!--关于我们-->
+		<div class="aboutUs">
+			<ul>
+				<li class="fi"><a href="">关于我们</a></li>
+				<li class="fi"><a href="">法律声明</a></li>
+				<li class="fi"><a href="">服务协议</a></li>
+				<li><a href="">隐私声明</a></li>
+			</ul>
+			<p>
+				Copyright©Me家版权所有,违者必究
+			</p>
+		</div>
+	</div>
+
+
+
+	<!--回到顶部-->
+	<a class="to-top fa fa-arrow-circle-o-up fa-4x toTop"></a>
+
+	<script type="text/javascript">
+		<!--回到顶部-->
+		$('.to-top').toTop();
+	</script>
+	
+</body>
+</html>

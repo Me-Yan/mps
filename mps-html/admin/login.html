@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台管理系统登录页面</title>
+	<link rel="stylesheet" href="css/login.css">
+	<script src="../js/jquery-1.8.3.min.js"></script>
+	<script>
+		$(function(){
+			var flag = true;
+			$('.btn').click(function(){
+				if($('.name').val()==""||$('.name')==null) {
+					$('.name').css('border', '1px solid #e14041');
+					flag = false;
+				}
+				if($('.password').val()==""||$('.name')==null) {
+					$('.password').css('border', '1px solid #e14041');
+					flag = false;
+				}
+				if(flag) {
+					$('#loginForm').serialize();
+					$('#loginForm').submit();
+				}
+			});
+			$('input').focus(function(){
+				$(this).css('border', '1px solid #3A4147');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="logo">
+		<div class="logoImg">
+			<img src="../images/logo.png" alt="">
+		</div>
+		<div class="tip">
+			<span>很高兴认识你</span>
+		</div>
+	</div>
+
+	<div class="sign">
+		<div class="inner">
+			<form action="" name="loginForm" id="loginForm" method="post">
+				<p>
+					<input type="text" name="name" class="name" placeholder="请输入用户名"/>
+				</p>
+				<p>
+					<input type="text" name="password" class="password" placeholder="请输入密码"/>
+				</p>
+				<p>
+					<a class="btn">登录</a>
+				</p>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的订单</title>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<link rel="stylesheet" href="css/top.css">
+	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="fontAwesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/order.css">
+	<script src="js/sameNav.js"></script>
+</head>
+<body>
+	<div class="header">
+		<!--头部 链接导向栏-->
+		<div class="headerTop">
+			<div class="topNav">
+				<div class="topNavWel"><span>欢迎来到Me家！</span></div>
+				<ul class="topNavLogin">
+					<li><a href="login.html" class="topNavLoginLiA">登录</a></li>
+					<li><a href="register.html">注册</a></li>
+				</ul>
+				<ul class="topNavEntry">
+					<li class="topNavEntryA"><a href="order.html">我的订单</a></li>
+					<li class="topNavEntryA"><a href="collection.html">我的收藏</a></li>
+					<li><a href="">帮助中心</a>&nbsp;<i class="fa fa-angle-down fa-lg"></i></li>
+				</ul>
+			</div>
+		</div>
+		<div class="clearBoth"></div>
+		<!--头部 搜索栏-->	
+		<div class="headerBody">
+			<div class="bodySearch">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt=""></a>
+				</div>
+				<div class="searchKey">
+					<input name="keyword" type="text" class="keywords" placeholder="请输入关键词">
+					<button class="searchButton"><i class="fa fa-search fa-2x" style="color:red"></i></button>
+				</div>
+				<div class="cart">
+					<div class="mycart">
+						<i class="fa fa-cart-arrow-down fa-2x" style="color:red"></i>
+						<a href="cart.html">我的购物车</a>
+					</div>					
+					<span><strong>4</strong></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearBoth"></div>
+		<!--菜单分类-->	
+		<div class="headerMenu">
+			<div class="menuTop">
+				<ul class="headerNav">
+					<li class="category"><i class="fa fa-reorder"></i><strong>&nbsp;&nbsp;商品分类</strong></li>
+					<li class="navList"><a href="productList.html">首&nbsp;&nbsp;页</a></li>
+					<li class="navList"><a href="">新品尝鲜</a></li>
+					<li class="navList"><a href="">优选国际</a></li>
+					<li class="navList"><a href="">产地直采</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="headerBottom" style="display:none">
+			<div class="menuList">
+				<ul class="menuListUl">
+					<li><a href="">时令果蔬</a></li>
+					<li><a href="">肉禽蛋品</a></li>
+					<li><a href="">水产海鲜</a></li>
+					<li><a href="">乳品面点</a></li>
+					<li><a href="">粮油干货</a></li>
+					<li><a href="">零食酒饮</a></li>
+					<li><a href="">母婴呵护</a></li>
+					<li><a href="">家居日用</a></li>
+					<li><a href="">厨具电器</a></li>
+				</ul>
+				<div class="menuDetailList">
+					<ul class="menuDetail">
+						<li><a href="">新鲜叶菜</a></li>
+						<li><a href="">根茎豆瓜</a></li>
+						<li><a href="">调味蔬菜</a></li>
+						<li><a href="">新鲜菌菇</a></li>
+						<li><a href="">特色蔬菜</a></li>
+						<li><a href="">加工蔬菜</a></li>
+						<li><a href="">进口水果</a></li>
+						<li><a href="">国产水果</a></li>
+						<li><a href="">水果礼盒</a></li>
+						<li><a href="">当季畅销</a></li>						
+					</ul>
+				</div>
+				<ul class="menuRight" style="display:none">
+					<li>
+						<a href=""><img src="images/orange.png" alt=""></a>
+					</li>
+					<li>
+						<a href=""><img src="images/toothbrush.png" alt=""></a>
+					</li>
+				</ul>	
+			</div>
+		</div>
+	</div>
+	<div class="clearBoth"></div>
+	<!--**************************************************-->
+
+
+
+	<!--中间主要内容部分-->
+	<div class="center">
+		<div class="myOrder">
+			<div class="route">
+				<a href="index.html">首页</a><i class="fa fa-angle-right"></i><a href="home.html">我的Me家</a><i class="fa fa-angle-right"></i><a href="order.html">我的订单</a>
+			</div>
+			<div class="left">
+				<div class="title">
+					<a href="home.html">我的Me家</a>
+				</div>
+				<div class="list">
+					<ul>
+						<li><a href="order.html">我的订单</a></li>
+						<li><a href="collection.html">我的收藏</a></li>
+						<li><a href="user.html">个人资料</a></li>
+						<li><a href="safety.html">安全中心</a></li>
+						<li><a href="address.html">地址管理</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="right">
+				<div class="orderTitle">
+					我的订单
+				</div>
+				<div class="orderList">
+					<div class="listInner">
+						<div class="infoTitle">
+							<ul>
+								<li class="goods">商品</li>
+								<li class="price">单价</li>
+								<li class="count">数量</li>
+								<li class="subtotal">总价</li>
+								<li class="status">状态</li>
+								<div class="clearBoth"></div>
+							</ul>
+						</div>
+
+						<!--例子-->
+						<table class="orderInfo">
+							<tr class="info">
+								<td colspan="3"><span>2016-03-07 17:09:26</span>订单号：2016030717092643311</td>
+							</tr>
+							
+							<tr class="productList">
+								<td class="proInfo">
+									<div class="product">
+										<a href="" class="proImg"><img src="images/products/107.jpg" alt=""></a>
+										<span class="proName"><a href="">阿根廷顶级贵族苹果</a></span>
+										<span class="proPrice">￥76.90/公斤</span>
+										<span class="proCount">2</span>
+										<div class="clearBoth"></div>
+									</div>
+									<div class="product">
+										<a href="" class="proImg"><img src="images/products/104.jpg" alt=""></a>
+										<span class="proName"><a href="">阿根廷顶级贵族苹果</a></span>
+										<span class="proPrice">￥76.90/公斤</span>
+										<span class="proCount">2</span>
+										<div class="clearBoth"></div>
+									</div>
+									<div class="product">
+										<a href="" class="proImg"><img src="images/products/105.jpg" alt=""></a>
+										<span class="proName"><a href="">阿根廷顶级贵族苹果</a></span>
+										<span class="proPrice">￥76.90/公斤</span>
+										<span class="proCount">2</span>
+										<div class="clearBoth"></div>
+									</div>
+								</td>
+
+								<td class="proTotal">
+									￥<span>76.90</span>
+								</td>
+								<td class="proStatus">
+									已取消
+								</td>
+							</tr>
+						</table>	
+
+						<table class="orderInfo">
+							<tr class="info">
+								<td colspan="3"><span>2016-03-07 17:09:26</span>订单号：2016030717092643311</td>
+							</tr>
+							
+							<tr class="productList">
+								<td class="proInfo">
+									<div class="product">
+										<a href="" class="proImg"><img src="images/products/107.jpg" alt=""></a>
+										<span class="proName"><a href="">阿根廷顶级贵族苹果</a></span>
+										<span class="proPrice">￥76.90/公斤</span>
+										<span class="proCount">2</span>
+										<div class="clearBoth"></div>
+									</div>
+									<div class="product">
+										<a href="" class="proImg"><img src="images/products/104.jpg" alt=""></a>
+										<span class="proName"><a href="">阿根廷顶级贵族苹果</a></span>
+										<span class="proPrice">￥76.90/公斤</span>
+										<span class="proCount">2</span>
+										<div class="clearBoth"></div>
+									</div>
+								</td>
+
+								<td class="proTotal">
+									￥<span>76.90</span>
+								</td>
+								<td class="proStatus">
+									已取消
+								</td>
+							</tr>
+						</table>
+						<table class="orderInfo">
+							<tr class="info">
+								<td colspan="3"><span>2016-03-07 17:09:26</span>订单号：2016030717092643311</td>
+							</tr>
+							
+							<tr class="productList">
+								<td class="proInfo">
+									<div class="product">
+										<a href="" class="proImg"><img src="images/products/107.jpg" alt=""></a>
+										<span class="proName"><a href="">阿根廷顶级贵族苹果</a></span>
+										<span class="proPrice">￥76.90/公斤</span>
+										<span class="proCount">2</span>
+										<div class="clearBoth"></div>
+									</div>
+								</td>
+
+								<td class="proTotal">
+									￥<span>76.90</span>
+								</td>
+								<td class="proStatus">
+									已取消
+								</td>
+							</tr>
+						</table>	
+						<div class="clearBoth"></div>
+
+						<!--分页-->
+						<div class="page">
+							<div class="pageInner">
+								<a href="" class="first">首页</a>
+								<a href="" class="pre">上一页</a>
+								<a href="">1</a>
+								<a href="">2</a>
+								<a href="">3</a>
+								<a href="" class="next">下一页</a>
+								<a href="" class="last">末页</a>
+							</div>
+						</div>				
+					</div>					
+				</div>
+			</div>
+			<div class="clearBoth"></div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--**************************************************-->
+	<!--个人企业信息-->
+	<div class="clearBoth"></div>
+	<div class="footer">
+		<div class="footerPromise">
+			<ul class="promise">
+				<li class='fl'>
+					<div>
+						<img src="images/hour.png" alt="" class="f1">
+						<span class="f1">
+							全天营业
+							<br>
+							全年无休
+						</span>
+					</div>
+				</li>
+				<li class='fl'>
+					<img src="images/line.png" alt="" class="f1">
+					<span class="f1">
+						新鲜直达
+						<br>
+						全程冷链
+					</span>
+				</li>
+				<li class='fl'>
+					<img src="images/promise.png" alt="" class="f1">
+					<span class="f1">
+						正品承诺
+						<br>
+						严格把关
+					</span>
+				</li>
+				<li>
+					<img src="images/fast.png" alt="" class="f1">
+					<span class="f1">
+						次日送达
+						<br>
+						方便快捷
+					</span>
+				</li>
+			</ul>
+			<!--购物指南-->
+			<div class="shopHelp">
+				<ul class="shopUl">
+					<li>
+						<ul class="helpUl">
+							<li><span>购物指南</span></li>
+							<li><a href="">收货贴士</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul class="helpUl">
+							<li><span>配送信息</span></li>
+							<li><a href="">配送政策</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul class="helpUl">
+							<li><span>支付方式</span></li>
+							<li><a href="">在线支付</a></li>
+							<li><a href="">支付遇到问题</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul class="helpUl">
+							<li><span>售后服务</span></li>
+							<li><a href="">退款说明</a></li>
+							<li><a href="">消费者告知书</a></li>
+						</ul>
+					</li>
+				</ul>									
+			</div>
+
+			<!--关于我们-->
+			<div class="aboutUs">
+				<ul>
+					<li class="fi"><a href="">关于我们</a></li>
+					<li class="fi"><a href="">法律声明</a></li>
+					<li class="fi"><a href="">服务协议</a></li>
+					<li><a href="">隐私声明</a></li>
+				</ul>
+				<p>
+					Copyright©Me家版权所有,违者必究
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
