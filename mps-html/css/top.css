@@ -45,23 +45,12 @@ button input {
 	margin-left: 10px;
 	color: #878787;
 }
-/*登录注册*/
-.topNavLogin {
-	float: left;
-	margin-left: 40px;
-	list-style: none;
+/* 退出 */
+.topNavLogout {
+	text-align: right;
 }
-.topNavLogin li {	
-	float: left;
-}
-.topNavLogin li a {
-	display: inline-block;
-	width: 70px;
-	text-align: center;
+.topNav a {
 	color: #E14041;
-}
-.topNavLoginLiA {
-	border-right: 1px #878787 solid;
 }
 /*快捷链接*/
 .topNavEntry {

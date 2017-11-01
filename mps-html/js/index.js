@@ -1,15 +1,5 @@
 $(function(){
 
-	/*搜索栏的固定到顶端*/
-	$(window).scroll(function(){
-		var targetTop = $(this).scrollTop();
-		if(targetTop>200) {
-			$('.posFixed').show();
-		} else if(targetTop<200) {
-			$('.posFixed').hide();
-		}
-	});
-
 	/*控制输入框获取、失去焦点时的边框颜色*/
 	$('.keywords').focus(function(){
 		$(this).css('border', '1px solid #1E90FF');
