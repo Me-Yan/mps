@@ -1,6 +1,9 @@
 @charset "utf-8";
 
-/*路线*/
+.line {
+	border-bottom: 1px solid #D3D3D3;
+	margin: 10px 0px;
+}
 .toTop {
 	color:#696969;
 	display:block;
@@ -11,21 +14,6 @@
 .main {
 	width: 1200px;
 	margin: 0 auto;
-}
-.route {
-	padding: 15px 0;
-	font-size: 14px;
-	color: #666;
-}
-.route i {
-	display: inline-block;
-	width: 7px;
-	height: 14px;
-	margin: 0 8px;
-	color: #666;
-}
-.route a {
-	color: #666;
 }
 /*左边*/
 .left {
@@ -64,29 +52,18 @@
 	float: right;
 }
 .items {
-	height: 30px;
-	line-height: 30px;
-	background-color: #fff;
 	float: left;
 	width: 100%;
-	margin: 15px 0;
 	font-size: 14px;
-	padding: 10px;
+	padding-left: 7px;
 }
-.items a {
-	cursor: pointer;
+.items span {
+	padding: 10px 20px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	margin-right: 10px;
 	display: inline-block;
-	height: 30px;
-	line-height: 30px;
-	color: #000;
-	text-align: center;
-	padding: 0 20px;
-	background: url(../images/productList.png) no-repeat right center;
-}
-.items a i {
-	display: inline-block;
-	padding-left: 5px;
-	color: #bbb;
+	margin-bottom: 15px;
 }
 /*右边商品列表*/
 .list {
@@ -94,7 +71,7 @@
 }
 .listUl {
 	width: 100%;
-	margin-left: 3px;
+	margin-left: 7px;
 }
 .listUl li {
 	float: left;

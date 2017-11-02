@@ -27,18 +27,4 @@ $(function(){
 			$(this).parent().find(':input').val(now);
 		}
 	});
-
-	//图片详情、评论的切换
-	$('.detail').click(function(){
-		$(this).addClass('tClick').removeClass('tDefault');
-		$('.evaluate').addClass('tDefault').removeClass('tClick');
-		$('.tabImg').show();
-		$('.tabWord').hide();
-	});
-	$('.evaluate').click(function(){
-		$(this).addClass('tClick').removeClass('tDefault');
-		$('.detail').addClass('tDefault').removeClass('tClick');
-		$('.tabImg').hide();
-		$('.tabWord').show();
-	});
 });
