@@ -10,20 +10,6 @@
 	margin: 0 auto;
 	background-color: #ededed;
 }
-.route {
-	width: 100%;
-	padding: 15px 0;
-	font-size: 14px;
-}
-.route a {
-	color: #666;
-}
-.route i {
-	width: 7px;
-	height: 14px;
-	margin: 0 8px;
-	color: #666;
-}
 .left {
 	width: 250px;
 	margin-right: 15px;

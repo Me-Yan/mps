@@ -32,37 +32,6 @@
 	line-height: 19px;
 	color: #333;
 }
-/*购物指南*/
-.shopHelp {
-	margin-top: 70px;
-	border-top: 1px #DCDCDC solid;
-}
-.shopUl {
-	list-style: none;
-	width: 100%;
-	margin: 50px auto;
-	height: 50px;
-}
-.shopUl>li {
-	float: left;
-	margin-left: 40px;
-}
-.helpUl {
-	list-style: none;
-}
-.helpUl li {
-	width: 250px;
-	height: 30px;
-	line-height: 30px;
-	text-align: center;
-}
-.helpUl li span {
-	font-weight: bold;
-	font-size: 17px;
-}
-.helpUl li a {
-	color: #333;
-}
 /*关于我们*/
 .aboutUs {
 	padding-top: 50px;
