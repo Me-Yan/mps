@@ -75,44 +75,8 @@ body {
 	font-size: 15px;
 	vertical-align: middle;
 }
-.leftValue li:nth-child(2), .leftValue li:nth-child(3), .leftValue li:nth-child(4), .leftValue li:nth-child(5) {
+.leftValue li:nth-child(2), .leftValue li:nth-child(3), .leftValue li:nth-child(4), .leftValue li:nth-child(5), .leftValue li:nth-child(6) {
 	line-height: 50px;
-}
-/*基本详情右侧*/
-.right ul li:nth-child(1) {
-	height: 100px;
-	line-height: 100px;
-	text-align: center;
-}
-.right ul li:nth-child(1) img {
-	width: 100px;
-	height: 100px;
-}
-.right ul li:nth-child(2) {
-	margin-top: 10px;
-	letter-spacing: 2px;
-}
-/*图片展示*/
-.show {
-	margin-top: 20px;
-}
-.showContent {
-	padding: 10px 20px 0 20px;
-}
-.showContent li {
-	float: left;
-	padding: 20px;
-	background-color: #fff;
-	margin-left: 15px;
-	border: 1px solid #C4BCB5;
-	margin-top: 20px;
-	box-shadow: 0 0 10px #C4BCB5;
-}
-.showContent li:hover {
-	box-shadow: 0px 0px 20px 0px #464646;
-}
-.showContent li img {
-	width: 200px;
 }
 /*商品详情*/
 .detail {

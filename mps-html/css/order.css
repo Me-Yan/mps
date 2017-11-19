@@ -19,7 +19,7 @@
 .title {
 	background-color: #e14041;
 }
-.title a {
+.title span {
 	display: block;
 	height: 60px;
 	line-height: 60px;

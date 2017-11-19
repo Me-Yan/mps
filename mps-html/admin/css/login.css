@@ -19,11 +19,12 @@ body {
 }
 
 /*内容*/
-.logo {
+.header {
 	width: 100%;
 	margin-top: 70px;
 }
 .tip {
+	display: none;
 	width: 800px;
 	margin: 0 auto;
 	text-align: center;
@@ -42,7 +43,9 @@ body {
 	font-weight: bold;
 	letter-spacing: 2px;
 }
-.logoImg {
+.title {
+	font-size: 25px;
+	color: #ffffff;
 	margin: 0 auto;
 	width: 800px;
 	text-align: center;

@@ -73,22 +73,16 @@ body {
 	width: 15%;
 }
 .userTitle li:nth-child(3), .userContent>li ul li:nth-child(3) {
-	width: 5%;
+	width: 20%;
 }
 .userTitle li:nth-child(4), .userContent>li ul li:nth-child(4) {
 	width: 25%;
 }
 .userTitle li:nth-child(5), .userContent>li ul li:nth-child(5) {
-	width: 15%;
+	width: 25%;
 }
 .userTitle li:nth-child(6), .userContent>li ul li:nth-child(6) {
-	width: 10%;
-}
-.userTitle li:nth-child(7), .userContent>li ul li:nth-child(7) {
-	width: 15%;
-}
-.userTitle li:nth-child(8), .userContent>li ul li:nth-child(8) {
-	width: 10%;
+  width: 10%;
 }
 .userContent>li:hover {
   background-color: #ddd;

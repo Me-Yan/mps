@@ -43,7 +43,7 @@
 	text-align: center;
 }
 .left a:hover {
-	background-color: #e14041;
+	background-color: #F09898;
 	color: #fff;
 }
 /*右边*/
@@ -64,6 +64,11 @@
 	margin-right: 10px;
 	display: inline-block;
 	margin-bottom: 15px;
+	cursor: pointer;
+}
+.items span:hover {
+	background-color: #F09898;
+	color: #ffffff;
 }
 /*右边商品列表*/
 .list {

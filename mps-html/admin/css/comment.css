@@ -43,13 +43,13 @@ body {
 	width: 40%;
 }
 .title li:nth-child(3) {
-	width: 20%;
+	width: 25%;
 }
 .title li:nth-child(4) {
 	width: 15%;
 }
 .title li:nth-child(5) {
-	width: 15%;
+	width: 10%;
 }
 /*具体内容*/
 .content li {
@@ -74,18 +74,13 @@ table tr td:nth-child(2) {
 	font-size: 15px;
 }
 table tr td:nth-child(3) {
-	width: 20%;
+	width: 25%;
 }
 table tr td:nth-child(4) {
 	width: 15%;
 }
 table tr td:nth-child(5) {
-	width: 15%;
-	color: #0066CC;
-}
-table i {
-	margin-right: 5px;
-	color: #0066CC;
+	width: 10%;
 }
 /*分页*/
 .pagination {

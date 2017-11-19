@@ -21,13 +21,13 @@ body {
 
 
 /*内容*/
-.info, .show, .detail {
+.info, .detail {
 	margin-top: 20px;
 }
 .infoTitle {
 	float: left;
 }
-.infoTitle, .showTitle, .detailTitle {
+.infoTitle, .detailTitle {
 	height: 40px;
 	line-height: 40px;
 	text-align: left;
@@ -35,7 +35,7 @@ body {
 	color: #ddd;
 	width: 100px;
 }
-.infoTitle span, .showTitle span, .detailTitle span {
+.infoTitle span, .detailTitle span {
 	margin-left: 20px;
 }
 .infoContent {
@@ -180,13 +180,10 @@ label a:hover {
 .headImg a:hover {
 	background-color: #286090;
 }
-.addShow, .addDetail {
+.addDetail {
 	float: left;
 }
-.showTitle {
-	float: left;
-}
-.addShow a, .addDetail a {
+.addDetail a {
 	width: 80px;
 	height: 35px;
 	line-height: 35px;
@@ -199,20 +196,8 @@ label a:hover {
 	position: relative;
 	top: 3px;
 }
-.delShow, .delDetail {
+.delDetail {
 	margin-left: 140px;
-}
-.delShow li img {
-	height: 150px;
-	vertical-align: middle;
-	padding: 5px;
-	background-color: #ccc;
-	box-shadow: 0px 0px 10px 0px #333;
-}
-.delShow li {
-	float: left;
-	margin-top: 20px;
-	margin-right: 40px;
 }
 .delDetail li {
 	margin-top: 20px;
@@ -224,7 +209,7 @@ label a:hover {
 	box-shadow: 0px 0px 10px 0px #333;
 	vertical-align: middle;
 }
-.delShow li a, .delDetail li a {
+.delDetail li a {
 	width: 80px;
 	height: 35px;
 	line-height: 35px;
@@ -238,11 +223,11 @@ label a:hover {
 .detailTitle {
 	float: left;
 }
-.showContent, .detailContent {
+.detailContent {
 	margin-top: 30px;
 	margin-left: 140px;
 }
-.headContent>a, .showContent>a, .detailContent>a, .remove {
+.headContent>a, .detailContent>a, .remove {
 	width: 80px;
 	height: 35px;
 	line-height: 35px;
@@ -257,13 +242,13 @@ label a:hover {
 	color: #e14041;
 	margin-top: 5px;
 }
-.remove:hover, .headContent>a:hover, .addShow a:hover, .addDetail a:hover, .showContent>a:hover, .detailContent>a:hover, .delShow a:hover, .delDetail a:hover {
+.remove:hover, .headContent>a:hover, .addDetail a:hover, .detailContent>a:hover, .delDetail a:hover {
 	background-color: #286090;
 }
 .detail {
 	margin-bottom: 100px;
 }
-.showContent, .detailContent {
+.detailContent {
 	display: none;
 }
 /*遮罩*/
@@ -281,10 +266,10 @@ label a:hover {
 	color: #555;
 	opacity: 1;
 }
-#showImg, #detailImg {
+#detailImg {
 	margin-left: 130px;
 }
-#showImg img, #detailImg img {
+#detailImg img {
 	margin-top: 10px;
 	height: 150px;
 	padding: 2px;
@@ -292,6 +277,6 @@ label a:hover {
 	margin-left: 10px;
 	float: left;
 }
-#showImg img:hover, #detailImg img:hover {
+#detailImg img:hover {
 	box-shadow: 0px 0px 10px 0px #464646;
 }

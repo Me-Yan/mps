@@ -23,7 +23,7 @@ body {
 .add {
 	padding-top: 20px;
 }
-.infoTitle, .showTitle, .detailTitle {
+.infoTitle, .detailTitle {
 	height: 40px;
 	line-height: 40px;
 	text-align: left;
@@ -31,7 +31,7 @@ body {
 	color: #ddd;
 	width: 100px;
 }
-.infoTitle span, .showTitle span, .detailTitle span {
+.infoTitle span, .detailTitle span {
 	margin-left: 20px;
 }
 .infoContent {
@@ -69,20 +69,6 @@ table tr td:nth-child(2) input:focus {
 	-webkit-box-shadow: 0px 0px 4px 0px #66AFE9;
 	box-shadow: 0px 0px 4px 0px #66AFE9;
 }
-.function {
-	height: 200px;
-	width: 500px;
-	padding-left: 5px;
-	line-height: 25px;
-	letter-spacing: 1px;
-	color: #777;
-}
-.function:focus {
-	border: 1px solid #66AFE9;
-	-moz-box-shadow: 0px 0px 4px 0px #66AFE9;
-	-webkit-box-shadow: 0px 0px 4px 0px #66AFE9;
-	box-shadow: 0px 0px 4px 0px #66AFE9;
-}
 select {
 	height: 40px;
 	line-height: 40px;
@@ -101,10 +87,10 @@ select:focus {
 select option {
 	padding-left: 5px;
 }
-.show, .detail {
+.detail {
 	margin-top: 20px;
 }
-.showContent, .detailContent {
+.detailContent {
 	margin-top: 20px;
 	padding-left: 100px;
 }
@@ -178,10 +164,10 @@ label a:hover {
 }
 
 /*图片预览*/
-#showImg, #detailImg {
+#detailImg {
 	margin-left: 90px;
 }
-#showImg img, #detailImg img {
+#detailImg img {
 	margin-top: 10px;
 	height: 150px;
 	padding: 2px;
@@ -189,7 +175,7 @@ label a:hover {
 	margin-left: 10px;
 	float: left;
 }
-#showImg img:hover, #detailImg img:hover {
+#detailImg img:hover {
 	box-shadow: 0px 0px 10px 0px #464646;
 }
 .remove {
