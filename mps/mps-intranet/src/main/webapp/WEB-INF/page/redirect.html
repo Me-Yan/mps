@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跳转页面</title>
+	<script src="../js/jquery-1.8.3.min.js"></script>
+	<style>
+		.outer {
+			width: 100%;
+		}
+		.inner {
+			margin: 0 auto;
+			margin-top: 100px;
+			width: 400px;
+			text-align: center;
+		}
+		.inner span {
+			color: #e14041;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner">
+			<span>密码修改成功，请重新登录！跳转到登录页面......</span>
+			<script>
+				var flag = 3;
+				for(var i=0; ;i++) {
+					var st = setTimeout(function(){
+						flag--;
+					}, 1000);
+					if(flag==0) {
+						clearTimeout(st);
+						window.top.location = "${pageContext.request.contextPath}/admin/login.jsp";
+					}
+				}
+			</script>
+		</div>
+	</div>
+</body>
+</html>

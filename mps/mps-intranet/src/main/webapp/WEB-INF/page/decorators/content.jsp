@@ -9,10 +9,11 @@
 <html>
 <head>
     <title></title>
+    <jsp:include page="common.jsp" />
 </head>
 <body>
-<p>header</p>
+
     <sitemesh:write property='body'/>
-<p>footer</p>
+
 </body>
 </html>

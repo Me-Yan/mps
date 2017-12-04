@@ -1,0 +1,22 @@
+package com.me.mps.controller;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+/**
+ * Created by Me on 2017/12/4.
+ */
+@Controller
+public class LoginController extends BaseController {
+
+    private Logger logger= Logger.getLogger(LoginController.class);
+
+    @RequestMapping("/login")
+    public ModelAndView login() {
+        logger.debug("Execute Method login...");
+
+        return new ModelAndView("login");
+    }
+}

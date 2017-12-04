@@ -1,0 +1,24 @@
+package com.me.mps.service.impl;
+
+import com.me.mps.dto.UserDTO;
+import com.me.mps.mapper.UserMapper;
+import com.me.mps.service.UserService;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Created by Me on 2017/12/5.
+ */
+@Service
+public class UserServiceImpl extends BaseServiceImpl implements UserService {
+
+    private Logger logger = Logger.getLogger(UserServiceImpl.class);
+
+    public List<UserDTO> listUser() {
+        logger.debug("Execute Method listUser...");
+
+        return sqlSessionTemplate.getMapper(UserMapper.class).listUser();
+    }
+}

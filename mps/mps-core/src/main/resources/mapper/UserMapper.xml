@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.me.mps.mapper.UserMapper">
+    
+    <select id="listUser" resultType="com.me.mps.dto.UserDTO">
+        SELECT
+              (@rownum:=@rownum+1) AS serialNumber,
+              u.user_id AS userId,
+              u.username_m AS usernameM,
+              u.realName_m AS realNameM,
+              u.password_x AS passwordX,
+              u.sex_x AS sexX,
+              u.age_n AS ageN,
+              u.email_x AS emailX,
+              u.phone_x AS phoneX,
+              com.name_x AS companyName,
+              u.amount_n AS amountN,
+              u.authority_x AS authorityX,
+              u.active_c AS activeC,
+              u.crtBy_m AS crtByM,
+              u.crtOn_dt AS crtOnDt,
+              u.updBy_m AS updByM,
+              u.updOn_dt AS updOnDt
+        FROM (SELECT @rownum:=0) a,  MPS_user u
+        LEFT JOIN MPS_company com ON u.company_id = com.company_id
+        WHERE u.active_c = 'A' AND com.active_c = 'A'
+    </select>
+</mapper>
