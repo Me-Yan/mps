@@ -9,5 +9,9 @@ import java.util.List;
  */
 public interface UserMapper {
 
+    void saveUser(UserDTO userDTO);
+
     List<UserDTO> listUser();
+
+    void deleteUserByCompanyId(Integer companyId);
 }

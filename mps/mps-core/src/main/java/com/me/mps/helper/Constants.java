@@ -6,7 +6,7 @@ package com.me.mps.helper;
 public interface Constants {
 
     interface USER {
-        String USER_INFO = "userInfo";
+        String SESSION_USER = "SessionUser";
     }
 
     interface AUTHORITY {

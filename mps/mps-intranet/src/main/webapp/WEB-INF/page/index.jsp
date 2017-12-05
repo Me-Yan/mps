@@ -62,6 +62,7 @@
                     <div class="link"><i class="fa fa-paint-brush"></i>用户<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
                         <li><a href="${pageContext.request.contextPath}/user/listUser" target="navFrame">用户列表</a></li>
+                        <li><a href="${pageContext.request.contextPath}/company/listCompany" target="navFrame">连队列表</a></li>
                     </ul>
                 </li>
             </ul>

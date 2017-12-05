@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.me.mps.mapper.UserMapper">
+
+    <insert id="saveUser" parameterType="com.me.mps.dto.UserDTO">
+        INSERT INTO MPS_user
+        (
+              username_m,
+              realName_m,
+              password_x,
+              sex_x,
+              age_n,
+              email_x,
+              phone_x,
+              company_id,
+              amount_n,
+              authority_x,
+              active_c,
+              crtBy_m,
+              crtOn_dt
+        )
+        VALUES
+        (
+              #{usernameM,jdbcType=VARCHAR},
+              #{realNameM,jdbcType=VARCHAR},
+              #{passwordX,jdbcType=VARCHAR},
+              #{sexX,jdbcType=VARCHAR},
+              #{ageN,jdbcType=INTEGER},
+              #{emailX,jdbcType=VARCHAR},
+              #{phoneX,jdbcType=VARCHAR},
+              #{companyId,jdbcType=INTEGER},
+              #{amountN,jdbcType=INTEGER},
+              #{authorityX,jdbcType=VARCHAR},
+              #{activeC,jdbcType=INTEGER},
+              #{crtByM,jdbcType=INTEGER},
+              #{crtOnDt,jdbcType=TIMESTAMP}
+        )
+    </insert>
     
     <select id="listUser" resultType="com.me.mps.dto.UserDTO">
         SELECT
@@ -25,4 +60,8 @@
         LEFT JOIN MPS_company com ON u.company_id = com.company_id
         WHERE u.active_c = 'A' AND com.active_c = 'A'
     </select>
+
+    <update id="deleteUserByCompanyId" parameterType="java.lang.Integer">
+        UPDATE MPS_user SET active_c = 'I' WHERE company_id = #{companyId, jdbcType=INTEGER}
+    </update>
 </mapper>

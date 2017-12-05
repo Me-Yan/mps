@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: yanyanghong
@@ -18,7 +19,7 @@
         <div style="height: 20px;"></div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 text-right">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;添加用户</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal"><i class="fa fa-user-plus" style="color: #ffffff;"></i>&nbsp;&nbsp;添加用户</button>
             </div>
         </div>
         <div class="row">
@@ -45,48 +46,47 @@
                                     <div class="col-xs-6 col-sm-6">
                                         <select name="companyId" id="companyId" class="form-control">
                                             <option value="">-- 选择连队 --</option>
-                                            <option value="1">一连</option>
-                                            <option value="2">二连</option>
-                                            <option value="3">三连</option>
-                                            <option value="4">四连</option>
-                                            <option value="5">五连</option>
-                                            <option value="6">六连</option>
+                                            <c:if test="${not empty companyDTOList}">
+                                                <c:forEach items="${companyDTOList}" var="company">
+                                                    <option value="${company.companyId}">${company.nameX}</option>
+                                                </c:forEach>
+                                            </c:if>
                                         </select>
                                     </div>
                                     <div class="col-xs-2 col-sm-2"></div>
                                 </div>
                                 <div class="form-group clearfix">
-                                    <label for="realName" class="control-label col-xs-4 col-sm-4 text-right">姓名：</label>
+                                    <label for="realNameM" class="control-label col-xs-4 col-sm-4 text-right">姓名：</label>
                                     <div class="col-xs-6 col-sm-6">
-                                        <input name="realName" id="realName" type="text" class="form-control" />
+                                        <input name="realNameM" id="realNameM" type="text" class="form-control" />
                                     </div>
                                     <div class="col-xs-2 col-sm-2"></div>
                                 </div>
                                 <div class="form-group clearfix">
-                                    <label for="password" class="control-label col-xs-4 col-sm-4 text-right">密码：</label>
+                                    <label for="passwordX" class="control-label col-xs-4 col-sm-4 text-right">密码：</label>
                                     <div class="col-xs-6 col-sm-6">
-                                        <input name="password" id="password" type="text" class="form-control" />
+                                        <input name="passwordX" id="passwordX" type="text" class="form-control" />
                                     </div>
                                     <div class="col-xs-2 col-sm-2"></div>
                                 </div>
                                 <div class="form-group clearfix">
-                                    <label for="amount" class="control-label col-xs-4 col-sm-4 text-right">余额：</label>
+                                    <label for="amountN" class="control-label col-xs-4 col-sm-4 text-right">余额：</label>
                                     <div class="col-xs-6 col-sm-6">
-                                        <input name="amount" id="amount" type="text" class="form-control" />
+                                        <input name="amountN" id="amountN" type="text" class="form-control" />
                                     </div>
                                     <div class="col-xs-2 col-sm-2"></div>
                                 </div>
                                 <div class="form-group clearfix">
-                                    <label for="username" class="control-label col-xs-4 col-sm-4 text-right">用户名：</label>
+                                    <label for="usernameM" class="control-label col-xs-4 col-sm-4 text-right">用户名：</label>
                                     <div class="col-xs-6 col-sm-6">
-                                        <input name="username" id="username" type="text" class="form-control" />
+                                        <input name="usernameM" id="usernameM" type="text" class="form-control" />
                                     </div>
                                     <div class="col-xs-2 col-sm-2"></div>
                                 </div>
                                 <div class="form-group clearfix">
-                                    <label for="sex" class="control-label col-xs-4 col-sm-4 text-right">性别：</label>
+                                    <label for="sexX" class="control-label col-xs-4 col-sm-4 text-right">性别：</label>
                                     <div class="col-xs-6 col-sm-6">
-                                        <select name="sex" id="sex" class="form-control">
+                                        <select name="sexX" id="sexX" class="form-control">
                                             <option value="">-- 选择性别 --</option>
                                             <option value="男">男</option>
                                             <option value="女">女</option>
@@ -95,23 +95,23 @@
                                     <div class="col-xs-2 col-sm-2"></div>
                                 </div>
                                 <div class="form-group clearfix">
-                                    <label for="age" class="control-label col-xs-4 col-sm-4 text-right">年龄：</label>
+                                    <label for="ageN" class="control-label col-xs-4 col-sm-4 text-right">年龄：</label>
                                     <div class="col-xs-6 col-sm-6">
-                                        <input name="age" id="age" type="text" class="form-control" />
+                                        <input name="ageN" id="ageN" type="text" class="form-control" />
                                     </div>
                                     <div class="col-xs-2 col-sm-2"></div>
                                 </div>
                                 <div class="form-group clearfix">
-                                    <label for="email" class="control-label col-xs-4 col-sm-4 text-right">邮箱：</label>
+                                    <label for="emailX" class="control-label col-xs-4 col-sm-4 text-right">邮箱：</label>
                                     <div class="col-xs-6 col-sm-6">
-                                        <input name="email" id="email" type="text" class="form-control" />
+                                        <input name="emailX" id="emailX" type="text" class="form-control" />
                                     </div>
                                     <div class="col-xs-2 col-sm-2"></div>
                                 </div>
                                 <div class="form-group clearfix">
-                                    <label for="phone" class="control-label col-xs-4 col-sm-4 text-right">电话：</label>
+                                    <label for="phoneX" class="control-label col-xs-4 col-sm-4 text-right">电话：</label>
                                     <div class="col-xs-6 col-sm-6">
-                                        <input name="phone" id="phone" type="text" class="form-control" />
+                                        <input name="phoneX" id="phoneX" type="text" class="form-control" />
                                     </div>
                                     <div class="col-xs-2 col-sm-2"></div>
                                 </div>
@@ -143,8 +143,20 @@
         var userForm = $("#userForm").data("formValidation");
         userForm.validate();
         if (userForm.isValid()) {
-            $("#addUserModal").modal("hide");
-            userForm.resetForm(true);
+            $.ajax({
+                url: "${pageContext.request.contextPath}/user/add",
+                data: $("#userForm").serialize(),
+                type: "post",
+                success: function (data) {
+                    if ("success" === data.msg) {
+                        $("#addUserModal").modal("hide");
+                        $("#userTable").bootstrapTable("refresh");
+                    } else {
+                        $("#addUserModal").modal("hide");
+                        alert("Error...");
+                    }
+                }
+            });
         }
     });
 
@@ -165,7 +177,7 @@
                         }
                     }
                 },
-                realName: {
+                realNameM: {
                     validators: {
                         notEmpty: {
                             message: '请填写用户姓名。'
@@ -176,7 +188,7 @@
                         }
                     }
                 },
-                password: {
+                passwordX: {
                     validators: {
                         notEmpty: {
                             message: '请填写密码。'
@@ -188,7 +200,7 @@
                         }
                     }
                 },
-                amount: {
+                amountN: {
                     validators: {
                         notEmpty: {
                             message: '请填写余额。'
@@ -203,7 +215,7 @@
                         }
                     }
                 },
-                username: {
+                usernameM: {
                     validators: {
                         notEmpty: {
                             message: '请填写用户名'
@@ -215,14 +227,14 @@
                         }
                     }
                 },
-                sex: {
+                sexX: {
                     validators: {
                         notEmpty: {
                             message: '请选择性别。'
                         },
                     }
                 },
-                age: {
+                ageN: {
                     validators: {
                         notEmpty: {
                             message: '请填写年龄。'
@@ -238,7 +250,7 @@
 
                     }
                 },
-                email: {
+                emailX: {
                     validators: {
                         notEmpty: {
                             message: '请填写邮箱。'
@@ -252,7 +264,7 @@
                         }
                     }
                 },
-                phone: {
+                phoneX: {
                     validators: {
                         notEmpty: {
                             message: '请填写手机号码。'
@@ -355,7 +367,7 @@
                     align : 'center',
                     valign : 'middle',
                     formatter: function () {
-                        return '<i class="fa fa-edit fa-lg"></i><i class="fa fa-remove fa-lg"></i>';
+                        return '<button class="btn btn-primary">重置密码</button>&nbsp;&nbsp;<button class="btn btn-primary">删除</button>';
                     }
                 }
             ]

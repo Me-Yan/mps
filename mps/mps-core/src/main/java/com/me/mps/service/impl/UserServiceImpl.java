@@ -16,6 +16,12 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
     private Logger logger = Logger.getLogger(UserServiceImpl.class);
 
+    public void saveUser(UserDTO userDTO) {
+        logger.debug("Execute Method saveUser...");
+
+        sqlSessionTemplate.getMapper(UserMapper.class).saveUser(userDTO);
+    }
+
     public List<UserDTO> listUser() {
         logger.debug("Execute Method listUser...");
 

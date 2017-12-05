@@ -1,7 +1,12 @@
 package com.me.mps.controller;
 
+import com.google.common.collect.Maps;
+import com.me.mps.dto.CompanyDTO;
 import com.me.mps.dto.UserDTO;
+import com.me.mps.helper.Constants;
+import com.me.mps.service.CompanyService;
 import com.me.mps.service.UserService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Me on 2017/12/4.
@@ -23,11 +30,19 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CompanyService companyService;
+
     @RequestMapping("/listUser")
     public ModelAndView listUser() {
         logger.debug("Execute Method listUser...");
+        ModelAndView model = new ModelAndView("user");
 
-        return new ModelAndView("user");
+        List<CompanyDTO> companyDTOList = companyService.listCompanyData();
+
+        model.addObject("companyDTOList", companyDTOList);
+
+        return model;
     }
 
     @RequestMapping("/listUserData")
@@ -36,5 +51,28 @@ public class UserController extends BaseController {
         logger.debug("Execute Method listUserData...");
 
         return userService.listUser();
+    }
+
+    @RequestMapping("/add")
+    @ResponseBody
+    public Map<String, Object> addUser(UserDTO userDTO) {
+        logger.debug("Execute Method addUser...");
+        Map<String, Object> model = Maps.newHashMap();
+
+        if (userDTO!=null) {
+            userDTO.setPasswordX(DigestUtils.md5Hex(userDTO.getPasswordX()));
+            userDTO.setAuthorityX(Constants.AUTHORITY.INTERNET);
+            userDTO.setActiveC(Constants.IN_ACTIVE.ACTIVE);
+            userDTO.setCrtByM(getUserInfo().getUsernameM());
+            userDTO.setCrtOnDt(new Date());
+
+            userService.saveUser(userDTO);
+
+            model.put("msg", "success");
+        } else {
+            model.put("msg", "fail");
+        }
+
+        return model;
     }
 }
