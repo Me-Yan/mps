@@ -7,6 +7,7 @@ import com.me.mps.helper.Constants;
 import com.me.mps.service.CompanyService;
 import com.me.mps.service.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,6 +68,46 @@ public class UserController extends BaseController {
             userDTO.setCrtOnDt(new Date());
 
             userService.saveUser(userDTO);
+
+            model.put("msg", "success");
+        } else {
+            model.put("msg", "fail");
+        }
+
+        return model;
+    }
+
+    @RequestMapping("/checkOldPassword")
+    @ResponseBody
+    public Map<String, Object> checkOldPassword(String oldPassword, Integer userId) {
+        logger.debug("Execute Method checkOldPassword...");
+        Map<String, Object> model = Maps.newHashMap();
+
+        String password = userService.getPasswordByUserId(userId);
+
+        if (StringUtils.isNotBlank(StringUtils.trim(oldPassword))) {
+            if (DigestUtils.md5Hex(oldPassword).equals(password)) {
+                model.put("valid", true);
+            } else {
+                model.put("valid", false);
+            }
+        } else {
+            model.put("valid", false);
+        }
+
+        return model;
+    }
+
+    @RequestMapping("/resetPassword")
+    @ResponseBody
+    public Map<String, Object> resetPassword(UserDTO userDTO) {
+        logger.debug("Execute Method resetPassword...");
+        Map<String, Object> model = Maps.newHashMap();
+
+        if (StringUtils.isNotBlank(StringUtils.trim(userDTO.getPasswordX()))&&userDTO.getUserId()!=null) {
+            userDTO.setPasswordX(DigestUtils.md5Hex(userDTO.getPasswordX()));
+
+            userService.updatePassword(userDTO);
 
             model.put("msg", "success");
         } else {

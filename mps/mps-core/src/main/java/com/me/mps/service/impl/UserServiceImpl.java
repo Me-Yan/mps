@@ -27,4 +27,16 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
         return sqlSessionTemplate.getMapper(UserMapper.class).listUser();
     }
+
+    public String getPasswordByUserId(Integer userId) {
+        logger.debug("Execute Method getPasswordByUserId...");
+
+        return sqlSessionTemplate.getMapper(UserMapper.class).getPasswordByUserId(userId);
+    }
+
+    public void updatePassword(UserDTO userDTO) {
+        logger.debug("Execute Method updatePasswordByUserId...");
+
+        sqlSessionTemplate.getMapper(UserMapper.class).updatePassword(userDTO);
+    }
 }

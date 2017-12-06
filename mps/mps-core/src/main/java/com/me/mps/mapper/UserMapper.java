@@ -14,4 +14,8 @@ public interface UserMapper {
     List<UserDTO> listUser();
 
     void deleteUserByCompanyId(Integer companyId);
+
+    String getPasswordByUserId(Integer userId);
+
+    void updatePassword(UserDTO userDTO);
 }

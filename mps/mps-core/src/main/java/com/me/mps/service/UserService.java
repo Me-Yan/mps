@@ -12,4 +12,8 @@ public interface UserService {
     void saveUser(UserDTO userDTO);
 
     List<UserDTO> listUser();
+
+    String getPasswordByUserId(Integer userId);
+
+    void updatePassword(UserDTO userDTO);
 }

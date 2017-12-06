@@ -127,13 +127,132 @@
         </div>
     </div>
 
+    <!-- 重置弹窗 -->
+    <div id="resetModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="resetForm" class="form-horizontal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12">
+                                <div class="form-group clearfix">
+                                    <label for="oldPassword" class="control-label col-xs-4 col-sm-4 text-right">旧密码：</label>
+                                    <div class="col-xs-6 col-sm-6">
+                                        <input type="text" name="oldPassword" id="oldPassword" data-index="" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="newPassword" class="control-label col-xs-4 col-sm-4 text-right">新密码：</label>
+                                    <div class="col-xs-6 col-sm-6">
+                                        <input type="password" name="newPassword" id="newPassword" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label for="confirmPassword" class="control-label col-xs-4 col-sm-4 text-right">确认密码：</label>
+                                    <div class="col-xs-6 col-sm-6">
+                                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" class="btn btn-primary" id="resetConfirmBtn" data-index="">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 删除弹窗 -->
+    <div id="removeModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <br>
+                    <p>确定要删除该用户吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="removeConfirmBtn">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 重置成功Modal -->
+    <div id="tipsModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <br>
+                    <p>修改成功。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <script>
     $(function () {
         initUserTable();
         initUserValidation();
+        initResetFormValidation();
     });
 
-    $("#addUserModal").modal({
+    $("#resetModal").on("hidden.bs.modal", function () {
+        var resetForm = $("#resetForm").data("formValidation");
+        resetForm.resetForm(true);
+    });
+
+    $("#resetConfirmBtn").on("click", function () {
+        var resetForm = $("#resetForm").data("formValidation");
+        resetForm.validate();
+        if (resetForm.isValid()) {
+            $.ajax({
+                url: "${pageContext.request.contextPath}/user/resetPassword",
+                type: "post",
+                data: {
+                    passwordX: $("#newPassword").val(),
+                    userId: $("#oldPassword").attr("data-index")
+                },
+                success: function (data) {
+                    if (data.msg === "success") {
+                        $("#resetModal").modal("hide");
+                        $("#tipsModal").modal("show");
+                        $("#userTable").bootstrapTable("refresh");
+                    } else {
+                        $("#resetModal").modal("hide");
+                        alert("Error...");
+                    }
+                }
+            });
+        }
+    });
+
+    function removeModal(index) {
+        $("#removeConfirmBtn").attr("data-index", index);
+        $("#removeModal").modal("show");
+    }
+
+    function resetModal(index) {
+        $("#oldPassword").attr("data-index", index);
+        $("#resetModal").modal("show");
+    }
+
+    $("#addUserModal, #resetModal").modal({
         backdrop: "static",
         keyboard: false,
         show: false
@@ -362,17 +481,100 @@
                     valign : 'middle',
                 },
                 {
-                    field : '',
+                    field : 'userId',
                     title : '操作',
                     align : 'center',
                     valign : 'middle',
-                    formatter: function () {
-                        return '<button class="btn btn-primary">重置密码</button>&nbsp;&nbsp;<button class="btn btn-primary">删除</button>';
+                    formatter: function (value,row,$field) {
+                        return '<button onclick="resetModal(\''+value+'\')" class="resetBtn btn btn-primary">重置密码</button>&nbsp;&nbsp;<button onclick="removeModal(\''+value+'\')" class="removeBtn btn btn-primary">删除</button>';
                     }
                 }
             ]
         });
     }
+
+    function initResetFormValidation() {
+        $("#resetForm").formValidation({
+            excluded: [':disabled'],
+            framework: 'bootstrap',
+            fields: {
+                oldPassword: {
+                    validators: {
+                        notEmpty: {
+                            message: '请填写旧密码。'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 20,
+                            message: "密码应不低于6个字符且不能超过20个字符。"
+                        },
+                        remote: {
+                            url: "${pageContext.request.contextPath}/user/checkOldPassword",
+                            data: function(validator, $field, value) {
+                                return {
+                                    oldPassword: $("#oldPassword").val(),
+                                    userId: $("#oldPassword").attr("data-index")
+                                };
+                            },
+                            type: "post",
+                            message: "请输入正确密码。"
+                        }
+                    }
+                },
+                newPassword: {
+                    validators: {
+                        notEmpty: {
+                            message: '请填写新密码。'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 20,
+                            message: "密码应不低于6个字符且不能超过20个字符。"
+                        },
+                        callback: {
+                            callback: function (value, validator, $field) {
+                                validator.revalidateField("confirmPassword");
+                                return true;
+                            }
+                        }
+                    }
+                },
+                confirmPassword: {
+                    validators: {
+                        notEmpty: {
+                            message: '请确认密码。'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 20,
+                            message: "密码应不低于6个字符且不能超过20个字符。"
+                        },
+                        callback: {
+                            callback: function (value, validator, $field) {
+                                var newPassword = validator.getFieldElements("newPassword").val();
+                                if ($.trim(newPassword)) {
+                                    if ($.trim(newPassword) === $.trim(value)) {
+                                        return true;
+                                    } else {
+                                        return {
+                                            valid: false,
+                                            message: "两次密码输入不一致。"
+                                        }
+                                    }
+                                } else {
+                                    return {
+                                        valid: false,
+                                        message: "请先填写新密码。"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
 </script>
+
 </body>
 </html>
