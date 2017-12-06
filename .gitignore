@@ -6,3 +6,5 @@
 /mps/mps-internet/mps-internet.iml
 /mps/mps-intranet/mps-intranet.iml
 /mps/mps-intranet/target
+/mps/mps-intranet/src/main/webapp/WEB-INF/classes
+/mps/mps-internet/src/main/webapp/WEB-INF/classes
