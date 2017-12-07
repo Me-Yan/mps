@@ -8,13 +8,13 @@
             com.company_id AS companyId,
             com.name_x AS nameX,
             DATE_FORMAT(com.crtOn_dt, '%Y-%m-%d %H:%i') AS createDate
-        FROM (SELECT @rownum:=0) a,  MPS_company com
+        FROM (SELECT @rownum:=0) a,  mps_company com
         WHERE com.active_c = 'A'
         ORDER BY com.crtOn_dt ASC
     </select>
     
     <insert id="saveCompany" parameterType="com.me.mps.dto.CompanyDTO">
-        INSERT INTO MPS_company
+        INSERT INTO mps_company
         (
               name_x,
               active_c,
@@ -31,14 +31,18 @@
     </insert>
 
     <select id="checkIsExistCompany" parameterType="java.lang.String" resultType="java.lang.Integer">
-        SELECT COUNT(1) FROM MPS_company com WHERE name_x = #{companyName,jdbcType=VARCHAR} AND active_c = 'A'
+        SELECT COUNT(1) FROM mps_company com WHERE name_x = #{companyName,jdbcType=VARCHAR} AND active_c = 'A'
     </select>
 
     <update id="updateCompany" parameterType="com.me.mps.dto.CompanyDTO">
-        UPDATE MPS_company SET name_x = #{nameX,jdbcType=VARCHAR}, updBy_m = #{updByM,jdbcType=VARCHAR}, updOn_dt = #{updOnDt,jdbcType=TIMESTAMP} WHERE company_id = #{companyId,jdbcType=INTEGER}
+        UPDATE mps_company SET
+              name_x = #{nameX,jdbcType=VARCHAR},
+              updBy_m = #{updByM,jdbcType=VARCHAR},
+              updOn_dt = #{updOnDt,jdbcType=TIMESTAMP}
+        WHERE company_id = #{companyId,jdbcType=INTEGER}
     </update>
 
     <update id="deleteCompany" parameterType="java.lang.Integer">
-        UPDATE MPS_company SET active_c = 'I' WHERE company_id = #{companyId,jdbcType=INTEGER}
+        UPDATE mps_company SET active_c = 'I' WHERE company_id = #{companyId,jdbcType=INTEGER}
     </update>
 </mapper>

@@ -36,7 +36,7 @@
               #{crtOnDt,jdbcType=TIMESTAMP}
         )
     </insert>
-    
+
     <select id="listUser" resultType="com.me.mps.dto.UserDTO">
         SELECT
               (@rownum:=@rownum+1) AS serialNumber,
@@ -64,7 +64,7 @@
     <update id="deleteUserByCompanyId" parameterType="java.lang.Integer">
         UPDATE MPS_user SET active_c = 'I' WHERE company_id = #{companyId, jdbcType=INTEGER}
     </update>
-    
+
     <select id="getPasswordByUserId" parameterType="java.lang.Integer" resultType="java.lang.String">
         SELECT password_x FROM MPS_user WHERE user_id = #{userId,jdbcType=INTEGER}
     </select>

@@ -54,7 +54,7 @@
                 </li>
                 <li><div class="link"><i class="fa fa-globe"></i>分类<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="category.html" target="navFrame">一级分类</a></li>
+                        <li><a href="${pageContext.request.contextPath}/category/listCategory" target="navFrame">一级分类</a></li>
                         <li><a href="categorySecond.html" target="navFrame">二级分类</a></li>
                     </ul>
                 </li>

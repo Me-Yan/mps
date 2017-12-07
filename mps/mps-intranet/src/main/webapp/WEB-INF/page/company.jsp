@@ -138,7 +138,10 @@
                 data = {"nameX": $.trim($("#nameX").val())};
             } else if ("edit" === $("#companyForm").attr("data-action")) {
                 url = "${pageContext.request.contextPath}/company/edit";
-                data = {"nameX": $.trim($("#nameX").val()), "companyId": $("#companyForm").attr("data-index")};
+                data = {
+                    "nameX": $.trim($("#nameX").val()),
+                    "companyId": $("#companyForm").attr("data-index")
+                };
             }
             $.ajax({
                 url: url,

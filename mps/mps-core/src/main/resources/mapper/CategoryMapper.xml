@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.me.mps.mapper.CategoryMapper">
+
+    <insert id="saveCategory" parameterType="com.me.mps.dto.CategoryDTO">
+        INSERT INTO mps_category
+        (
+              name_x,
+              active_c,
+              crtBy_m,
+              crtOn_dt
+        )
+        VALUES
+        (
+              #{nameX,jdbcType=VARCHAR},
+              #{activeC,jdbcType=VARCHAR},
+              #{crtByM,jdbcType=VARCHAR},
+              #{crtOnDt,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <select id="listCategoryData" resultType="com.me.mps.dto.CategoryDTO">
+        SELECT
+              (@rownum:=@rownum+1) AS serialNumber,
+              cat.category_id AS categoryId,
+              cat.name_x AS nameX,
+              cat.active_c AS activeC,
+              cat.crtBy_m AS crtByM,
+              cat.crtOn_dt AS crtOnDt,
+              cat.updBy_m AS updByM,
+              cat.updOn_dt AS updOnDt,
+              DATE_FORMAT(cat.crtOn_dt, '%Y-%m-%d %H:%i') AS createDate
+        FROM (SELECT @rownum:=0) a, mps_category cat
+        WHERE cat.active_c = 'A'
+    </select>
+    
+    <update id="updateCategory" parameterType="com.me.mps.dto.CategoryDTO">
+        UPDATE mps_category SET
+              name_x = #{nameX,jdbcType=VARCHAR},
+              updBy_m = #{updByM,jdbcType=VARCHAR},
+              updOn_dt = #{updOnDt,jdbcType=TIMESTAMP}
+        WHERE category_id = #{categoryId,jdbcType=INTEGER}
+    </update>
+
+    <select id="countName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT COUNT(1) FROM mps_category WHERE name_x = #{categoryName,jdbcType=VARCHAR} AND active_c = 'A'
+    </select>
+
+    <update id="deleteCategory" parameterType="java.lang.Integer">
+        UPDATE mps_category SET active_c = 'I' WHERE category_id = #{categoryId,jdbcType=INTEGER}
+    </update>
+    
+</mapper>
