@@ -69,7 +69,7 @@
                 </div>
                 <div class="modal-body text-center">
                     <br>
-                    <p>确定要删除该分类么？</p>
+                    <p>删除该类后，会删除相应的二级分类，以及该分类下的所有商品,确定要删除该分类么？</p>
                     <br>
                 </div>
                 <div class="modal-footer" style="text-align: center">

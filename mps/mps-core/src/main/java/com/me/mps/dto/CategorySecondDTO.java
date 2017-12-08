@@ -19,6 +19,35 @@ public class CategorySecondDTO implements Serializable {
     private String updByM;
     private Date updOnDt;
 
+    // for view
+    private Integer serialNumber;
+    private String categoryName;
+    private String createDate;
+
+    public Integer getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(Integer serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public Integer getCategorySecondId() {
         return categorySecondId;
     }

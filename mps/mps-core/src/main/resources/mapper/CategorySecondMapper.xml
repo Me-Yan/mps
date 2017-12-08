@@ -2,4 +2,65 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.me.mps.mapper.CategorySecondMapper">
 
+    <insert id="saveCategorySecond" parameterType="com.me.mps.dto.CategoryDTO">
+        INSERT INTO mps_categorysecond
+        (
+            category_id,
+            name_x,
+            active_c,
+            crtBy_m,
+            crtOn_dt
+        )
+        VALUES
+        (
+            #{categoryId,jdbcType=INTEGER},
+            #{nameX,jdbcType=VARCHAR},
+            #{activeC,jdbcType=VARCHAR},
+            #{crtByM,jdbcType=VARCHAR},
+            #{crtOnDt,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <update id="updateCategorySecond" parameterType="com.me.mps.dto.CategoryDTO">
+        UPDATE mps_categorysecond SET
+        name_x = #{nameX,jdbcType=VARCHAR},
+        updBy_m = #{updByM,jdbcType=VARCHAR},
+        updOn_dt = #{updOnDt,jdbcType=TIMESTAMP}
+        WHERE categorySecond_id = #{categorySecondId,jdbcType=INTEGER}
+    </update>
+    
+    <select id="listCategorySecondDataByCategoryId" resultType="com.me.mps.dto.CategorySecondDTO">
+        SELECT
+            (@rownum:=@rownum+1) AS serialNumber,
+            cs.categorySecond_id AS categorySecondId,
+            cs.name_x AS nameX,
+            cs.active_c AS activeC,
+            cs.crtBy_m AS crtByM,
+            cs.crtOn_dt AS crtOnDt,
+            DATE_FORMAT(cs.crtOn_dt, '%Y-%m-%d %H:%i') AS createDate
+        FROM (SELECT @rownum:=0) a, mps_categorysecond cs
+        LEFT JOIN mps_category cat ON cs.category_id = cat.category_id
+        WHERE cs.active_c = 'A'
+        <if test="categoryId!=null">
+            AND cat.category_id = #{categoryId}
+        </if>
+    </select>
+
+    <select id="countName" parameterType="com.me.mps.dto.CategorySecondDTO" resultType="int">
+        SELECT COUNT(1) FROM mps_categorysecond cs
+        LEFT JOIN mps_category cat ON cs.category_id = cat.category_id
+        WHERE cs.name_x = #{nameX,jdbcType=VARCHAR} AND cs.active_c = 'A'
+        <if test="categoryId!=null">
+            AND cat.category_id = #{categoryId}
+        </if>
+    </select>
+
+    <update id="deleteCategorySecond" parameterType="java.lang.Integer">
+        UPDATE mps_categorysecond SET active_c = 'I' WHERE categorySecond_id = #{categorySecondId,jdbcType=INTEGER}
+    </update>
+
+    <update id="deleteCategorySecondByCategoryId" parameterType="java.lang.Integer">
+        UPDATE mps_categorysecond SET active_c = 'I' WHERE category_id = #{categoryId,jdbcType=INTEGER}
+    </update>
+
 </mapper>

@@ -3,6 +3,7 @@ package com.me.mps.controller;
 import com.google.common.collect.Maps;
 import com.me.mps.dto.CategoryDTO;
 import com.me.mps.helper.Constants;
+import com.me.mps.service.CategorySecondService;
 import com.me.mps.service.CategoryService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -27,6 +28,9 @@ public class CategoryController extends BaseController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private CategorySecondService categorySecondService;
 
     @RequestMapping("/listCategory")
     public ModelAndView listCategory() {
@@ -109,6 +113,10 @@ public class CategoryController extends BaseController {
 
         if (categoryId!=null) {
             categoryService.deleteCategory(categoryId);
+            categorySecondService.deleteCategorySecondByCategoryId(categoryId);
+
+            // TODO delete all products of the category
+
             model.put("msg", "success");
         } else {
             model.put("msg", "fail");
