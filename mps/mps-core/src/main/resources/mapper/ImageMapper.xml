@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.me.mps.mapper.ImageMapper">
+    
+    <insert id="saveImage">
+        INSERT INTO mps_image
+        (
+            product_id,
+            path_x,
+            active_c,
+            crtBy_m,
+            crtOn_dt
+        )
+        VALUES
+        <foreach collection="imageDTOList" item="image" separator=",">
+            (
+                #{productId,jdbcType=INTEGER},
+                #{image.pathX,jdbcType=VARCHAR},
+                #{image.activeC,jdbcType=CHAR},
+                #{image.crtByM,jdbcType=VARCHAR},
+                #{image.crtOnDt,jdbcType=TIMESTAMP}
+            )
+        </foreach>
+    </insert>
+    
+    <select id="listImageByProductId" parameterType="java.lang.Integer" resultType="com.me.mps.dto.ImageDTO">
+        SELECT
+              image_id AS imageId,
+              product_id AS productId,
+              path_x AS pathX,
+              active_c AS activeC,
+              crtBy_m AS crtByM,
+              crtOn_dt AS crtOnDt
+        FROM mps_image
+        WHERE product_id = #{productId} AND active_c = 'A'
+    </select>
+
+    <update id="deleteImageByProductId" parameterType="java.lang.Integer">
+        UPDATE mps_image SET active_c = 'I' WHERE product_id = #{productId,jdbcType=INTEGER}
+    </update>
+
+</mapper>

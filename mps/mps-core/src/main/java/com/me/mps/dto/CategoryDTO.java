@@ -2,6 +2,7 @@ package com.me.mps.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Me on 2017/12/8.
@@ -19,8 +20,19 @@ public class CategoryDTO implements Serializable {
     private String updByM;
     private Date updOnDt;
 
+    // for operation
+    private List<CategorySecondDTO> categorySecondDTOList;
+
     // for view
     private String createDate;
+
+    public List<CategorySecondDTO> getCategorySecondDTOList() {
+        return categorySecondDTOList;
+    }
+
+    public void setCategorySecondDTOList(List<CategorySecondDTO> categorySecondDTOList) {
+        this.categorySecondDTOList = categorySecondDTOList;
+    }
 
     public String getCreateDate() {
         return createDate;

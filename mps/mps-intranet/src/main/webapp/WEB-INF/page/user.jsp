@@ -12,9 +12,6 @@
     <title>用户列表</title>
 </head>
 <body>
-<script src="${pageContext.request.contextPath}/resources/plugins/formValidation/formValidation.js"></script>
-<script src="${pageContext.request.contextPath}/resources/plugins/formValidation/formValidation.bootstrap.js"></script>
-
     <div class="container-fluid">
         <div style="height: 20px;"></div>
         <div class="row">

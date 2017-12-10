@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.me.mps.mapper.ProductMapper">
+
+    <insert id="saveProduct" parameterType="com.me.mps.dto.ProductDTO" useGeneratedKeys="true" keyProperty="productId">
+        INSERT INTO mps_product
+        (
+            category_id,
+            categroySecond_id,
+            name_x,
+            count_n,
+            price_n,
+            imagePath_x,
+            active_c,
+            crtBy_m,
+            crtOn_dt
+        )
+        VALUES
+        (
+            #{categoryId,jdbcType=INTEGER},
+            #{categorySecondId,jdbcType=INTEGER},
+            #{nameX,jdbcType=VARCHAR},
+            #{countN,jdbcType=INTEGER},
+            #{priceN,jdbcType=DOUBLE},
+            #{imagePathX,jdbcType=VARCHAR},
+            #{activeC,jdbcType=VARCHAR},
+            #{crtByM,jdbcType=VARCHAR},
+            #{crtOnDt,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <update id="updateProduct" parameterType="com.me.mps.dto.ProductDTO">
+        UPDATE mps_product SET
+              product_id = #{productId,jdbcType=INTEGER},
+              category_id = #{categoryId,jdbcType=INTEGER},
+              categroySecond_id = #{categorySecondId,jdbcType=INTEGER},
+              name_x = #{nameX,jdbcType=VARCHAR},
+              count_n = #{countN,jdbcType=INTEGER},
+              price_n = #{priceN,jdbcType=DOUBLE},
+              <if test='showFlag=="Y"'>
+                  imagePath_x = #{imagePathX,jdbcType=VARCHAR},
+              </if>
+              active_c = #{activeC,jdbcType=CHAR},
+              updBy_m = #{updByM,jdbcType=VARCHAR},
+              updOn_dt = #{updOnDt,jdbcType=TIMESTAMP}
+        WHERE product_id = #{productId,jdbcType=INTEGER}
+    </update>
+
+    <select id="getProductByProductId" parameterType="java.lang.Integer" resultType="com.me.mps.dto.ProductDTO">
+        SELECT
+              product_id AS productId,
+              category_id AS categoryId,
+              categroySecond_id AS categorySecondId,
+              name_x AS nameX,
+              count_n AS countN,
+              price_n AS priceN,
+              imagePath_x AS imagePathX,
+              active_c AS activeC,
+              crtBy_m AS crtByM,
+              crtOn_dt AS crtOnDt
+        FROM mps_product
+        WHERE product_id = #{productId}
+    </select>
+    
+    <select id="listProductByCriteria" parameterType="com.me.mps.helper.SearchCriteria" resultType="com.me.mps.dto.ProductDTO">
+        SELECT
+              (@rownum:=@rownum+1) AS serialNumber,
+              p.product_id AS productId,
+              p.category_id AS categoryId,
+              p.categroySecond_id AS categorySecondId,
+              p.name_x AS nameX,
+              p.count_n AS countN,
+              p.price_n AS priceN,
+              p.imagePath_x AS imagePathX,
+              p.active_c AS activeC,
+              p.crtBy_m AS crtByM,
+              p.crtOn_dt AS crtOnDt,
+              DATE_FORMAT(p.crtOn_dt, '%Y-%m-%d %H:%i') AS createDate
+        FROM (SELECT @rownum:=0) a, mps_product p WHERE 1=1 AND p.active_c = 'A'
+        <if test="categoryId!=null">
+            AND p.category_id = #{categoryId}
+        </if>
+        <if test="categoryId!=null">
+            AND p.categroySecond_id = #{categorySecondId}
+        </if>
+    </select>
+
+    <update id="downProduct" parameterType="java.lang.Integer">
+        UPDATE mps_product SET active_c = 'I' WHERE product_id = #{productId}
+    </update>
+
+    <select id="getCountByProductId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT count_n AS countN FROM mps_product WHERE product_id = #{productId}
+    </select>
+    
+    <update id="updateCountByProductId" parameterType="com.me.mps.dto.ProductDTO">
+        UPDATE mps_product SET count_n = #{countN,jdbcType=INTEGER} WHERE product_id = #{productId,jdbcType=INTEGER}
+    </update>
+</mapper>

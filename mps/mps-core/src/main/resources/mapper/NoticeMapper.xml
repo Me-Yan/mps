@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.me.mps.mapper.NoticeMapper">
+
+    <insert id="saveNotice" parameterType="com.me.mps.dto.NoticeDTO">
+        INSERT INTO mps_notice
+        (
+            content_x,
+            type_c,
+            active_c,
+            crtBy_m,
+            crtOn_dt
+        )
+        VALUES
+        (
+            #{contentX,jdbcType=VARCHAR},
+            #{typeC,jdbcType=VARCHAR},
+            #{activeC,jdbcType=CHAR},
+            #{crtByM,jdbcType=VARCHAR},
+            #{crtOnDt,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <select id="getCurrentNotice" resultType="com.me.mps.dto.NoticeDTO">
+        SELECT
+              notice_id AS noticeId,
+              content_x AS contentX
+        FROM mps_notice
+        WHERE type_c = 'web' AND active_c = 'A'
+    </select>
+
+    <update id="deletePrevNotice">
+        UPDATE mps_notice SET active_c = 'I' WHERE active_c = 'A' AND type_c = 'web'
+    </update>
+</mapper>

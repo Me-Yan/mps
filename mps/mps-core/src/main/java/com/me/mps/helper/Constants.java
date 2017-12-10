@@ -5,6 +5,9 @@ package com.me.mps.helper;
  */
 public interface Constants {
 
+    String VIRTUAL_PATH = "E:/temp/mps/";
+    String UNDERLINE = "-";
+
     interface USER {
         String SESSION_USER = "SessionUser";
     }
@@ -22,5 +25,15 @@ public interface Constants {
     interface YES_NO {
         String YES = "Y";
         String NO = "N";
+    }
+
+    interface COMMENT_STATUS {
+        String PENDING = "Pending";
+        String READ = "Read";
+    }
+
+    interface NOTICE_TYPE {
+        String WEB = "web";
+        String EMAIL = "email";
     }
 }
