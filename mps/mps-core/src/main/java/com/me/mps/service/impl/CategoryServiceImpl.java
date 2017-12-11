@@ -2,6 +2,8 @@ package com.me.mps.service.impl;
 
 import com.me.mps.dto.CategoryDTO;
 import com.me.mps.mapper.CategoryMapper;
+import com.me.mps.mapper.CategorySecondMapper;
+import com.me.mps.mapper.ProductMapper;
 import com.me.mps.service.CategoryService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -43,6 +45,8 @@ public class CategoryServiceImpl extends BaseServiceImpl implements CategoryServ
     public void deleteCategory(Integer categoryId) {
         logger.debug("Execute Method deleteCategory...");
 
+        sqlSessionTemplate.getMapper(ProductMapper.class).deleteProductByCategoryId(categoryId);
+        sqlSessionTemplate.getMapper(CategorySecondMapper.class).deleteCategorySecondByCategoryId(categoryId);
         sqlSessionTemplate.getMapper(CategoryMapper.class).deleteCategory(categoryId);
     }
 }

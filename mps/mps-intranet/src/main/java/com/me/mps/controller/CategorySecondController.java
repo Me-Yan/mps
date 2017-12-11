@@ -121,8 +121,6 @@ public class CategorySecondController extends BaseController {
         if (categorySecondId!=null) {
             categorySecondService.deleteCategorySecond(categorySecondId);
 
-            // TODO delete all products of the category
-
             model.put("msg", "success");
         } else {
             model.put("msg", "fail");

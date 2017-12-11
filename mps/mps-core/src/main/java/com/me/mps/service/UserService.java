@@ -16,4 +16,6 @@ public interface UserService {
     String getPasswordByUserId(Integer userId);
 
     void updatePassword(UserDTO userDTO);
+
+    List<String> listEmailOfAllUser();
 }

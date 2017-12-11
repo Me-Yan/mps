@@ -23,4 +23,8 @@ public interface ProductMapper {
     Integer getCountByProductId(Integer productId);
 
     void updateCountByProductId(ProductDTO productDTO);
+
+    void deleteProductByCategoryId(Integer categoryId);
+
+    void deleteProductByCategorySecondId(Integer categoryId);
 }

@@ -113,9 +113,6 @@ public class CategoryController extends BaseController {
 
         if (categoryId!=null) {
             categoryService.deleteCategory(categoryId);
-            categorySecondService.deleteCategorySecondByCategoryId(categoryId);
-
-            // TODO delete all products of the category
 
             model.put("msg", "success");
         } else {

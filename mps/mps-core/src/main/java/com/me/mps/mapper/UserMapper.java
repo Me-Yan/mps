@@ -18,4 +18,6 @@ public interface UserMapper {
     String getPasswordByUserId(Integer userId);
 
     void updatePassword(UserDTO userDTO);
+
+    List<String> listEmailOfAllUser();
 }

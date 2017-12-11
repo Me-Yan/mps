@@ -9,7 +9,7 @@ public interface NoticeService {
 
     NoticeDTO getCurrentNotice();
 
-    void saveNotice(NoticeDTO noticeDTO);
+    void saveWebNotice(NoticeDTO noticeDTO);
 
-    void deletePrevNotice();
+    void saveEmailNotice(NoticeDTO noticeDTO);
 }

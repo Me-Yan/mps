@@ -25,7 +25,7 @@
                 <table>
                     <tr>
                         <td>
-                            <textarea disabled id="webNotice" class="form-control" style="resize: none;height: 250px;width: 520px;">${notice.contentX}</textarea>
+                            <textarea disabled id="webNotice" class="form-control" style="resize: none;height: 250px;width: 520px;">${noticeDTO.contentX}</textarea>
                         </td>
                         <td align="left">
                             <button class="btn btn-primary hide" id="webBtn" style="margin-left: 30px;">确认</button>
@@ -105,8 +105,8 @@
         </div>
     </div>
 
-    <!-- null Modal -->
-    <div id="nullModal" class="modal fade" tabindex="-1" role="dialog">
+    <!-- message Modal -->
+    <div id="msgModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -114,7 +114,7 @@
                     <h4 class="modal-title">消息</h4>
                 </div>
                 <div class="modal-body text-center">
-                    <p>邮件内容不能为空。</p>
+                    <p id="msgContent">邮件内容不能为空。</p>
                 </div>
             </div>
         </div>
@@ -147,8 +147,54 @@
                 $("#emailModal").modal("show");
             } else {
                 $("#emailNotice").val("");
-                $("#nullModal").modal("show");
+                $("#msgContent").text("邮件内容不能为空。");
+                $("#msgModal").modal("show");
             }
+        });
+
+        $("#webConfirm").on("click", function () {
+           $.ajax({
+               url: "${pageContext.request.contextPath}/notice/edit",
+               type: "post",
+               data: {
+                   contentX: $.trim($("#webNotice").val())
+               },
+               success: function (data) {
+                   $("#webModal").modal("hide");
+                   if ("success" === data.msg) {
+                       noticeContent = $.trim($("#webNotice").val());
+                       $("#webNotice").attr("disabled", "true");
+                       $("#webBtn").addClass("hide");
+                       $("#edit").prop("checked",false);
+                       $("#msgContent").text("网站通知修改成功。");
+                       $("#msgModal").modal("show");
+                   } else {
+                       $("#msgContent").text("网站通知修改失败。");
+                       $("#msgModal").modal("show");
+                   }
+               }
+           });
+        });
+
+        $("#emailConfirm").on("click", function () {
+            $.ajax({
+                url: "${pageContext.request.contextPath}/notice/send",
+                type: "post",
+                data: {
+                    contentX: $.trim($("#emailNotice").val())
+                },
+                success: function (data) {
+                    $("#emailModal").modal("hide");
+                    if ("success" === data.msg) {
+                        $("#emailNotice").val("");
+                        $("#msgContent").text("邮件发送成功。");
+                        $("#msgModal").modal("show");
+                    } else {
+                        $("#msgContent").text("邮件发送失败。");
+                        $("#msgModal").modal("show");
+                    }
+                }
+            });
         });
     </script>
 </body>

@@ -18,6 +18,4 @@ public interface CategorySecondService {
     int countName(CategorySecondDTO categorySecondDTO);
 
     void deleteCategorySecond(Integer categorySecondId);
-
-    void deleteCategorySecondByCategoryId(Integer categoryId);
 }

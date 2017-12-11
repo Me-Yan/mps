@@ -20,15 +20,16 @@ public class NoticeServiceImpl extends BaseServiceImpl implements NoticeService 
         return sqlSessionTemplate.getMapper(NoticeMapper.class).getCurrentNotice();
     }
 
-    public void saveNotice(NoticeDTO noticeDTO) {
-        logger.debug("Execute Method getCurrentNotice...");
+    public void saveWebNotice(NoticeDTO noticeDTO) {
+        logger.debug("Execute Method saveWebNotice...");
 
+        sqlSessionTemplate.getMapper(NoticeMapper.class).deletePrevNotice();
         sqlSessionTemplate.getMapper(NoticeMapper.class).saveNotice(noticeDTO);
     }
 
-    public void deletePrevNotice() {
-        logger.debug("Execute Method getCurrentNotice...");
+    public void saveEmailNotice(NoticeDTO noticeDTO) {
+        logger.debug("Execute Method saveEmailNotice...");
 
-        sqlSessionTemplate.getMapper(NoticeMapper.class).deletePrevNotice();
+        sqlSessionTemplate.getMapper(NoticeMapper.class).saveNotice(noticeDTO);
     }
 }

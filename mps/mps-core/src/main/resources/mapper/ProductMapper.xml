@@ -96,4 +96,12 @@
     <update id="updateCountByProductId" parameterType="com.me.mps.dto.ProductDTO">
         UPDATE mps_product SET count_n = #{countN,jdbcType=INTEGER} WHERE product_id = #{productId,jdbcType=INTEGER}
     </update>
+
+    <update id="deleteProductByCategoryId" parameterType="java.lang.Integer">
+        UPDATE mps_product SET active_c = 'I' WHERE category_id = ${categoryId,jdbcType=INTEGER} AND active_c = 'A'
+    </update>
+
+    <update id="deleteProductByCategorySecondId" parameterType="java.lang.Integer">
+        UPDATE mps_product SET active_c = 'I' WHERE categorySecond_id = ${categorySecondId,jdbcType=INTEGER} AND active_c = 'A'
+    </update>
 </mapper>
