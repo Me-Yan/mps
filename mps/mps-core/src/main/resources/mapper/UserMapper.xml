@@ -76,4 +76,28 @@
     <select id="listEmailOfAllUser" resultType="java.lang.String">
         SELECT email_x FROM mps_user WHERE active_c = 'A'
     </select>
+
+    <select id="getUserByUserId" parameterType="java.lang.Integer" resultType="com.me.mps.dto.UserDTO">
+        SELECT
+              u.user_id AS userId,
+              u.username_m AS usernameM,
+              u.realName_m AS realNameM,
+              u.password_x AS passwordX,
+              u.sex_x AS sexX,
+              u.age_n AS ageN,
+              u.email_x AS emailX,
+              u.phone_x AS phoneX,
+              u.amount_n AS amountN,
+              u.authority_x AS authorityX,
+              u.active_c AS activeC,
+              u.crtBy_m AS crtByM,
+              u.crtOn_dt AS crtOnDt,
+              u.updBy_m AS updByM,
+              u.updOn_dt AS updOnDt
+        FROM mps_user u WHERE u.user_id = #{userId,jdbcType=INTEGER}
+    </select>
+
+    <select id="updateAmount" parameterType="com.me.mps.dto.UserDTO">
+        UPDATE mps_user SET amount_n = #{amountN,jdbcType=DOUBLE} WHERE user_id = #{userId,jdbcType=INTEGER}
+    </select>
 </mapper>

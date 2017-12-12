@@ -71,4 +71,10 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 
         sqlSessionTemplate.getMapper(ProductMapper.class).updateCountByProductId(productDTO);
     }
+
+    public int countProductByCriteria(SearchCriteria searchCriteria) {
+        logger.debug("Execute Method getCountByProductId...");
+
+        return sqlSessionTemplate.getMapper(ProductMapper.class).countProductByCriteria(searchCriteria);
+    }
 }

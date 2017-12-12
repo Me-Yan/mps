@@ -83,6 +83,10 @@
         <if test="categoryId!=null">
             AND p.categroySecond_id = #{categorySecondId}
         </if>
+        ORDER BY p.crtOn_dt DESC
+        <if test="pageNation!=null">
+            limit #{pageNation.begin}, #{pageNation.limit}
+        </if>
     </select>
 
     <update id="downProduct" parameterType="java.lang.Integer">
@@ -104,4 +108,14 @@
     <update id="deleteProductByCategorySecondId" parameterType="java.lang.Integer">
         UPDATE mps_product SET active_c = 'I' WHERE categorySecond_id = ${categorySecondId,jdbcType=INTEGER} AND active_c = 'A'
     </update>
+
+    <select id="countProductByCriteria" parameterType="com.me.mps.helper.SearchCriteria" resultType="int">
+        SELECT COUNT(1) FROM mps_product WHERE 1=1
+        <if test="categoryId!=null">
+            AND category_id = #{categoryId}
+        </if>
+        <if test="categorySecondId!=null">
+            AND categroySecond_id = #{categorySecondId}
+        </if>
+    </select>
 </mapper>

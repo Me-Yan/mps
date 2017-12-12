@@ -20,4 +20,8 @@ public interface UserMapper {
     void updatePassword(UserDTO userDTO);
 
     List<String> listEmailOfAllUser();
+
+    void updateAmount(UserDTO userDTO);
+
+    UserDTO getUserByUserId(Integer userId);
 }

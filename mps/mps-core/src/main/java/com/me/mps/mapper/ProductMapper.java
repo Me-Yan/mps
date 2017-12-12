@@ -27,4 +27,6 @@ public interface ProductMapper {
     void deleteProductByCategoryId(Integer categoryId);
 
     void deleteProductByCategorySecondId(Integer categoryId);
+
+    int countProductByCriteria(SearchCriteria searchCriteria);
 }

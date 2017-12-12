@@ -23,4 +23,6 @@ public interface ProductService {
     Integer getCountByProductId(Integer productId);
 
     void updateCountByProductId(ProductDTO productDTO);
+
+    int countProductByCriteria(SearchCriteria searchCriteria);
 }

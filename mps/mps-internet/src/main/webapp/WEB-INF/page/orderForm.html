@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>完善并确认订单信息</title>
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<link rel="stylesheet" href="fontAwesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/orderForm.css">
+	<link rel="stylesheet" href="css/top.css">
+	<script type="text/javascript" src="plugins/scrollTop/jquery.toTop.js"></script>
+	<script type="text/javascript" src="plugins/scrollTop/jquery.toTop.min.js"></script>
+	<script src="js/orderForm.js"></script>
+</head>
+<body>
+	<div class="header">
+		<!--头部 链接导向栏-->
+		<div class="headerTop">
+			<div class="topNav">
+				<div class="topNavWel"><span>欢迎来到Me家！</span></div>
+				<div class="topNavLogout">
+					<a href="productList.html">首页</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<a href="cart.html">购物车</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<a href="order.html">我的订单</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<a href="user.html">个人中心</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<a href="login.html" style="color: #E14041;">退出</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearBoth"></div>
+	
+	
+
+
+	<!--中间详细内容-->
+	<div class="center">
+		<div class="orderForm">
+			<form action="" class="order" name="orderForm" id="orderForm">			
+				
+				<!--具体商品内容-->
+				<div class="details">
+					<div class="topTitle">
+						<span class="goods">商品</span>
+						<span class="price">单价(元)</span>
+						<span class="number">数量</span>
+						<span class="total">小计(元)</span>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="pid" value="1">
+						<div class="proImg">
+							<img src="images/products/103.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							69.8
+						</div>
+						<div class="proNumber">
+							<span>1</span>
+							<span class="dw">斤</span>
+						</div>
+						<div class="proTotal">
+							69.8
+						</div>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="pid" value="1">
+						<div class="proImg">
+							<img src="images/products/105.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							69.8
+						</div>
+						<div class="proNumber">
+							<span>1</span>
+							<span class="dw">斤</span>
+						</div>
+						<div class="proTotal">
+							69.8
+						</div>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="pid" value="1">
+						<div class="proImg">
+							<img src="images/products/101.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							69.8
+						</div>
+						<div class="proNumber">
+							<span class="ds">1</span>
+							<span class="dw">斤</span>
+						</div>
+						<div class="proTotal">
+							69.8
+						</div>
+					</div>
+					<div class="productList">
+						<input type="hidden" name="pid" value="1">
+						<div class="proImg">
+							<img src="images/products/102.jpg" alt="">
+						</div>
+						<div class="proName">
+							<a href="">美国拉斯维加斯顶级猪肉</a>
+						</div>
+						<div class="proPrice">
+							69.8
+						</div>
+						<div class="proNumber">
+							<span>1</span>
+							<span class="dw">斤</span>
+						</div>
+						<div class="proTotal">
+							69.8
+						</div>
+					</div>
+					<div class="clearBoth"></div>
+				</div>
+				
+				<!--费用详情-->
+				<div class="cost">
+					<div class="costRight">
+						<span>商品金额：￥146.70元</span>
+					</div>
+					<div class="clearBoth"></div>
+				</div>
+
+				<!--提交订单-->
+				<div class="conCart">
+					<div class="conRight">
+						<span class="subtotal">总计：<span>250.00</span>元</span>
+						<span class="conClick"><a>提交订单</a></span>
+					</div>
+					<div class="clearBoth"></div>
+				</div>
+			</form>	
+		</div>
+	</div>
+	<!--底部-->
+	<div class="clearBoth"></div>
+	<div class="footer">
+		<!--关于我们-->
+		<div class="aboutUs">
+			<ul>
+				<li class="fi"><a href="">关于我们</a></li>
+				<li class="fi"><a href="">法律声明</a></li>
+				<li class="fi"><a href="">服务协议</a></li>
+				<li><a href="">隐私声明</a></li>
+			</ul>
+			<p>
+				Copyright©Me家版权所有,违者必究
+			</p>
+		</div>
+	</div>
+
+
+	<!--回到顶部-->
+	<a class="to-top fa fa-arrow-circle-o-up fa-4x toTop"></a>
+
+
+	<script type="text/javascript">
+		/*回到顶部*/
+		$('.to-top').toTop();
+	</script>
+</body>
+</html>

@@ -93,7 +93,7 @@
                 </div>
                 <div class="modal-body">
                     <br>
-                    <form id="supplyForm" action="${pageContext.request.contextPath}/product/supply" method="post">
+                    <form id="supplyForm" action="${pageContext.request.contextPath}/product/supply" method="post" class="form-horizontal">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12">
                                 <div class="form-group">

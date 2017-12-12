@@ -1,0 +1,78 @@
+@charset 'utf-8';
+
+
+
+.center {
+	width: 100%;
+}
+.infomation {
+	width: 1200px;
+	margin: 0 auto;
+	background-color: #ededed;
+}
+.left {
+	width: 250px;
+	margin-right: 15px;
+	float: left;
+	background-color: #fff;
+}
+.title {
+	background-color: #e14041;
+}
+.title span {
+	display: block;
+	height: 60px;
+	line-height: 60px;
+	font-size: 24px;
+	color: #fff;
+	text-align: center;
+}
+.list li {
+	height: 43px;
+	line-height: 43px;
+	text-align: center;
+	font-size: 15px;
+	border-bottom: 1px #E1E1E1 solid;
+}
+.list li a {
+	display: block;
+	height: 43px;
+	width: 100%;
+	color: #666;
+}
+.list li a:hover {
+	background-color: #e14041;
+	color: #fff;
+}
+/*右边部分*/
+.right {
+	float: right;
+	width: 925px;
+	background-color: #fff;
+}
+.userTitle {
+	height: 45px;
+	line-height: 45px;
+	padding-left: 30px;
+	font-size: 16px;
+	box-shadow: 2px 2px 2px #ededed;
+}
+.userInfo {
+	padding: 20px 25px;
+}
+.inner {
+	width: 100%;
+}
+.info {
+	width: 435px;
+	padding-top: 20px;
+	margin: 0 auto;
+}
+.info p {
+	width: 100%;
+	height: 40px;
+	font-size: 15px;
+}
+.info p .same {
+	margin-left: 100px;
+}

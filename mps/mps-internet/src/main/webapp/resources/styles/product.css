@@ -1,0 +1,196 @@
+@charset "utf-8";
+
+.proInfo {
+	width: 100%;
+	background-color: #ededed;
+}
+.product {
+	width: 1200px;
+	margin: 5px auto;
+}
+.proIntroduce {
+	width: 100%;
+	float: left;
+	position: relative;
+}
+.introLeft {
+	float: left;
+}
+.introRight {
+	width: 733px;
+	float: left;
+	padding-left: 50px;
+	margin-bottom: 20px;
+}
+.name {
+	color: #333;
+	font-size: 22px;
+	width: 100%;
+	line-height: 26px;
+	float: left;
+	margin: 5px 0 5px 0;
+	font-weight: bold;
+}
+.price {
+	width: 100%;
+	border-bottom: 1px solid #dedede;
+	font-size: 14px;
+	color: #333;
+	line-height: 60px;
+	margin-top: 2px;
+}
+.sPrice {
+	display: inline-block;
+	font-size: 30px;
+	color: #e14041;
+	position: relative;
+	top: 2px;
+}
+.sm {
+	margin-left: 20px;
+	font-size: 26px;
+	position: relative;
+	top: 2px;
+	color: #e14041;
+}
+.pr {
+	font-size: 20px;
+	line-height: 60px;
+	vertical-align: bottom;
+}
+.require {
+	padding: 28px 0;
+	font-size: 20px;
+}
+.require span {
+	padding-right: 80px;
+}
+.buy {
+	line-height: 30px;
+}
+.count {
+	display: inline-block;
+	line-height: 30px;
+	font-size: 20px;
+	color: #333;
+	margin-top: 10px;
+	margin-right: 70px;
+}
+.sl {
+	width: 60px;
+	display: inline-block;
+}
+.qd {
+	display: none;
+}
+.less, .add {
+	display: inline-block;
+	color: #999999;
+	width: 20px;
+	height: 30px;
+	text-align: center;
+	cursor: pointer;
+}
+.countInput {
+	line-height: 28px;
+	height: 28px;
+	border: 1px solid #d1d1d1;
+	width: 50px;
+	display: inline-block;
+	text-align: center;
+	margin: 0 0px;
+	padding: 0;
+	position: relative;
+	top: -3px;
+}
+.buy {
+	width: 100%;
+	font-size: 14px;
+	margin-top: 20px;
+	position: relative;
+}
+.bnc {
+	display: inline-block;
+	width: 190px;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 3px;
+}
+.bNow span {
+	color: #C40000;
+}
+.bCart i,.bCart span {
+	color: #fff;
+}
+.bCart span {
+	margin-left: 10px;	
+}
+.bNow {
+	background: #FFEDED;
+	border: 1px solid #C40000;
+}
+.bCart {
+	background: #e14041;
+	border-top: 1px #f0a0a0 solid;
+	border-bottom: 1px solid #a42f30;
+	margin-left: 10px;
+}
+.bnote {
+	background: #5F4848;
+	border-top: 1px #ccc solid;
+	border-bottom: 1px solid #ccc;
+	margin-left: 10px;
+
+}
+.bnote, .bCart {
+	cursor: pointer;
+}
+/*选项卡*/
+.proRight{
+	width: 100%;
+	float: right;
+	margin-top: 20px;
+}
+.tabControl {
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid #e14041;
+	height: 40px;
+}
+.tabControl li {
+	float: left;
+	line-height: 40px;
+	font-size: 20px;
+	padding: 0 20px;
+	cursor: pointer;
+}
+.tClick {
+	background-color: #E14041;
+	color: #fff;
+}
+.tDefault {
+	background-color: #fff;
+	color: #333;
+}
+.tabContent {
+	width: 100%;
+	background-color: #fff;
+	padding-top: 10px;
+	overflow: hidden;
+}
+.tabP {
+	width: 100%;
+	text-align: center;
+}
+.tabP img {
+	width: 920px;
+	margin-top: -5px;
+}
+/*回到顶部*/
+.toTop {
+	color:#696969;
+	display:block;
+}

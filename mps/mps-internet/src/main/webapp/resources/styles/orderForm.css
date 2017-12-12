@@ -1,0 +1,231 @@
+@charset "utf-8";
+
+* {
+	padding: 0;
+	margin: 0;
+}
+body {
+	font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+	list-style: none;
+	font-size: 12px; 
+	background-color: #EDEDED;
+}
+a {
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+}
+button input {
+	outline: none;
+}
+/*消除浮动造成的影响*/
+.clearBoth {
+	clear: both;
+}
+
+/*中间内容部分*/
+.center {
+	width: 100%;
+	background-color: #ededed;
+}
+.orderForm {
+	width: 1200px;
+	margin: 0 auto;
+	background-color: #fff;
+	margin-top: 15px;
+}
+
+/*展示所购买商品详情*/
+.details {
+	width: 100%;
+	margin-top: 15px;
+}
+.topTitle {
+	width: 100%;
+	border-bottom: 1px solid #ededed;
+	background-color: #fafafa;
+	line-height: 45px;
+	font-size: 15px;
+	margin-bottom: -9px;
+}
+.goods {
+	display: inline-block;
+	width: 350px;
+	padding-left: 20px;
+	color: #333;
+	line-height: 45px;
+	text-align: center;
+}
+.price {
+	display: inline-block;
+	width: 170px;
+	text-align: center;
+	margin-left: 25px;
+	color: #333;
+	line-height: 45px;
+	margin-left: 20px;
+}
+.number {
+	display: inline-block;
+	text-align: center;
+	margin-left: 70px;
+	color: #333;
+	line-height: 45px;
+	width: 200px;
+}
+.total {
+	display: inline-block;
+	text-align: center;
+	margin-left: 70px;
+	color: #333;
+	line-height: 45px;
+	width: 170px;
+}
+/*展示具体商品*/
+.productList {
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 10px 0;
+	line-height: 100px;
+	margin-top: 10px;
+	float: left;
+}
+.proImg {
+	margin-left: 30px;
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+.proImg img {
+	width: 100px;
+	height: 100px;
+	border: 1px solid #eee;
+}
+.proName {
+	margin-left: 40px;
+	width: 200px;
+	float: left;
+}
+.proName a {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 19px;
+	width: 200px;
+	font-size: 16px;
+	color: #333;	
+}
+.proPrice {
+	width: 170px;
+	text-align: center;
+	margin-left: 25px;
+	float: left;
+	font-size: 16px;
+	color: #333;
+}
+.proNumber {
+	width: 200px;
+	text-align: center;
+	margin-left: 90px;
+	font-size: 14px;
+	color: #333;
+	float: left;
+}
+.dw {
+	font-size: 14px;
+	display: inline-block;
+	text-align: left;
+	width: 50px;
+	margin-left: 10px;
+}
+.proTotal {
+	width: 170px;
+	color: #e04040;
+	text-align: center;
+	font-size: 17px;
+	float: left;
+	margin-left: 55px;
+}
+
+/*费用详情*/
+.cost {
+	width: 100%;
+	background-color: #ededed;
+	padding-bottom: 20px;
+}
+.costRight {
+	float: right;
+	margin-right: 50px;
+	text-align: right;
+}
+.costRight span {
+	display: block;
+	height: 30px;
+	font-size: 18px;
+	margin-top: 20px;
+}
+.conCart {
+	width: 100%;
+}
+.conRight {
+	float: right;
+	font-size: 20px;
+	padding: 5px;
+}
+.subtotal span {
+	font-size: 25px;
+	color: #f00;
+}
+.conClick {
+	display: inline-block;
+	margin-left: 100px;
+	background-color: #E14041;
+}
+.conClick a {
+	display: inline-block;
+	padding: 5px 10px;
+	color: #fff;
+	cursor: pointer;
+}
+
+/*底部*/
+.footer {
+	width: 1200px;
+	margin: 0px auto;
+}
+.aboutUs {
+	padding-top: 50px;
+	border-top: 1px solid #ccc;
+	margin-top: 100px;
+	margin-bottom: 50px;
+}
+.aboutUs ul {
+	list-style: none;
+	width: 404px;
+	margin: 0 auto;
+	height: 17px;
+}
+.aboutUs ul li {
+	float: left;
+	width: 100px;
+	height: 17px;
+	line-height: 17px;
+	text-align: center;
+}
+.aboutUs ul li a {
+	color: #333;0
+}
+.fi {
+	border-right: 1px #000 solid;
+}
+.aboutUs p {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.toTop {
+	color:#696969;
+	display:block;
+}

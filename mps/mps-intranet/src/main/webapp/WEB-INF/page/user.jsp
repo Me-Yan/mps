@@ -166,6 +166,37 @@
         </div>
     </div>
 
+    <!-- 重置弹窗 -->
+    <div id="amountModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息</h4>
+                </div>
+                <div class="modal-body">
+                    <br>
+                    <form id="amountForm" class="form-horizontal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12">
+                                <div class="form-group clearfix">
+                                    <label for="addAmountN" class="control-label col-xs-4 col-sm-4 text-right">补充余额：</label>
+                                    <div class="col-xs-6 col-sm-6">
+                                        <input type="text" name="amountN" id="addAmountN" data-index="" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" class="btn btn-primary" id="amountConfirmBtn" data-index="">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 删除弹窗 -->
     <div id="removeModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -207,6 +238,12 @@
         initUserTable();
         initUserValidation();
         initResetFormValidation();
+        initAmountValidation();
+    });
+
+    $("#amountModal").on("hidden.bs.modal", function () {
+        var amountForm = $("#amountForm").data("formValidation");
+        amountForm.resetForm(true);
     });
 
     $("#resetModal").on("hidden.bs.modal", function () {
@@ -239,6 +276,31 @@
         }
     });
 
+    $("#amountConfirmBtn").on("click", function () {
+       var amountForm = $("#amountForm").data("formValidation");
+        amountForm.validate();
+       if (amountForm.isValid()) {
+           var userId = $("#amountConfirmBtn").attr("data-index");
+           var amountN = $("#addAmountN").val();
+           $.ajax({
+               url: "${pageContext.request.contextPath}/user/addAmount",
+               type: "post",
+               data: {
+                   userId: userId,
+                   amountN: amountN
+               },
+               success: function (data) {
+                   $("#amountModal").modal("hide");
+                   if ("success" === data.msg) {
+                       $("#userTable").bootstrapTable("refresh");
+                   } else {
+                       alert("Error...");
+                   }
+               }
+           });
+       }
+    });
+
     function removeModal(index) {
         $("#removeConfirmBtn").attr("data-index", index);
         $("#removeModal").modal("show");
@@ -247,6 +309,11 @@
     function resetModal(index) {
         $("#oldPassword").attr("data-index", index);
         $("#resetModal").modal("show");
+    }
+    
+    function addAmount(index) {
+        $("#amountConfirmBtn").attr("data-index", index);
+        $("#amountModal").modal("show");
     }
 
     $("#addUserModal, #resetModal").modal({
@@ -483,7 +550,9 @@
                     align : 'center',
                     valign : 'middle',
                     formatter: function (value,row,$field) {
-                        return '<button onclick="resetModal(\''+value+'\')" class="resetBtn btn btn-primary">重置密码</button>&nbsp;&nbsp;<button onclick="removeModal(\''+value+'\')" class="removeBtn btn btn-primary">删除</button>';
+                        return '<button onclick="resetModal(\''+value+'\')" class="resetBtn btn btn-primary">重置密码</button>' +
+                            '&nbsp;&nbsp;<button onclick="removeModal(\''+value+'\')" class="removeBtn btn btn-primary">删除</button>' +
+                            '&nbsp;&nbsp;<button onclick="addAmount(\''+value+'\')" class="btn btn-primary">添加余额</button>';
                     }
                 }
             ]
@@ -568,6 +637,30 @@
                         }
                     }
                 }
+            }
+        });
+    }
+    
+    function initAmountValidation() {
+        $("#amountForm").formValidation({
+            excluded: [':disabled'],
+            framework: 'bootstrap',
+            fields: {
+                amountN: {
+                    validators: {
+                        notEmpty: {
+                            message: '请填写数量。'
+                        },
+                        integer: {
+                            message: "请填写有效的数量。"
+                        },
+                        between: {
+                            min: 0,
+                            max: 1000000,
+                            message: "数量不能超过100万。"
+                        }
+                    }
+                },
             }
         });
     }

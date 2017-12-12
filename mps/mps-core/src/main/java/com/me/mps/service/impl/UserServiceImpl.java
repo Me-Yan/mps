@@ -45,4 +45,16 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
         return sqlSessionTemplate.getMapper(UserMapper.class).listEmailOfAllUser();
     }
+
+    public void updateAmount(UserDTO userDTO) {
+        logger.debug("Execute Method updateAmount...");
+
+        sqlSessionTemplate.getMapper(UserMapper.class).updateAmount(userDTO);
+    }
+
+    public UserDTO getUserByUserId(Integer userId) {
+        logger.debug("Execute Method getUserByUserId...");
+
+        return sqlSessionTemplate.getMapper(UserMapper.class).getUserByUserId(userId);
+    }
 }

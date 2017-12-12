@@ -1,0 +1,95 @@
+@charset 'utf-8';
+
+
+
+.center {
+	width: 100%;
+}
+.safety {
+	width: 1200px;
+	margin: 0 auto;
+	background-color: #ededed;
+}
+.left {
+	width: 250px;
+	margin-right: 15px;
+	float: left;
+	background-color: #fff;
+}
+.title {
+	background-color: #e14041;
+}
+.title span {
+	display: block;
+	height: 60px;
+	line-height: 60px;
+	font-size: 24px;
+	color: #fff;
+	text-align: center;
+}
+.list li {
+	height: 43px;
+	line-height: 43px;
+	text-align: center;
+	font-size: 15px;
+	border-bottom: 1px #E1E1E1 solid;
+}
+.list li a {
+	display: block;
+	height: 43px;
+	width: 100%;
+	color: #666;
+}
+.list li a:hover {
+	background-color: #e14041;
+	color: #fff;
+}
+/*右边部分*/
+.right {
+	float: right;
+	width: 925px;
+	background-color: #fff;
+}
+.safetyTitle {
+	height: 45px;
+	line-height: 45px;
+	padding-left: 30px;
+	font-size: 16px;
+	box-shadow: 2px 2px 2px #ededed;
+}
+.safetyInfo {
+	padding: 20px 25px;
+}
+.edit {
+	width: 100%;
+	height: 115px;
+	line-height: 115px;
+	margin-top: 30px;
+	border-bottom: 1px solid #f0f0f0;
+	padding-bottom: 100px;
+}
+.edit i {
+	margin-left: 53px;
+	color: #bbb;
+}
+.e {
+	margin-left: 53px;
+	color: #888888;
+	display: inline-block;
+	width: 650px;
+	height: 106px;
+	line-height: 106px;
+	text-align: left;
+
+}
+.e strong {
+	font-size: 20px;
+	font-weight: normal;
+	margin-right: 20px;
+	color: #3E3E3E;
+}
+.edit a {
+	font-size: 15px;
+	cursor: pointer;
+	color: #1D589D;
+}

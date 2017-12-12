@@ -116,4 +116,23 @@ public class UserController extends BaseController {
 
         return model;
     }
+
+    @RequestMapping("/addAmount")
+    @ResponseBody
+    public Map<String, Object> addAmount(UserDTO userDTO) {
+        logger.debug("Execute Method addAmount...");
+        Map<String, Object> model = Maps.newHashMap();
+
+        if (userDTO.getAmountN()!=null) {
+            UserDTO tempUser = userService.getUserByUserId(userDTO.getUserId());
+            userDTO.setAmountN(userDTO.getAmountN()+tempUser.getAmountN());
+            userService.updateAmount(userDTO);
+
+            model.put("msg", "success");
+        } else {
+            model.put("msg", "fail");
+        }
+
+        return model;
+    }
 }
