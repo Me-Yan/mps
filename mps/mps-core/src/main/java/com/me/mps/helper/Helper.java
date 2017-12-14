@@ -6,6 +6,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -38,5 +40,14 @@ public class Helper {
         tempUser.setCrtOnDt(new Date());
 
         return tempUser;
+    }
+
+    public static String generateOrderNumber() {
+        logger.debug("Execute Method generateOrderNumber...");
+        DateFormat dateFormat = new SimpleDateFormat(Constants.DATETIME_PATTERN.YYYY_MM_DD);
+        StringBuffer numberBuffer = new StringBuffer();
+        numberBuffer.append(dateFormat.format(new Date())).append(System.currentTimeMillis());
+
+        return numberBuffer.toString();
     }
 }

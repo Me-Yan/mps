@@ -36,4 +36,16 @@ public interface Constants {
         String WEB = "web";
         String EMAIL = "email";
     }
+
+    interface DATETIME_PATTERN {
+        String YYYY_MM_DD = "yyyyMMdd";
+    }
+
+    interface ORDER_STATUS {
+        String PENDING = "Pending";
+        String CONFIRMED = "Confirmed";
+        String GETTED = "Getted";
+        String OVER = "Over";
+        String CANCELLED = "Cancelled";
+    }
 }

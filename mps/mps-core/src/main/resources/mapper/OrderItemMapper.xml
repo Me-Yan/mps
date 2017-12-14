@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.me.mps.mapper.OrderItemMapper">
+
+    <insert id="saveOrderItem">
+        INSERT INTO mps_orderitem
+        (
+            order_id,
+            product_id,
+            total_n,
+            count_n,
+            price_n,
+            active_c
+        )
+        VALUES
+        <foreach collection="orderItemDTOList" item="orderItem" separator=",">
+            (
+                #{orderId,jdbcType=INTEGER},
+                #{orderItem.productId,jdbcType=INTEGER},
+                #{orderItem.totalN,jdbcType=DOUBLE},
+                #{orderItem.countN,jdbcType=INTEGER},
+                #{orderItem.priceN,jdbcType=DOUBLE},
+                'A'
+            )
+        </foreach>
+    </insert>
+
+    <select id="getOrderItemByOrderId" parameterType="java.lang.Integer" resultType="com.me.mps.dto.OrderItemDTO">
+        SELECT
+              om.orderItem_id AS orderItemId,
+              om.order_id AS orderId,
+              om.product_id AS productId,
+              om.total_n AS totalN,
+              om.count_n AS countN,
+              om.price_n AS priceN,
+              om.active_c AS activeC,
+              p.name_x AS productName,
+              p.imagePath_x AS imagePath
+        FROM mps_orderitem om
+        LEFT JOIN mps_product p ON om.product_id = p.product_id
+        WHERE om.order_id = #{orderId,jdbcType=INTEGER} AND om.active_c = 'A'
+    </select>
+
+</mapper>

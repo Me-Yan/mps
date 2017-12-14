@@ -61,4 +61,20 @@ public class ProductController extends BaseController {
 
         return model;
     }
+
+    @RequestMapping("/detail")
+    public ModelAndView detail(Integer productId) {
+        logger.debug("Execute Method detail...");
+        ModelAndView model = new ModelAndView("productDetail");
+
+        ProductDTO  productDTO = productService.getProductByProductId(productId);
+
+        if (productDTO==null) {
+            return new ModelAndView("redirect:/product/listProduct");
+        }
+
+        model.addObject("productDTO", productDTO);
+
+        return model;
+    }
 }

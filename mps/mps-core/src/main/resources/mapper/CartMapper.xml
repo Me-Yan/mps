@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.me.mps.mapper.CartMapper">
+
+    <insert id="saveCart" parameterType="com.me.mps.dto.CartDTO">
+        INSERT INTO mps_cart
+        (
+            user_id,
+            product_id,
+            total_n,
+            count_n,
+            active_c,
+            crtBy_m,
+            crtOn_dt
+        )
+        VALUES
+        (
+            #{userId,jdbcType=INTEGER},
+            #{productId,jdbcType=INTEGER},
+            #{totalN,jdbcType=DOUBLE},
+            #{countN,jdbcType=INTEGER},
+            #{activeC,jdbcType=CHAR},
+            #{crtByM,jdbcType=VARCHAR},
+            #{crtOnDt,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    
+    <insert id="updateCartByCartId" parameterType="com.me.mps.dto.CartDTO">
+        UPDATE mps_cart SET total_n = #{totalN,jdbcType=DOUBLE}, count_n = #{countN,jdbcType=INTEGER} WHERE cart_id = #{cartId,jdbcType=INTEGER}
+    </insert>
+
+    <select id="getCartByUserIdAndProductId" resultType="com.me.mps.dto.CartDTO">
+        SELECT
+              c.cart_id AS cartId,
+              c.user_id AS userId,
+              c.product_id AS productId,
+              c.total_n AS totalN,
+              c.count_n AS countN,
+              c.active_c AS activeC,
+              c.crtBy_m AS crtByM,
+              c.crtOn_dt AS crtOnDt,
+              p.name_x AS productName,
+              p.price_n AS price
+        FROM mps_cart c
+        LEFT JOIN mps_product p ON c.product_id = p.product_id
+        WHERE c.product_id = #{productId} AND c.user_id = #{userId} AND c.active_c = 'A'
+    </select>
+
+    <select id="listCartByUserId" parameterType="java.lang.Integer" resultType="com.me.mps.dto.CartDTO">
+        SELECT
+              c.cart_id AS cartId,
+              c.user_id AS userId,
+              c.product_id AS productId,
+              c.total_n AS totalN,
+              c.count_n AS countN,
+              c.active_c AS activeC,
+              c.crtBy_m AS crtByM,
+              c.crtOn_dt AS crtOnDt,
+              p.name_x AS productName,
+              p.price_n AS price,
+              p.imagePath_x AS imagePath,
+              p.count_n AS leftCount
+        FROM mps_cart c
+        LEFT JOIN mps_product p ON c.product_id = p.product_id
+        WHERE c.user_id = #{userId} AND c.active_c = 'A'
+    </select>
+
+    <select id="countTotalMoney" parameterType="java.lang.Integer" resultType="double">
+        SELECT SUM(total_n) FROM mps_cart WHERE user_id = #{userId} AND active_c = 'A'
+    </select>
+
+    <update id="deleteCartByCartId" parameterType="java.lang.Integer">
+        UPDATE mps_cart SET active_c = 'I' WHERE cart_id = #{cartId,jdbcType=INTEGER}
+    </update>
+
+    <update id="deleteCartByUserId" parameterType="java.lang.Integer">
+        UPDATE mps_cart SET active_c = 'I' WHERE user_id = #{userId,jdbcType=INTEGER} AND active_c = 'A'
+    </update>
+
+</mapper>

@@ -46,7 +46,7 @@
 	background-color: #F09898;
 	color: #fff;
 }
-.category-selected {
+.left .category-selected {
 	background-color: #F09898;
 	color: #fff;
 }
@@ -73,6 +73,10 @@
 .items span:hover {
 	background-color: #F09898;
 	color: #ffffff;
+}
+.items .category-second-selected {
+	background-color: #F09898;
+	color: #fff;
 }
 /*右边商品列表*/
 .list {
@@ -188,7 +192,7 @@
 .successCart {
 	display: none;
 	position: fixed;
-	z-index: 50px;
+	z-index: 50;
 	width: 0px;
 	height: 70px;
 	top: 100px;

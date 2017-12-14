@@ -14,12 +14,9 @@
 <body>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontAwesome/css/font-awesome.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/styles/productList.css" />
-<script src="${pageContext.request.contextPath}/resources/plugins/scrollTop/jquery.toTop.js"></script>
-<script src="${pageContext.request.contextPath}/resources/plugins/scrollTop/jquery.toTop.min.js"></script>
 
 <input hidden value="${searchCriteria.categoryId}" id="categoryId" />
 <input hidden value="${searchCriteria.categorySecondId}" id="categorySecondId" />
-<input hidden value="${pageNation.curPage}" id="curPage" />
 
     <div class="center">
         <div class="main">
@@ -28,7 +25,7 @@
                 <c:choose>
                     <c:when test="${not empty categoryDTOList}">
                         <c:forEach items="${categoryDTOList}" var="category">
-                            <a href="javascript:void(0);" class='<c:if test="${searchCriteria.categoryId eq category.categoryId}">category-selected</c:if> '><c:out value="${category.nameX}" /></a>
+                            <a data-category="${category.categoryId}" style="cursor: pointer;" class='category <c:if test="${searchCriteria.categoryId eq category.categoryId}">category-selected</c:if> '><c:out value="${category.nameX}" /></a>
                         </c:forEach>
                     </c:when>
                     <c:otherwise>
@@ -39,11 +36,12 @@
                 </c:choose>
             </div>
             <div class="right">
-                <c:if test="${searchCriteria.categoryId!=null and searchCriteria.categorySecondId!=null}">
+                <c:if test="${searchCriteria.categoryId!=null}">
                     <c:if test="${not empty categorySecondDTOList}">
                         <div class="items">
                             <c:forEach items="${categorySecondDTOList}" var="categorySecond">
-                                <span><c:out value="${categorySecond.nameX}"/></span>
+                                <span data-categorysecond="${categorySecond.categorySecondId}"
+                                      class="category-second <c:if test='${searchCriteria.categorySecondId eq categorySecond.categorySecondId}'>category-second-selected</c:if>"><c:out value="${categorySecond.nameX}"/></span>
                             </c:forEach>
                         </div>
                     </c:if>
@@ -56,14 +54,14 @@
                             <c:when test="${not empty productDTOList}">
                                 <c:forEach items="${productDTOList}" var="product">
                                     <li>
-                                        <a href="product.html" class="listImg">
+                                        <a href="${pageContext.request.contextPath}/product/detail?productId=${product.productId}" class="listImg" target="_blank">
                                             <img src="${pageContext.request.contextPath}/file/${product.imagePathX}" alt="">
                                         </a>
                                         <div style="text-align:center;width: 100%;height: 30px;line-height:30px;border-bottom: 1px solid #ededed;">剩余：${product.countN}</div>
-                                        <p class="listName"><a href=""><c:out value="${product.nameX}"/></a></p>
+                                        <p class="listName"><a href="${pageContext.request.contextPath}/product/detail?productId=${product.productId}"  target="_blank"><c:out value="${product.nameX}"/></a></p>
                                         <p class="listPrice">
                                             <span class="lPrice">￥<span class="price"><c:out value="${product.priceN}"/></span></span>
-                                            <a class="lCart">加入购物车</a>
+                                            <a class="lCart" data-productid="${product.productId}">加入购物车</a>
                                         </p>
                                     </li>
                                 </c:forEach>
@@ -84,8 +82,8 @@
                                     <span>共0件商品</span>
                                 </c:otherwise>
                             </c:choose>
-                            <a class="first <c:if test='${pageNation.curPage!=1}'>mps-pointer</c:if>">首页</a>
-                            <a class="pre <c:if test='${pageNation.curPage!=1}'>mps-pointer</c:if>">上一页</a>
+                            <a <c:if test='${pageNation.curPage!=1}'>class="mps-pointer" data-page="1"</c:if>>首页</a>
+                            <a <c:if test='${pageNation.curPage!=1}'>class="mps-pointer" data-page="${pageNation.curPage-1}"</c:if>>上一页</a>
                             
                             <c:choose>
                                 <c:when test="${pageNation.totalPage lt 6}">
@@ -95,7 +93,7 @@
                                                 <a style="background-color: #E14041;color: #FFFFFF;">${pageIndex}</a>
                                             </c:when>
                                             <c:otherwise>
-                                                <a class="mps-pointer">${pageIndex}</a>
+                                                <a class="mps-pointer" data-page="${pageIndex}">${pageIndex}</a>
                                             </c:otherwise>
                                         </c:choose>
                                     </c:forEach>
@@ -109,7 +107,7 @@
                                                         <a style="background-color: #E14041;color: #FFFFFF;">${pageIndex}</a>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <a class="mps-pointer">${pageIndex}</a>
+                                                        <a class="mps-pointer" data-page="${pageIndex}">${pageIndex}</a>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:forEach>
@@ -117,16 +115,16 @@
                                             <a>${pageNation.totalPage}</a>
                                         </c:when>
                                         <c:when test="${pageNation.curPage gt 3 and pageNation.curPage lt pageNation.totalPage-2}">
-                                            <a>1</a>
+                                            <a class="mpa-pointer" data-page="1">1</a>
                                             <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
-                                            <a class="mpa-pointer">${pageNation.curPage-1}</a>
+                                            <a class="mpa-pointer" data-page="${pageNation.curPage-1}">${pageNation.curPage-1}</a>
                                             <a style="background-color: #E14041;color: #FFFFFF;">${pageNation.curPage}</a>
-                                            <a class="mpa-pointer">${pageNation.curPage+1}</a>
+                                            <a class="mpa-pointer" data-page="${pageNation.curPage+1}">${pageNation.curPage+1}</a>
                                             <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
-                                            <a>${pageNation.totalPage}</a>
+                                            <a class="mpa-pointer" data-page="${pageNation.totalPage}">${pageNation.totalPage}</a>
                                         </c:when>
                                         <c:when test="${pageNation.curPage gt pageNation.totalPage-3}">
-                                            <a class="mpa-pointer">1</a>
+                                            <a class="mpa-pointer" data-page="1">1</a>
                                             <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
                                             <c:forEach begin="${pageNation.totalPage-2}" end="${pageNation.totalPage}" step="1" var="pageIndex">
                                                 <c:choose>
@@ -134,7 +132,7 @@
                                                         <a style="background-color: #E14041;color: #FFFFFF;">${pageIndex}</a>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <a class="mps-pointer">${pageIndex}</a>
+                                                        <a class="mps-pointer" data-page="${pageIndex}">${pageIndex}</a>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:forEach>
@@ -143,8 +141,8 @@
                                 </c:when>
                             </c:choose>
                             
-                            <a class="next <c:if test='${pageNation.curPage!=pageNation.totalPage}'>mps-pointer</c:if>">下一页</a>
-                            <a class="last <c:if test='${pageNation.curPage!=pageNation.totalPage}'>mps-pointer</c:if>">末页</a>
+                            <a <c:if test='${pageNation.curPage!=pageNation.totalPage}'>class="mps-pointer" data-page="${pageNation.curPage+1}"</c:if>>下一页</a>
+                            <a <c:if test='${pageNation.curPage!=pageNation.totalPage}'>class="mps-pointer" data-page="${pageNation.totalPage}"</c:if>>末页</a>
                         </div>
                     </div>
                 </div>
@@ -153,9 +151,7 @@
     </div>
 
     <!--成功加入购物车显示消息-->
-    <div class="successCart">
-        成功加入购物车
-    </div>
+    <div class="successCart"></div>
     <div class="clearBoth"></div>
 
     <!--回到顶部-->
@@ -164,6 +160,61 @@
     <script type="text/javascript">
         <!--回到顶部-->
         $('.to-top').toTop();
+
+        <!-- 点击分页 -->
+        $(".mps-pointer").on("click", function () {
+            var categoryId = $("#categoryId").val();
+            var categorySecondId = $("#categorySecondId").val();
+            var curPage = $(this).attr("data-page");
+
+            var parameters = "categoryId="+categoryId+"&categorySecondId="+categorySecondId+"&curPage="+curPage;
+
+            window.location.href = "${pageContext.request.contextPath}/product/listProduct?"+parameters;
+        });
+
+        $(".category").on("click", function () {
+           var categoryId = $(this).attr("data-category");
+           var parameters = "categoryId="+categoryId;
+           window.location.href = "${pageContext.request.contextPath}/product/listProduct?"+parameters;
+        });
+
+        $(".category-second").on("click", function () {
+            var categoryId = $("#categoryId").val();
+            var categorySecondId = $(this).attr("data-categorysecond");
+            var parameters = "categoryId="+categoryId+"&categorySecondId="+categorySecondId;
+            window.location.href = "${pageContext.request.contextPath}/product/listProduct?"+parameters;
+        });
+
+        //成功加入购物车
+        $('.lCart').on("click", function(){
+            var productId = $(this).attr("data-productid");
+            var countN = 1;
+            $.ajax({
+                url: "${pageContext.request.contextPath}/cart/add",
+                type: "post",
+                data: {
+                    productId: productId,
+                    countN: countN
+                },
+                success: function (data) {
+                    if ("success" === data.msg) {
+                        $(".successCart").text("成功加入购物车。");
+                        $('.successCart').show();
+                        $('.successCart').animate({width:'300px'}, 500);
+                        setTimeout(function(){
+                            $('.successCart').animate({width:'0px'}, 500);
+                        }, 2500);
+                    } else {
+                        $(".successCart").text("加入购物车失败。");
+                        $('.successCart').show();
+                        $('.successCart').animate({width:'300px'}, 500);
+                        setTimeout(function(){
+                            $('.successCart').animate({width:'0px'}, 500);
+                        }, 2500);
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>

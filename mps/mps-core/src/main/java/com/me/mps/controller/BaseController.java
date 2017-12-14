@@ -49,7 +49,7 @@ public class BaseController {
         PageNation pageNation = new PageNation();
 
         int begin = 0;
-        int limit = 20;
+        int limit = 12;
         int pageIndex = 0;
         int totalPage = 0;
 
@@ -58,7 +58,7 @@ public class BaseController {
         }
         begin = pageIndex * limit;
         totalPage = total%limit!=0?((total/limit)+1):(total/limit);
-        totalPage = totalPage==0?1:total;
+        totalPage = totalPage==0?1:totalPage;
 
         pageNation.setTotal(total);
         pageNation.setBegin(begin);

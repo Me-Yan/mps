@@ -80,7 +80,7 @@
         <if test="categoryId!=null">
             AND p.category_id = #{categoryId}
         </if>
-        <if test="categoryId!=null">
+        <if test="categorySecondId!=null">
             AND p.categroySecond_id = #{categorySecondId}
         </if>
         ORDER BY p.crtOn_dt DESC

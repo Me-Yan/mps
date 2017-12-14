@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by Me on 2017/12/12.
  */
 @Controller
-@RequestMapping("login")
 public class LoginController extends BaseController {
 
     private Logger logger = Logger.getLogger(ProductController.class);

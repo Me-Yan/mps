@@ -58,13 +58,6 @@
 	line-height: 60px;
 	vertical-align: bottom;
 }
-.require {
-	padding: 28px 0;
-	font-size: 20px;
-}
-.require span {
-	padding-right: 80px;
-}
 .buy {
 	line-height: 30px;
 }
@@ -193,4 +186,22 @@
 .toTop {
 	color:#696969;
 	display:block;
+}
+
+/*成功加入购物车显示消息提示*/
+.successCart {
+	display: none;
+	position: fixed;
+	z-index: 50;
+	width: 0px;
+	height: 70px;
+	top: 100px;
+	right: 0px;
+	background-color: #e14041;
+	font-size: 24px;
+	line-height: 70px;
+	text-align: center;
+	color: #fff;
+	border-radius: 5px;
+	font-weight: bold;
 }
