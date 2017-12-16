@@ -149,23 +149,6 @@ button input {
 	margin-left: 55px;
 }
 
-/*费用详情*/
-.cost {
-	width: 100%;
-	background-color: #ededed;
-	padding-bottom: 20px;
-}
-.costRight {
-	float: right;
-	margin-right: 50px;
-	text-align: right;
-}
-.costRight span {
-	display: block;
-	height: 30px;
-	font-size: 18px;
-	margin-top: 20px;
-}
 .conCart {
 	width: 100%;
 }
@@ -215,7 +198,7 @@ button input {
 	text-align: center;
 }
 .aboutUs ul li a {
-	color: #333;0
+	color: #333;
 }
 .fi {
 	border-right: 1px #000 solid;

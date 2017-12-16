@@ -38,7 +38,27 @@
               p.imagePath_x AS imagePath
         FROM mps_orderitem om
         LEFT JOIN mps_product p ON om.product_id = p.product_id
-        WHERE om.order_id = #{orderId,jdbcType=INTEGER} AND om.active_c = 'A'
+        WHERE om.order_id = #{orderId,jdbcType=INTEGER}
     </select>
+    
+    <select id="getOrderItemByOrderItemId" parameterType="java.lang.Integer" resultType="com.me.mps.dto.OrderItemDTO">
+        SELECT
+              om.orderItem_id AS orderItemId,
+              om.order_id AS orderId,
+              om.product_id AS productId,
+              om.total_n AS totalN,
+              om.count_n AS countN,
+              om.price_n AS priceN,
+              om.active_c AS activeC,
+              p.name_x AS productName,
+              p.imagePath_x AS imagePath
+        FROM mps_orderitem om
+        LEFT JOIN mps_product p ON om.product_id = p.product_id
+        WHERE om.orderItem_id = #{orderItemId,jdbcType=INTEGER}
+    </select>
+
+    <update id="updateOrderItemStatusByOrderItemId" parameterType="java.lang.Integer">
+        UPDATE mps_orderitem SET active_c = 'I' WHERE orderItem_id = #{orderItemId,jdbcType=INTEGER}
+    </update>
 
 </mapper>

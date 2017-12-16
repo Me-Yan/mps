@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+ol, ul {
+    margin: 0px;
+}
 .center {
 	width: 100%;
 	background-color: #ededed;
@@ -9,40 +12,6 @@
 	width: 1200px;
 	margin: 0 auto;
 	background-color: #ededed;
-}
-.left {
-	width: 250px;
-	margin-right: 15px;
-	float: left;
-	background-color: #fff;
-}
-.title {
-	background-color: #e14041;
-}
-.title span {
-	display: block;
-	height: 60px;
-	line-height: 60px;
-	font-size: 24px;
-	color: #fff;
-	text-align: center;
-}
-.list li {
-	height: 43px;
-	line-height: 43px;
-	text-align: center;
-	font-size: 15px;
-	border-bottom: 1px #E1E1E1 solid;
-}
-.list li a {
-	display: block;
-	height: 43px;
-	width: 100%;
-	color: #666;
-}
-.list li a:hover {
-	background-color: #e14041;
-	color: #fff;
 }
 /*右边部分*/
 .right {
@@ -84,10 +53,13 @@
 	width: 140px;
 }
 .count {
-	width: 140px;
+	width: 100px;
+}
+.product-outcome {
+	width: 80px;
 }
 .subtotal {
-	width: 140px;
+	width: 100px;
 }
 .status {
 	width: 140px;
@@ -157,13 +129,21 @@
 .proCount {
 	display: block;
 	float: left;
-	width: 140px;
+	width: 100px;
 	height: 90px;
 	line-height: 90px;
 	text-align: center;
 }
+.proOutcome {
+	display: block;
+	float: left;
+	width: 60px;
+	padding: 34px 0;
+	text-align: center;
+	vertical-align: middle;
+}
 .proTotal {
-	width: 140px;
+	width: 100px;
 	border-right: 1px solid #ddd;
 	text-align: center;
 	color: #e14041;

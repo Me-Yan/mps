@@ -85,7 +85,7 @@
         </if>
         ORDER BY p.crtOn_dt DESC
         <if test="pageNation!=null">
-            limit #{pageNation.begin}, #{pageNation.limit}
+            LIMIT #{pageNation.begin}, #{pageNation.limit}
         </if>
     </select>
 

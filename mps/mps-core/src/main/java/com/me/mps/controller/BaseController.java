@@ -44,12 +44,11 @@ public class BaseController {
         return tempUser;
     }
 
-    public PageNation getPageNationInfo(int total, HttpServletRequest request) {
+    public PageNation getPageNationInfo(int total, HttpServletRequest request, int limit) {
         logger.debug("Execute Method getPageNationInfo...");
         PageNation pageNation = new PageNation();
 
         int begin = 0;
-        int limit = 12;
         int pageIndex = 0;
         int totalPage = 0;
 

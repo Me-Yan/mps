@@ -36,4 +36,49 @@
         WHERE o.order_id = #{orderId,jdbcType=INTEGER}
     </select>
 
+    <select id="confirmPay" parameterType="com.me.mps.dto.OrderDTO">
+        UPDATE mps_order SET status_x = #{statusX,jdbcType=VARCHAR} WHERE order_id = #{orderId, jdbcType=INTEGER}
+    </select>
+
+    <select id="countOrderByCriteria" parameterType="com.me.mps.helper.SearchCriteria" resultType="int">
+        SELECT COUNT(1) FROM mps_order WHERE user_id = #{userId,jdbcType=INTEGER}
+    </select>
+
+    <resultMap id="orderMap" type="com.me.mps.dto.OrderDTO">
+        <result property="orderId" column="order_id" />
+        <result property="userId" column="user_id" />
+        <result property="totalN" column="total_n" />
+        <result property="numberX" column="number_x" />
+        <result property="statusX" column="status_x" />
+        <result property="crtByM" column="crtBy_m" />
+        <result property="crtOnDt" column="crtOn_dt" />
+        <collection property="orderItemDTOList" column="order_id" select="com.me.mps.mapper.OrderItemMapper.getOrderItemByOrderId"/>
+    </resultMap>
+
+    <select id="listOrderByCriteria" parameterType="com.me.mps.helper.SearchCriteria" resultMap="orderMap">
+        SELECT
+              o.order_id,
+              o.user_id,
+              o.total_n,
+              o.number_x,
+              o.status_x,
+              o.crtBy_m,
+              o.crtOn_dt
+        FROM mps_order o
+        WHERE o.user_id = #{userId,jdbcType=INTEGER}
+        ORDER BY o.crtOn_dt DESC
+        <if test="pageNation!=null">
+            LIMIT #{pageNation.begin}, #{pageNation.limit}
+        </if>
+    </select>
+    
+    <update id="updateOrderStatusOrTotalByOrderId" parameterType="com.me.mps.dto.OrderDTO">
+        UPDATE mps_order SET
+              <if test="totalN==0">
+                  status_x = 'Invalid',
+              </if>
+              total_n = #{totalN,jdbcType=DOUBLE}
+        WHERE order_id = #{orderId,jdbcType=INTEGER}
+    </update>
+
 </mapper>

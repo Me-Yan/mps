@@ -11,7 +11,16 @@ public class SearchCriteria implements Serializable {
 
     private Integer categoryId;
     private Integer categorySecondId;
+    private Integer userId;
     private PageNation pageNation;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public PageNation getPageNation() {
         return pageNation;

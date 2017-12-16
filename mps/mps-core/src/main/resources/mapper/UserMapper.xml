@@ -93,8 +93,11 @@
               u.crtBy_m AS crtByM,
               u.crtOn_dt AS crtOnDt,
               u.updBy_m AS updByM,
-              u.updOn_dt AS updOnDt
-        FROM mps_user u WHERE u.user_id = #{userId,jdbcType=INTEGER}
+              u.updOn_dt AS updOnDt,
+              com.name_x AS companyName
+        FROM mps_user u
+        LEFT JOIN mps_company com ON u.company_id = com.company_id
+        WHERE u.user_id = #{userId,jdbcType=INTEGER}
     </select>
 
     <select id="updateAmount" parameterType="com.me.mps.dto.UserDTO">

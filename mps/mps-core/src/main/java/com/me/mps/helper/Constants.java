@@ -43,9 +43,11 @@ public interface Constants {
 
     interface ORDER_STATUS {
         String PENDING = "Pending";
+        String PAYED = "Payed";
         String CONFIRMED = "Confirmed";
         String GETTED = "Getted";
         String OVER = "Over";
         String CANCELLED = "Cancelled";
+        String INVALID = "Invalid";
     }
 }

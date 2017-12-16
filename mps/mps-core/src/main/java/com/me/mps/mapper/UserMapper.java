@@ -24,4 +24,5 @@ public interface UserMapper {
     void updateAmount(UserDTO userDTO);
 
     UserDTO getUserByUserId(Integer userId);
+
 }

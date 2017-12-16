@@ -77,12 +77,8 @@
         </div>
     </div>
 </form:form>
-    <!--回到顶部-->
-    <a class="to-top fa fa-arrow-circle-o-up fa-4x toTop"></a>
 
     <script type="text/javascript">
-        <!--回到顶部-->
-        $('.to-top').toTop();
 
         $(".countInput").on("change", function () {
             var count = 1;

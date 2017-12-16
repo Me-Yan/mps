@@ -42,7 +42,7 @@ public class ProductController extends BaseController {
         ModelAndView model = new ModelAndView("listProduct");
 
         int count = productService.countProductByCriteria(searchCriteria);
-        PageNation pageNation = getPageNationInfo(count, request);
+        PageNation pageNation = getPageNationInfo(count, request, 12);
         searchCriteria.setPageNation(pageNation);
         List<ProductDTO> productDTOList = productService.listProductByCriteria(searchCriteria);
 
