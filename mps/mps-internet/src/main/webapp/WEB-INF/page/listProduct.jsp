@@ -34,6 +34,9 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
+                <div style="height: 50px;"></div>
+                <span>通知</span>
+                <div style="height: 100px;background-color: #FFFFFF;text-align: center;font-size: 16px;padding: 15px;">物资不足，请各连队节约物资。</div>
             </div>
             <div class="right">
                 <c:if test="${searchCriteria.categoryId!=null}">
