@@ -21,4 +21,20 @@ public interface OrderMapper {
     List<OrderDTO> listOrderByCriteria(SearchCriteria searchCriteria);
 
     void updateOrderStatusOrTotalByOrderId(OrderDTO orderDTO);
+
+    int countOrderByCriteriaInIntranet(SearchCriteria searchCriteria);
+
+    List<OrderDTO> listOrderByCriteriaInIntranet(SearchCriteria searchCriteria);
+
+    void updateOrderStatusByOrderId(OrderDTO orderDTO);
+
+    int countOrderOneDay();
+
+    Double countAmountOneDay();
+
+    int countAllOrder();
+
+    Double countAllAmountOneDay();
+
+    List<OrderDTO> listRecentOrder();
 }

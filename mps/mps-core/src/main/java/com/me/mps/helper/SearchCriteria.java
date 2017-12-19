@@ -13,6 +13,15 @@ public class SearchCriteria implements Serializable {
     private Integer categorySecondId;
     private Integer userId;
     private PageNation pageNation;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Integer getUserId() {
         return userId;

@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+ol, ul {
+    margin: 0px;
+}
+.center {
+    width: 100%;
+    background-color: #ededed;
+    margin-bottom: 100px;
+}
+.comment {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #ededed;
+}
+/*右边部分*/
+.right {
+    width: 925px;
+    float: right;
+    background-color: #fff;
+}
+.comment-title {
+    height: 45px;
+    line-height: 45px;
+    text-align: left;
+    padding-left: 25px;
+    font-size: 18px;
+    box-shadow: 2px 2px 2px #ededed;
+}

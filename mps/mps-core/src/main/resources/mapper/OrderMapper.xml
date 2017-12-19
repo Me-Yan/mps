@@ -81,4 +81,84 @@
         WHERE order_id = #{orderId,jdbcType=INTEGER}
     </update>
 
+    <select id="countOrderByCriteriaInIntranet" parameterType="com.me.mps.helper.SearchCriteria" resultType="int">
+        SELECT COUNT(1) FROM mps_order o WHERE 1=1
+        <choose>
+            <when test="status=='' or status==null">
+                AND o.status_x = "Payed" OR o.status_x = "Confirmed" OR o.status_x = "Getted" OR o.status_x = "Over"
+            </when>
+            <otherwise>
+                AND o.status_x = #{status,jdbcType=VARCHAR}
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="listOrderByCriteriaInIntranet" parameterType="com.me.mps.helper.SearchCriteria" resultMap="orderMap">
+        SELECT
+            o.order_id,
+            o.user_id,
+            o.total_n,
+            o.number_x,
+            o.status_x,
+            o.crtBy_m,
+            o.crtOn_dt,
+            c.name_x AS companyName
+        FROM mps_order o
+        LEFT JOIN mps_user u ON o.user_id = u.user_id
+        LEFT JOIN mps_company c ON u.company_id = c.company_id
+        WHERE 1=1
+        <choose>
+            <when test="status=='' or status==null">
+                AND o.status_x = "Payed" OR o.status_x = "Confirmed" OR o.status_x = "Getted" OR o.status_x = "Over"
+            </when>
+            <otherwise>
+                AND o.status_x = #{status,jdbcType=VARCHAR}
+            </otherwise>
+        </choose>
+        ORDER BY o.crtOn_dt DESC
+        <if test="pageNation!=null">
+            LIMIT #{pageNation.begin}, #{pageNation.limit}
+        </if>
+    </select>
+
+    <update id="updateOrderStatusByOrderId" parameterType="com.me.mps.dto.OrderDTO">
+        UPDATE mps_order SET status_x = #{statusX,jdbcType=VARCHAR} WHERE order_id = #{orderId,jdbcType=INTEGER}
+    </update>
+    
+    <select id="countOrderOneDay" resultType="int">
+        SELECT COUNT(1) FROM mps_order WHERE DATE_FORMAT(NOW(), "%Y%m%d") = DATE_FORMAT(crtOn_dt, "%Y%m%d") AND status_x = "Over"
+    </select>
+
+    <select id="countAmountOneDay" resultType="java.lang.Double">
+        SELECT SUM(total_n) FROM mps_order WHERE DATE_FORMAT(NOW(), "%Y%m%d") = DATE_FORMAT(crtOn_dt, "%Y%m%d") AND status_x = "Over"
+    </select>
+
+    <select id="countAllOrder" resultType="int">
+        SELECT COUNT(1) FROM mps_order WHERE status_x = "Over"
+    </select>
+
+    <select id="countAllAmountOneDay" resultType="java.lang.Double">
+        SELECT SUM(total_n) FROM mps_order WHERE status_x = "Over"
+    </select>
+    
+    <select id="listRecentOrder" resultType="com.me.mps.dto.OrderDTO">
+        SELECT
+            o.order_id,
+            o.user_id,
+            o.total_n,
+            o.number_x,
+            o.status_x,
+            o.crtBy_m,
+            o.crtOn_dt,
+            DATE_FORMAT(o.crtOn_dt, "%Y%m%d %H:%i") AS createDate,
+            c.name_x AS companyName,
+            u.username_m AS username
+        FROM mps_order o
+        LEFT JOIN mps_user u ON o.user_id = u.user_id
+        LEFT JOIN mps_company c ON u.company_id = c.company_id
+        WHERE o.status_x = "Over"
+        ORDER BY o.crtOn_dt DESC
+        LIMIT 0, 15
+    </select>
+
 </mapper>

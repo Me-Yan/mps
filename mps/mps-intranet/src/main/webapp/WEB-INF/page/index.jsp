@@ -13,17 +13,22 @@
 <body>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontAwesome/css/font-awesome.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/styles/index.css" />
-
+<style>
+    a, a i, a:hover, a:focus {
+        color: #FFFFFF;
+        text-underline: none;
+    }
+</style>
 
     <div class="top">
         <div class="user">
-            <a href="javascript:void(0)"><i class="fa fa-user"></i><span>某某某</span><i class="fa fa-chevron-down"></i></a>
+            <a href="javascript:void(0)" style="text-underline: none"><i class="fa fa-user"></i><span>某某某</span><i class="fa fa-chevron-down"></i></a>
             <ul class="userList">
                 <li><a href="#">修改密码</a></li>
                 <li><a href="">退出</a></li>
             </ul>
         </div>
-        <a class="homePage" href="main.html" target="navFrame">
+        <a class="homePage" href="${pageContext.request.contextPath}/main/page" target="navFrame">
             <i class="fa fa-home"></i>主页
         </a>
     </div>
@@ -34,7 +39,7 @@
                 <li>
                     <div class="link"><i class="fa fa-mobile"></i>订单<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
-                        <li><a href="order.html" target="navFrame">订单列表</a></li>
+                        <li><a href="${pageContext.request.contextPath}/order/listOrder" target="navFrame">订单列表</a></li>
                     </ul>
                 </li>
                 <li>
@@ -69,7 +74,7 @@
         </div>
 
         <div class="right">
-            <iframe id="navFrame" name="navFrame" src="main.html" frameborder="0"></iframe>
+            <iframe id="navFrame" name="navFrame" src="${pageContext.request.contextPath}/main/page" frameborder="0"></iframe>
         </div>
     </div>
 

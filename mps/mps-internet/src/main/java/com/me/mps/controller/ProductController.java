@@ -8,6 +8,7 @@ import com.me.mps.helper.PageNation;
 import com.me.mps.helper.SearchCriteria;
 import com.me.mps.service.CategorySecondService;
 import com.me.mps.service.CategoryService;
+import com.me.mps.service.NoticeService;
 import com.me.mps.service.ProductService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,9 @@ public class ProductController extends BaseController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private NoticeService noticeService;
+
     @RequestMapping("/listProduct")
     public ModelAndView listProduct(SearchCriteria searchCriteria, HttpServletRequest request) {
         logger.debug("Execute Method listProduct...");
@@ -58,6 +62,7 @@ public class ProductController extends BaseController {
         model.addObject("categorySecondDTOList", categorySecondDTOList);
         model.addObject("productDTOList", productDTOList);
         model.addObject("pageNation", pageNation);
+        model.addObject("noticeDTO", noticeService.getCurrentNotice());
 
         return model;
     }

@@ -36,6 +36,7 @@
         <ul>
             <li <c:if test="${'user' eq position}">class="li-selected"</c:if>><a href="${pageContext.request.contextPath}/user/detail">个人资料</a></li>
             <li <c:if test="${'order' eq position}">class="li-selected"</c:if>><a href="${pageContext.request.contextPath}/order/listOrder">我的订单</a></li>
+            <li <c:if test="${'comment' eq position}">class="li-selected"</c:if>><a href="${pageContext.request.contextPath}/comment/listComment">留言</a></li>
             <li <c:if test="${'safety' eq position}">class="li-selected"</c:if>><a href="${pageContext.request.contextPath}/user/safety">安全中心</a></li>
         </ul>
     </div>

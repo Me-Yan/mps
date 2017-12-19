@@ -21,6 +21,35 @@ public class OrderDTO implements Serializable {
 
     private List<OrderItemDTO> orderItemDTOList;
 
+    // for view
+    private String companyName;
+    private String username;
+    private String createDate;
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
     public List<OrderItemDTO> getOrderItemDTOList() {
         return orderItemDTOList;
     }

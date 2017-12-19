@@ -10,7 +10,11 @@ import java.util.List;
  */
 public interface CommentMapper {
 
+    void saveComment(CommentDTO commentDTO);
+
     List<CommentDTO> listCommentByProductId(Integer productId);
 
     List<CommentDTO> listCommentByCriteria(SearchCriteria searchCriteria);
+
+    List<CommentDTO> listCommentByUserId(SearchCriteria searchCriteria);
 }

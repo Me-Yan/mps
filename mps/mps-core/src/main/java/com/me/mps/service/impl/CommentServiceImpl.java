@@ -17,6 +17,12 @@ public class CommentServiceImpl extends BaseServiceImpl implements CommentServic
 
     private Logger logger = Logger.getLogger(CommentServiceImpl.class);
 
+    public void saveComment(CommentDTO commentDTO) {
+        logger.debug("Execute Method saveComment...");
+
+        sqlSessionTemplate.getMapper(CommentMapper.class).saveComment(commentDTO);
+    }
+
     public List<CommentDTO> listCommentByProductId(Integer productId) {
         logger.debug("Execute Method listCommentByProductId...");
 
@@ -27,5 +33,11 @@ public class CommentServiceImpl extends BaseServiceImpl implements CommentServic
         logger.debug("Execute Method listCommentByCriteria...");
 
         return sqlSessionTemplate.getMapper(CommentMapper.class).listCommentByCriteria(searchCriteria);
+    }
+
+    public List<CommentDTO> listCommentByUserId(SearchCriteria searchCriteria) {
+        logger.debug("Execute Method listCommentByUserId...");
+
+        return sqlSessionTemplate.getMapper(CommentMapper.class).listCommentByUserId(searchCriteria);
     }
 }

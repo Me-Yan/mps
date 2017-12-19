@@ -11,6 +11,7 @@ import com.me.mps.helper.FileHelper;
 import com.me.mps.helper.SearchCriteria;
 import com.me.mps.service.CategorySecondService;
 import com.me.mps.service.CategoryService;
+import com.me.mps.service.NoticeService;
 import com.me.mps.service.ProductService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

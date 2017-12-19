@@ -25,4 +25,20 @@ public interface OrderService {
     OrderItemDTO getOrderItemByOrderItemId(Integer orderItemId);
 
     void cancelOrderItem(OrderDTO orderDTO, OrderItemDTO orderItemDTO, UserDTO userDTO);
+
+    int countOrderByCriteriaInIntranet(SearchCriteria searchCriteria);
+
+    List<OrderDTO> listOrderByCriteriaInIntranet(SearchCriteria searchCriteria);
+
+    void updateOrderStatusByOrderId(OrderDTO orderDTO);
+
+    int countOrderOneDay();
+
+    Double countAmountOneDay();
+
+    int countAllOrder();
+
+    Double countAllAmountOneDay();
+
+    List<OrderDTO> listRecentOrder();
 }

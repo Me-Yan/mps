@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.me.mps.mapper.CommentMapper">
+    
+    <insert id="saveComment" parameterType="com.me.mps.dto.CommentDTO">
+        INSERT INTO mps_comment
+        (
+            product_id,
+            user_id,
+            content_x,
+            status_x,
+            crtBy_m,
+            crtOn_dt
+        )
+        VALUES
+        (
+            #{productId,jdbcType=INTEGER},
+            #{userId,jdbcType=INTEGER},
+            #{commentX,jdbcType=INTEGER},
+            #{statusX,jdbcType=VARCHAR},
+            #{crtByM,jdbcType=VARCHAR},
+            #{crtOnDt,jdbcType=TIMESTAMP}
+        )
+    </insert>
 
     <select id="listCommentByProductId" parameterType="java.lang.Integer">
         SELECT
@@ -48,6 +69,28 @@
         <if test="categorySecondId!=null">
             AND p.categorySecond_id = #{categorySecondId}
         </if>
+    </select>
+    
+    <select id="listCommentByUserId" parameterType="com.me.mps.helper.SearchCriteria" resultType="com.me.mps.dto.CommentDTO">
+        SELECT
+              (@rownum:=@rownum+1) AS serialNumber,
+              cmt.comment_id AS commentId,
+              cmt.product_id AS productId,
+              cmt.user_id AS userId,
+              cmt.content_x AS commentX,
+              cmt.status_x AS statusX,
+              cmt.crtBy_m AS crtByM,
+              cmt.crtOn_dt AS crtOnDt,
+              cmt.crtBy_m AS crtByM,
+              DATE_FORMAT(cmt.crtOn_dt, '%Y-%m-%d %H:%i') AS createDate,
+              u.username_m AS username,
+              p.imagePath_x AS imagePath,
+              p.name_x AS productName
+        FROM (SELECT @rownum:=0) a, mps_comment cmt
+        LEFT JOIN mps_product p ON cmt.product_id = p.product_id
+        LEFT JOIN mps_user u ON cmt.user_id = u.user_id
+        WHERE u.user_id = #{userId,jdbcType=INTEGER}
+        ORDER BY cmt.crtOn_dt DESC
     </select>
 
 </mapper>

@@ -1,14 +1,10 @@
 package com.me.mps.service.impl;
 
-import com.me.mps.dto.OrderDTO;
-import com.me.mps.dto.OrderItemDTO;
-import com.me.mps.dto.UserDTO;
+import com.google.common.collect.Lists;
+import com.me.mps.dto.*;
 import com.me.mps.helper.Constants;
 import com.me.mps.helper.SearchCriteria;
-import com.me.mps.mapper.CartMapper;
-import com.me.mps.mapper.OrderItemMapper;
-import com.me.mps.mapper.OrderMapper;
-import com.me.mps.mapper.UserMapper;
+import com.me.mps.mapper.*;
 import com.me.mps.service.OrderService;
 import org.apache.log4j.Logger;
 import org.springframework.core.annotation.Order;
@@ -51,6 +47,18 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
 
         sqlSessionTemplate.getMapper(UserMapper.class).updateAmount(userDTO);
         sqlSessionTemplate.getMapper(OrderMapper.class).confirmPay(orderDTO);
+
+        List<CartDTO> cartDTOList = sqlSessionTemplate.getMapper(CartMapper.class).listCartByUserId(userDTO.getUserId());
+        if (!CollectionUtils.isEmpty(cartDTOList)) {
+            for (CartDTO cartDTO : cartDTOList) {
+                ProductDTO productDTO = sqlSessionTemplate.getMapper(ProductMapper.class).getProductByProductId(cartDTO.getProductId());
+                productDTO.setCountN(productDTO.getCountN()-cartDTO.getCountN());
+
+                sqlSessionTemplate.getMapper(ProductMapper.class).updateCountByProductId(productDTO);
+            }
+        }
+
+        sqlSessionTemplate.getMapper(CartMapper.class).deleteCartByUserId(userDTO.getUserId());
     }
 
     public int countOrderByCriteria(SearchCriteria searchCriteria) {
@@ -77,5 +85,53 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         sqlSessionTemplate.getMapper(OrderMapper.class).updateOrderStatusOrTotalByOrderId(orderDTO);
         sqlSessionTemplate.getMapper(OrderItemMapper.class).updateOrderItemStatusByOrderItemId(orderItemDTO.getOrderItemId());
         sqlSessionTemplate.getMapper(UserMapper.class).updateAmount(userDTO);
+    }
+
+    public int countOrderByCriteriaInIntranet(SearchCriteria searchCriteria) {
+        logger.debug("Execute Method countOrderByCriteriaInIntranet...");
+
+        return sqlSessionTemplate.getMapper(OrderMapper.class).countOrderByCriteriaInIntranet(searchCriteria);
+    }
+
+    public List<OrderDTO> listOrderByCriteriaInIntranet(SearchCriteria searchCriteria) {
+        logger.debug("Execute Method listOrderByCriteriaInIntranet...");
+
+        return sqlSessionTemplate.getMapper(OrderMapper.class).listOrderByCriteriaInIntranet(searchCriteria);
+    }
+
+    public void updateOrderStatusByOrderId(OrderDTO orderDTO) {
+        logger.debug("Execute Method updateOrderStatusByOrderId...");
+
+        sqlSessionTemplate.getMapper(OrderMapper.class).updateOrderStatusByOrderId(orderDTO);
+    }
+
+    public int countOrderOneDay() {
+        logger.debug("Execute Method countOrderOneDay...");
+
+        return sqlSessionTemplate.getMapper(OrderMapper.class).countOrderOneDay();
+    }
+
+    public Double countAmountOneDay() {
+        logger.debug("Execute Method countAmountOneDay...");
+
+        return sqlSessionTemplate.getMapper(OrderMapper.class).countAmountOneDay();
+    }
+
+    public int countAllOrder() {
+        logger.debug("Execute Method countAllOrder...");
+
+        return sqlSessionTemplate.getMapper(OrderMapper.class).countAllOrder();
+    }
+
+    public Double countAllAmountOneDay() {
+        logger.debug("Execute Method countAllAmountOneDay...");
+
+        return sqlSessionTemplate.getMapper(OrderMapper.class).countAllAmountOneDay();
+    }
+
+    public List<OrderDTO> listRecentOrder() {
+        logger.debug("Execute Method listRecentOrder...");
+
+        return sqlSessionTemplate.getMapper(OrderMapper.class).listRecentOrder();
     }
 }

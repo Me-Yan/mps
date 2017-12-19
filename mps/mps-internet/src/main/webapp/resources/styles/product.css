@@ -112,18 +112,11 @@
 	font-size: 18px;
 	border-radius: 3px;
 }
-.bNow span {
-	color: #C40000;
-}
 .bCart i,.bCart span {
 	color: #fff;
 }
 .bCart span {
 	margin-left: 10px;	
-}
-.bNow {
-	background: #FFEDED;
-	border: 1px solid #C40000;
 }
 .bCart {
 	background: #e14041;

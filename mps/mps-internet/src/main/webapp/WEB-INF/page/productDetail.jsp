@@ -12,9 +12,13 @@
     <title>商品详情</title>
 </head>
 <body>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/bootstrap/bootstrap.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontAwesome/css/font-awesome.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/styles/product.css" />
 <script src="${pageContext.request.contextPath}/resources/scripts/product.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugins/formValidation/formValidation.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugins/formValidation/formValidation.bootstrap.js"></script>
 
     <div class="proInfo">
         <div class="product">
@@ -37,9 +41,8 @@
                     </div>
                     </p>
                     <div class="buy">
-                        <a href="" class="bNow bnc" data-productid="${productDTO.productId}"><span>立即购买</span></a>
                         <a class="bCart bnc" data-productid="${productDTO.productId}"><i class="fa fa-cart-arrow-down fa-1x"></i><span>加入购物车</span></a>
-                        <a class="bnote bnc"><span>留言</span></a>
+                        <a class="bnote bnc" data-toggle="modal" data-target="#commentModal"><span>留言</span></a>
                     </div>
                 </div>
             </div>
@@ -67,6 +70,51 @@
         </div>
     </div>
 
+    <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 0px;"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息</h4>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <form id="commentForm" method="post" class="form-horizontal">
+                        <input type="hidden" name="productId" value="${productDTO.productId}" />
+
+                        <div class="form-group">
+                            <label for="commentX" class="control-label col-xs-4 col-sm-4 text-right">内容：</label>
+                            <div class="col-xs-6 col-sm-6">
+                                <textarea id="commentX" name="commentX" class="form-control" maxlength="200" style="resize: none;height: 100px;"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" class="btn btn-primary" id="commentBtn">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="tipsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 0px;"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息</h4>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <p id="msgContent">留言成功。</p>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" class="btn btn-primary" id="commentBtn">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--成功加入购物车显示消息-->
     <div class="successCart"></div>
 
@@ -78,10 +126,33 @@
         $(function(){
             scrolltotop.offset(100,120);
             scrolltotop.init();
+            initCommentValidation();
         });
 
         /*回到顶部*/
         $('.to-top').toTop();
+
+        $("#commentBtn").on("click", function () {
+            var commentForm = $("#commentForm").data("formValidation");
+            commentForm.validate();
+            if (commentForm.isValid()) {
+                $.ajax({
+                   url: "${pageContext.request.contextPath}/comment/addComment",
+                    type: "post",
+                    data: $("#orderForm").serialize(),
+                    success: function (data) {
+                        $("#commentModal").modal("hide");
+                        if ("success" === data.msg) {
+                            $("#msgContent").text("留言成功。");
+                            $("#tipsModal").modal("show");
+                        } else {
+                            $("#msgContent").text("留言失败。");
+                            $("#tipsModal").modal("show");
+                        }
+                    }
+                });
+            }
+        });
 
         $(".bCart").on("click", function () {
             var productId = $(this).attr("data-productid");
@@ -116,6 +187,26 @@
                 }
             });
         });
+
+        function initCommentValidation() {
+            $("#commentForm").formValidation({
+                excluded: [':disabled'],
+                framework: 'bootstrap',
+                fields: {
+                    commentX: {
+                        validators: {
+                            notEmpty: {
+                                message: '请填写留言内容。'
+                            },
+                            stringLength: {
+                                max: 200,
+                                message: "留言内容不能超过200个字符。"
+                            }
+                        }
+                    }
+                }
+            });
+        }
     </script>
 
 </body>
