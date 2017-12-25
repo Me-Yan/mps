@@ -143,13 +143,13 @@
     
     <select id="listRecentOrder" resultType="com.me.mps.dto.OrderDTO">
         SELECT
-            o.order_id,
-            o.user_id,
-            o.total_n,
-            o.number_x,
-            o.status_x,
-            o.crtBy_m,
-            o.crtOn_dt,
+            o.order_id AS orderId,
+            o.user_id AS userId,
+            o.total_n AS totalN,
+            o.number_x AS numberX,
+            o.status_x AS statusX,
+            o.crtBy_m AS crtByM,
+            o.crtOn_dt AS crtOnDt,
             DATE_FORMAT(o.crtOn_dt, "%Y%m%d %H:%i") AS createDate,
             c.name_x AS companyName,
             u.username_m AS username

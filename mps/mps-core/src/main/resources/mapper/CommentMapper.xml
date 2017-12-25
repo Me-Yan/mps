@@ -92,5 +92,9 @@
         WHERE u.user_id = #{userId,jdbcType=INTEGER}
         ORDER BY cmt.crtOn_dt DESC
     </select>
+    
+    <update id="updateStatusByCommentId" parameterType="java.lang.Integer">
+        UPDATE mps_comment SET status_x = "Read" WHERE comment_id = #{commentId,jdbcType=INTEGER}
+    </update>
 
 </mapper>

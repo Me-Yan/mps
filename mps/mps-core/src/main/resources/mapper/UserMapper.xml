@@ -58,7 +58,7 @@
               u.updOn_dt AS updOnDt
         FROM (SELECT @rownum:=0) a,  MPS_user u
         LEFT JOIN MPS_company com ON u.company_id = com.company_id
-        WHERE u.active_c = 'A' AND com.active_c = 'A'
+        WHERE u.active_c = 'A' AND com.active_c = 'A' AND u.authority_x = 'MPS_L'
     </select>
 
     <update id="deleteUserByCompanyId" parameterType="java.lang.Integer">
@@ -102,5 +102,51 @@
 
     <select id="updateAmount" parameterType="com.me.mps.dto.UserDTO">
         UPDATE mps_user SET amount_n = #{amountN,jdbcType=DOUBLE} WHERE user_id = #{userId,jdbcType=INTEGER}
+    </select>
+
+    <select id="matchUserForIntranetLogin" parameterType="com.me.mps.dto.UserDTO" resultType="com.me.mps.dto.UserDTO">
+        SELECT
+              u.user_id AS userId,
+              u.username_m AS usernameM,
+              u.realName_m AS realNameM,
+              u.password_x AS passwordX,
+              u.sex_x AS sexX,
+              u.age_n AS ageN,
+              u.email_x AS emailX,
+              u.phone_x AS phoneX,
+              u.amount_n AS amountN,
+              u.authority_x AS authorityX,
+              u.active_c AS activeC,
+              u.crtBy_m AS crtByM,
+              u.crtOn_dt AS crtOnDt,
+              u.updBy_m AS updByM,
+              u.updOn_dt AS updOnDt,
+              com.name_x AS companyName
+        FROM mps_user u
+        LEFT JOIN mps_company com ON u.company_id = com.company_id
+        WHERE u.username_m = #{usernameM,jdbcType=VARCHAR} AND u.password_x = #{passwordX,jdbcType=VARCHAR} AND u.authority_x = 'MPS_H'
+    </select>
+
+    <select id="matchUserForInternetLogin" parameterType="com.me.mps.dto.UserDTO" resultType="com.me.mps.dto.UserDTO">
+        SELECT
+        u.user_id AS userId,
+        u.username_m AS usernameM,
+        u.realName_m AS realNameM,
+        u.password_x AS passwordX,
+        u.sex_x AS sexX,
+        u.age_n AS ageN,
+        u.email_x AS emailX,
+        u.phone_x AS phoneX,
+        u.amount_n AS amountN,
+        u.authority_x AS authorityX,
+        u.active_c AS activeC,
+        u.crtBy_m AS crtByM,
+        u.crtOn_dt AS crtOnDt,
+        u.updBy_m AS updByM,
+        u.updOn_dt AS updOnDt,
+        com.name_x AS companyName
+        FROM mps_user u
+        LEFT JOIN mps_company com ON u.company_id = com.company_id
+        WHERE u.username_m = #{usernameM,jdbcType=VARCHAR} AND u.password_x = #{passwordX,jdbcType=VARCHAR} AND u.authority_x = 'MPS_L'
     </select>
 </mapper>

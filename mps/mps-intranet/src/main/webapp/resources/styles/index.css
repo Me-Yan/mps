@@ -46,54 +46,16 @@ body {
 	box-shadow: 0px 0px 3px #000000;
 	border-bottom: 6px solid #000;
 }
-.homePage {
+.top>a, .top>span {
 	display: inline-block;
-	float: right;
-	line-height: 40px;
-	margin-right: 40px;
-	cursor: pointer;
-}
-.homePage {
-	color: #ddd;
-}
-.homePage i {
-	margin-right: 10px;
-}
-.user {
-	position: relative;
-}
-.top .user {
-	float: right;
-	margin-right: 20px;
-	line-height: 40px;
-	width: 100px;
-}
-.top .user span {
-	margin-right: 10px;
-	margin-left: 10px;
-}
-.userList {
-	display: none;
-	position: absolute;
-	z-index: 50;
-	width: 100px;
-	background-color: #393939;
-	border-radius: 0 0 5px 5px;
-}
-.userList li:first-child {
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;
-}
-.userList li {
 	height: 40px;
 	line-height: 40px;
-	text-align: center;
+	float: right;
+	margin-left: 10px;
+	color: #FFFFFF;
 }
-.userList li a {
-	display: block;
-}
-.userList li a:hover {
-	background-color: #262626;
+.top i {
+	color: #FFFFFF;
 }
 /* 左边分类 */
 body {

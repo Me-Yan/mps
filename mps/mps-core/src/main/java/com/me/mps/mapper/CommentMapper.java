@@ -17,4 +17,6 @@ public interface CommentMapper {
     List<CommentDTO> listCommentByCriteria(SearchCriteria searchCriteria);
 
     List<CommentDTO> listCommentByUserId(SearchCriteria searchCriteria);
+
+    void updateStatusByCommentId(Integer commentId);
 }

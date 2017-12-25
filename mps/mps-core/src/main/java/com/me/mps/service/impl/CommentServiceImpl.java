@@ -40,4 +40,10 @@ public class CommentServiceImpl extends BaseServiceImpl implements CommentServic
 
         return sqlSessionTemplate.getMapper(CommentMapper.class).listCommentByUserId(searchCriteria);
     }
+
+    public void updateStatusByCommentId(Integer commentId) {
+        logger.debug("Execute Method updateStatusByCommentId...");
+
+        sqlSessionTemplate.getMapper(CommentMapper.class).updateStatusByCommentId(commentId);
+    }
 }

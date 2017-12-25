@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Me on 2017/12/10.
@@ -80,5 +81,22 @@ public class CommentController extends BaseController {
         logger.debug("Execute Method listCommentByProductId...");
 
         return commentService.listCommentByProductId(productId);
+    }
+
+    @RequestMapping("/updateStatusByCommentId")
+    @ResponseBody
+    public Map<String, Object> updateStatusByCommentId(Integer commentId) {
+        logger.debug("Execute Method listCommentByProductId...");
+        Map<String, Object> model = Maps.newHashMap();
+
+        if (commentId!=null) {
+            commentService.updateStatusByCommentId(commentId);
+
+            model.put("msg", "success");
+        } else {
+            model.put("msg", "fail");
+        }
+
+        return model;
     }
 }

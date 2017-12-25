@@ -13,8 +13,8 @@ public interface Constants {
     }
 
     interface AUTHORITY {
-        String INTERNET = "MPS_H";
-        String INTRANET = "MPS_L";
+        String INTERNET = "MPS_L";
+        String INTRANET = "MPS_H";
     }
 
     interface IN_ACTIVE {

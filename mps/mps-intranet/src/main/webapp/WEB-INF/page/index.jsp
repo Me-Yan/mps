@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: yanyanghong
@@ -21,16 +22,10 @@
 </style>
 
     <div class="top">
-        <div class="user">
-            <a href="javascript:void(0)" style="text-underline: none"><i class="fa fa-user"></i><span>某某某</span><i class="fa fa-chevron-down"></i></a>
-            <ul class="userList">
-                <li><a href="#">修改密码</a></li>
-                <li><a href="">退出</a></li>
-            </ul>
-        </div>
-        <a class="homePage" href="${pageContext.request.contextPath}/main/page" target="navFrame">
-            <i class="fa fa-home"></i>主页
-        </a>
+        <div style="display: inline-block; width: 40px;height: 40px;float: right"></div>
+        <span><i class="fa fa-user"></i>&nbsp;<span><c:out value="${userInfo.usernameM}" /></span></span>
+        <a href="${pageContext.request.contextPath}/main/page" target="navFrame"><i class="fa fa-home">&nbsp;</i>主页</a>
+        <a href="${pageContext.request.contextPath}/logout"><i class="fa fa-share-square-o"></i>&nbsp;<span>退出</span></a>
     </div>
 
     <div class="center">

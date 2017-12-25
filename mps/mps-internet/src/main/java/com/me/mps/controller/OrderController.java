@@ -11,6 +11,7 @@ import com.me.mps.helper.PageNation;
 import com.me.mps.helper.SearchCriteria;
 import com.me.mps.service.OrderService;
 import com.me.mps.service.UserService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -151,6 +152,23 @@ public class OrderController extends BaseController {
             orderService.cancelOrderItem(orderDTO, orderItemDTO, userDTO);
 
             model.put("msg", "success");
+        }
+
+        return model;
+    }
+
+    @RequestMapping("/updateStatusByOrderId")
+    @ResponseBody
+    public Map<String, Object> updateStatusByOrderId(OrderDTO orderDTO) {
+        logger.debug("Execute Method updateStatusByOrderId...");
+        Map<String, Object> model = Maps.newHashMap();
+
+        if (orderDTO.getOrderId()!=null&& StringUtils.isNotBlank(orderDTO.getStatusX())) {
+            orderService.updateOrderStatusByOrderId(orderDTO);
+
+            model.put("msg", "success");
+        } else {
+            model.put("msg", "fail");
         }
 
         return model;

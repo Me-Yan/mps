@@ -16,7 +16,10 @@ public class HomeController extends BaseController {
     @RequestMapping("/home")
     public ModelAndView adminHome() {
         logger.debug("Execute Method adminHome...");
+        ModelAndView model = new ModelAndView("index");
 
-        return new ModelAndView("index");
+        model.addObject("userInfo", getUserInfo());
+
+        return model;
     }
 }

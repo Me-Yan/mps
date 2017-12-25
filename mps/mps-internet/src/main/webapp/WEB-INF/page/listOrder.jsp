@@ -112,7 +112,7 @@
                                                         采购中
                                                     </c:when>
                                                     <c:when test="${'Getted' eq order.statusX}">
-                                                        待取货
+                                                        <button type="button" class="get-order" data-orderid="${order.orderId}">确认领取</button>
                                                     </c:when>
                                                     <c:when test="${'Over' eq order.statusX}">
                                                         交易成功
@@ -242,6 +242,24 @@
         </div>
     </div>
 
+    <div class="modal fade" id="getModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 0px;"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息</h4>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <p>确认领取?</p>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" class="btn btn-primary" id="getBtn">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="failModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -326,6 +344,30 @@
                } else {
                    $("#failModal").modal("show");
                }
+            }
+        });
+    });
+
+    $(".get-order").on("click", function () {
+        orderId = $(this).attr("data-orderid");
+       $("#getModal").modal("show");
+    });
+
+    $("#getBtn").on("click", function () {
+        $.ajax({
+            url: "${pageContext.request.contextPath}/order/updateStatusByOrderId",
+            type: "post",
+            data: {
+                orderId: orderId,
+                statusX: "Over"
+            },
+            success: function (data) {
+                $("#orderItemModal").modal("hide");
+                if ("success" === data.msg) {
+                    window.location.href = "${pageContext.request.contextPath}/order/listOrder";
+                } else {
+                    $("#failModal").modal("show");
+                }
             }
         });
     });

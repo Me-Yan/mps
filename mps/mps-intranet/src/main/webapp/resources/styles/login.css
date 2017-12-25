@@ -24,7 +24,6 @@ body {
 	margin-top: 70px;
 }
 .tip {
-	display: none;
 	width: 800px;
 	margin: 0 auto;
 	text-align: center;
@@ -34,7 +33,6 @@ body {
 	display: inline-block;
 	width: 335px;
 	padding: 10px;
-	background-color: #FFE5E6;
 	color: #FA5354;
 	border-radius: 5px;
 	position: absolute;
@@ -69,7 +67,7 @@ p .name {
 	width: 335px;
 	border-radius: 5px;
 	color: #FFF;
-	padding: 15px 10px 15px 45px;
+	padding: 15px 10px 10px 45px;
 	background-color: #3A4147;
 	border: 1px solid #3A4147;
 	background: #3a4147 url('../images/name.png') no-repeat;
@@ -81,7 +79,7 @@ p .password {
 	width: 335px;
 	border-radius: 5px;
 	color: #FFF;
-	padding: 15px 10px 15px 45px;
+	padding: 15px 10px 10px 45px;
 	background-color: #3A4147;
 	border: 1px solid #3A4147;
 	background: #3a4147 url('../images/password.png') no-repeat;
@@ -89,7 +87,7 @@ p .password {
 .btn {
 	display: inline-block;
 	padding: 10px;
-	width: 315px;
+	width: 335px;
 	color: #000;
 	background-color: #F0EDEE;
 	border-radius: 5px;

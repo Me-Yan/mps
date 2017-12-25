@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: yanyanghong
@@ -18,18 +19,18 @@
             <span>基层物资采购后勤管理系统</span>
         </div>
         <div class="tip">
-            <span>很高兴认识你</span>
+            <span><c:if test="${'fail' eq msg}">用户名或密码错误</c:if></span>
         </div>
     </div>
 
     <div class="sign">
         <div class="inner">
-            <form action="" name="loginForm" id="loginForm" method="post">
+            <form action="${pageContext.request.contextPath}/login" name="loginForm" id="loginForm" method="post">
                 <p>
-                    <input type="text" name="name" class="name" placeholder="请输入用户名"/>
+                    <input type="text" name="usernameM" class="name" placeholder="请输入用户名"/>
                 </p>
                 <p>
-                    <input type="text" name="password" class="password" placeholder="请输入密码"/>
+                    <input type="text" name="passwordX" class="password" placeholder="请输入密码"/>
                 </p>
                 <p>
                     <a class="btn">登录</a>
@@ -40,19 +41,22 @@
 
 <script>
     $(function(){
-        var flag = true;
+
         $('.btn').click(function(){
-            if($('.name').val()==""||$('.name')==null) {
+            var flag = true;
+            if(!$('.name').val()) {
                 $('.name').css('border', '1px solid #e14041');
-            flag = false;
+                flag = false;
             }
-            if($('.password').val()==""||$('.name')==null) {
+            if(!$('.password').val()||!$('.name').val()) {
                 $('.password').css('border', '1px solid #e14041');
                 flag = false;
             }
             if(flag) {
                 $('#loginForm').serialize();
                 $('#loginForm').submit();
+            } else {
+                $(".tip span").text("");
             }
         });
         $('input').focus(function(){

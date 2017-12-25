@@ -22,4 +22,8 @@ public interface UserService {
     void updateAmount(UserDTO userDTO);
 
     UserDTO getUserByUserId(Integer userId);
+
+    UserDTO matchUserForIntranetLogin(UserDTO userDTO);
+
+    UserDTO matchUserForInternetLogin(UserDTO userDTO);
 }

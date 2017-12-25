@@ -77,7 +77,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 0px;"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">消息</h4>
                 </div>
-                <div class="modal-body" style="text-align: center;">
+                <div class="modal-body">
                     <form id="commentForm" method="post" class="form-horizontal">
                         <input type="hidden" name="productId" value="${productDTO.productId}" />
 
@@ -107,10 +107,6 @@
                 <div class="modal-body" style="text-align: center;">
                     <p id="msgContent">留言成功。</p>
                 </div>
-                <div class="modal-footer" style="text-align: center;">
-                    <button type="button" class="btn btn-primary" id="commentBtn">确认</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                </div>
             </div>
         </div>
     </div>
@@ -124,9 +120,12 @@
     <script>
 
         $(function(){
-            scrolltotop.offset(100,120);
-            scrolltotop.init();
             initCommentValidation();
+        });
+
+        $("#commentModal").on("hidden.bs.modal", function () {
+            var commentForm = $("#commentForm").data("formValidation");
+            commentForm.resetForm(true);
         });
 
         /*回到顶部*/
@@ -139,7 +138,7 @@
                 $.ajax({
                    url: "${pageContext.request.contextPath}/comment/addComment",
                     type: "post",
-                    data: $("#orderForm").serialize(),
+                    data: $("#commentForm").serialize(),
                     success: function (data) {
                         $("#commentModal").modal("hide");
                         if ("success" === data.msg) {

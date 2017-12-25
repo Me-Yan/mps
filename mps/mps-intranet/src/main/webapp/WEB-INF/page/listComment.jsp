@@ -40,10 +40,40 @@
         </div>
     </div>
 
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 0px;"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息</h4>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <p>确认失败。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(function () {
             initCommentTable();
         });
+        
+        function confirmComment(commentId) {
+            $.ajax({
+                url: "${pageContext.request.contextPath}/comment/updateStatusByCommentId",
+                type: "post",
+                data: {
+                    commentId: commentId
+                },
+                success: function (data) {
+                    $("#commentTable").bootstrapTable("refresh");
+                    if ("fail"===data.msg) {
+                        $("#messageModal").modal("show");
+                    }
+                }
+            });
+        }
         
         $("#searchBtn").on("click", function () {
             $("#commentTable").bootstrapTable("refresh");
@@ -150,9 +180,9 @@
                         valign : 'middle',
                         formatter: function (value, row, index) {
                             if ('Pending' === value) {
-                                return '<button class="btn btn-primary">确认</button>';
+                                return '<button class="btn btn-primary confirmBtn" onclick="confirmComment('+row.commentId+')">确认</button>';
                             } else if ('Read' === value) {
-                                return '<button class="btn btn-primary">已确认</button>';
+                                return '已确认';
                             }
                         }
                     }

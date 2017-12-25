@@ -21,13 +21,17 @@
     body {
         background-color: #EDEDED;
     }
-    a:hover {
+    a:hover,a:focus {
         text-decoration: none;
+        color: #FFFFFF;
     }
 
     .topNavLogout a:hover {
         text-decoration: none;
         color: #FFFFFF;
+    }
+    .fixed-table-body {
+        height: auto;
     }
 </style>
 
@@ -85,29 +89,25 @@
                     field : 'serialNumber',
                     title : '#',
                     align : 'center',
-                    valign : 'middle',
-//                        width: "5%"
+                    valign : 'middle'
                 },
                 {
                     field : 'commentX',
                     title : '留言',
                     align : 'center',
-                    valign : 'middle',
-//                        width: "5%"
+                    valign : 'middle'
                 },
                 {
                     field : 'username',
                     title : '用户',
                     align : 'center',
-                    valign : 'middle',
-//                        width: "5%"
+                    valign : 'middle'
                 },
                 {
                     field : 'imagePath',
                     title : '商品图片',
                     align : 'center',
                     valign : 'middle',
-//                        width: "5%"
                     formatter: function (value, row, index) {
 
                         return '<img class="img-thumbnail" style="height:100px;width:100px;" src="${pageContext.request.contextPath}/file/'+value+'" />';
@@ -117,28 +117,13 @@
                     field : 'productName',
                     title : '商品名称',
                     align : 'center',
-                    valign : 'middle',
-//                        width: "5%"
+                    valign : 'middle'
                 },
                 {
                     field : 'createDate',
                     title : '留言时间',
                     align : 'center',
-                    valign : 'middle',
-//                        width: "5%"
-                },
-                {
-                    field : 'statusX',
-                    title : '状态',
-                    align : 'center',
-                    valign : 'middle',
-                    formatter: function (value, row, index) {
-                        if ('Pending' === value) {
-                            return '<button class="btn btn-primary">确认</button>';
-                        } else if ('Read' === value) {
-                            return '<button class="btn btn-primary">已确认</button>';
-                        }
-                    }
+                    valign : 'middle'
                 }
             ]
         });
