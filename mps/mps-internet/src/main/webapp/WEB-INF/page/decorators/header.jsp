@@ -10,7 +10,7 @@
                 <a href="${pageContext.request.contextPath}/cart/listCart">购物车</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 <a href="${pageContext.request.contextPath}/order/listOrder">我的订单</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 <a href="${pageContext.request.contextPath}/user/detail">个人中心</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                <a href="login.html" style="color: #E14041;">退出</a>
+                <a href="${pageContext.request.contextPath}/logout" style="color: #E14041;">退出</a>
             </div>
         </div>
     </div>
