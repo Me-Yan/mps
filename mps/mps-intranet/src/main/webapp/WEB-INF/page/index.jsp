@@ -23,9 +23,9 @@
 
     <div class="top">
         <div style="display: inline-block; width: 40px;height: 40px;float: right"></div>
-        <span><i class="fa fa-user"></i>&nbsp;<span><c:out value="${userInfo.usernameM}" /></span></span>
-        <a href="${pageContext.request.contextPath}/main/page" target="navFrame"><i class="fa fa-home">&nbsp;</i>主页</a>
         <a href="${pageContext.request.contextPath}/logout"><i class="fa fa-share-square-o"></i>&nbsp;<span>退出</span></a>
+        <a href="${pageContext.request.contextPath}/main/page" target="navFrame"><i class="fa fa-home">&nbsp;</i>主页</a>
+        <span><i class="fa fa-user"></i>&nbsp;<span><c:out value="${userInfo.usernameM}" /></span></span>
     </div>
 
     <div class="center">

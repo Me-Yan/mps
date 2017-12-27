@@ -21,7 +21,7 @@ import java.util.Map;
  * Created by Me on 2017/12/7.
  */
 @Controller
-@RequestMapping("/category")
+@RequestMapping("category")
 public class CategoryController extends BaseController {
 
     private Logger logger = Logger.getLogger(CategoryController.class);

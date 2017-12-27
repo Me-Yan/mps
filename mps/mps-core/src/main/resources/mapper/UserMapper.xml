@@ -124,7 +124,7 @@
               com.name_x AS companyName
         FROM mps_user u
         LEFT JOIN mps_company com ON u.company_id = com.company_id
-        WHERE u.username_m = #{usernameM,jdbcType=VARCHAR} AND u.password_x = #{passwordX,jdbcType=VARCHAR} AND u.authority_x = 'MPS_H'
+        WHERE u.username_m = #{usernameM,jdbcType=VARCHAR} AND u.password_x = #{passwordX,jdbcType=VARCHAR} AND u.authority_x = 'MPS_H' AND u.active_c = 'A'
     </select>
 
     <select id="matchUserForInternetLogin" parameterType="com.me.mps.dto.UserDTO" resultType="com.me.mps.dto.UserDTO">
@@ -147,6 +147,14 @@
         com.name_x AS companyName
         FROM mps_user u
         LEFT JOIN mps_company com ON u.company_id = com.company_id
-        WHERE u.username_m = #{usernameM,jdbcType=VARCHAR} AND u.password_x = #{passwordX,jdbcType=VARCHAR} AND u.authority_x = 'MPS_L'
+        WHERE u.username_m = #{usernameM,jdbcType=VARCHAR} AND u.password_x = #{passwordX,jdbcType=VARCHAR} AND u.authority_x = 'MPS_L' AND u.active_c = 'A'
     </select>
+    
+    <select id="checkUsernameIsExist" parameterType="com.me.mps.dto.UserDTO" resultType="int">
+        SELECT COUNT(1) FROM mps_user WHERE username_m = #{usernameM,jdbcType=VARCHAR} AND authority_x = 'MPS_L' AND active_c = 'A'
+    </select>
+
+    <update id="deleteUserByUserId" parameterType="java.lang.Integer">
+        UPDATE mps_user SET active_c = 'I' WHERE user_id = #{userId,jdbcType=INTEGER}
+    </update>
 </mapper>

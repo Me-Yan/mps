@@ -233,6 +233,22 @@
         </div>
     </div>
 
+    <!-- 重置成功Modal -->
+    <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">消息</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <br>
+                    <p id="deleteContent">删除成功。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <script>
     $(function () {
         initUserTable();
@@ -305,6 +321,27 @@
         $("#removeConfirmBtn").attr("data-index", index);
         $("#removeModal").modal("show");
     }
+
+    $("#removeConfirmBtn").on("click", function () {
+        var userId = $(this).attr("data-index");
+        $.ajax({
+            url: "${pageContext.request.contextPath}/user/deleteUserByUserId",
+            type: "post",
+            data: {
+                userId: userId
+            },
+            success: function (data) {
+                $("#removeModal").modal("hide");
+                if ("success" === data.msg) {
+                    $("#deleteContent").text("删除成功。")
+                } else {
+                    $("#deleteContent").text("删除失败。")
+                }
+                $("#deleteModal").modal("show");
+                $("#userTable").bootstrapTable("refresh");
+            }
+        });
+    });
 
     function resetModal(index) {
         $("#oldPassword").attr("data-index", index);
@@ -407,6 +444,10 @@
                             min: 6,
                             max: 20,
                             message: "用户名应不低于6个且不能超过20个字符。"
+                        },
+                        remote: {
+                            url: "${pageContext.request.contextPath}/user/checkUsernameIsExist",
+                            message: "用户名已存在。"
                         }
                     }
                 },

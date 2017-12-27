@@ -10,13 +10,14 @@
 <html>
 <head>
     <title>登录</title>
+    <script src="${pageContext.request.contextPath}/resources/plugins/jquery/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontAwesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/styles/login.css" />
+    <script src="${pageContext.request.contextPath}/resources/plugins/formValidation/formValidation.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/plugins/formValidation/formValidation.bootstrap.js"></script>
 </head>
 <body>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/bootstrap/bootstrap.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontAwesome/css/font-awesome.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/styles/login.css" />
-<script src="${pageContext.request.contextPath}/resources/plugins/formValidation/formValidation.js"></script>
-<script src="${pageContext.request.contextPath}/resources/plugins/formValidation/formValidation.bootstrap.js"></script>
 
     <div class="demo form-bg">
         <div class="container">

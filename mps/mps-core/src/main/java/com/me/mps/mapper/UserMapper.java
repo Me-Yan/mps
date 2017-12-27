@@ -28,4 +28,8 @@ public interface UserMapper {
     UserDTO matchUserForIntranetLogin(UserDTO userDTO);
 
     UserDTO matchUserForInternetLogin(UserDTO userDTO);
+
+    int checkUsernameIsExist(UserDTO userDTO);
+
+    void deleteUserByUserId(Integer userId);
 }

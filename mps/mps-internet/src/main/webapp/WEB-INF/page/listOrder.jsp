@@ -129,75 +129,84 @@
                                     </table>
                                 </c:forEach>
                             </c:when>
+                            <c:otherwise>
+                                <table class="orderInfo">
+                                    <tr class="productList" style="border: none;">
+                                        <td colspan="3" align="center">没有任何订单</td>
+                                    </tr>
+                                </table>
+                            </c:otherwise>
                         </c:choose>
                         <div class="clearBoth"></div>
 
                         <!--分页-->
-                        <div class="page">
-                            <div class="pageInner">
-                                <a <c:if test='${pageNation.curPage!=1}'>class="mps-pointer" data-page="1"</c:if>>首页</a>
-                                <a <c:if test='${pageNation.curPage!=1}'>class="mps-pointer" data-page="${pageNation.curPage-1}"</c:if>>上一页</a>
+                        <c:if test="${not empty orderDTOList}">
+                            <div class="page">
+                                <div class="pageInner">
+                                    <a <c:if test='${pageNation.curPage!=1}'>class="mps-pointer" data-page="1"</c:if>>首页</a>
+                                    <a <c:if test='${pageNation.curPage!=1}'>class="mps-pointer" data-page="${pageNation.curPage-1}"</c:if>>上一页</a>
 
-                                <c:choose>
-                                    <c:when test="${pageNation.totalPage lt 6}">
-                                        <c:forEach begin="1" end="${pageNation.totalPage}" step="1" var="pageIndex">
+                                    <c:choose>
+                                        <c:when test="${pageNation.totalPage lt 6}">
+                                            <c:forEach begin="1" end="${pageNation.totalPage}" step="1" var="pageIndex">
+                                                <c:choose>
+                                                    <c:when test="${pageIndex eq pageNation.curPage}">
+                                                        <a style="background-color: #E14041;color: #FFFFFF;">${pageIndex}</a>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <a class="mps-pointer" data-page="${pageIndex}">${pageIndex}</a>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+                                        </c:when>
+                                        <c:when test="${pageNation.totalPage gt 5}">
                                             <c:choose>
-                                                <c:when test="${pageIndex eq pageNation.curPage}">
-                                                    <a style="background-color: #E14041;color: #FFFFFF;">${pageIndex}</a>
+                                                <c:when test="${pageNation.curPage lt 4}">
+                                                    <c:forEach begin="1" end="3" step="1" var="pageIndex">
+                                                        <c:choose>
+                                                            <c:when test="${pageIndex eq pageNation.curPage}">
+                                                                <a style="background-color: #E14041;color: #FFFFFF;">${pageIndex}</a>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <a class="mps-pointer" data-page="${pageIndex}">${pageIndex}</a>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </c:forEach>
+                                                    <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
+                                                    <a>${pageNation.totalPage}</a>
                                                 </c:when>
-                                                <c:otherwise>
-                                                    <a class="mps-pointer" data-page="${pageIndex}">${pageIndex}</a>
-                                                </c:otherwise>
+                                                <c:when test="${pageNation.curPage gt 3 and pageNation.curPage lt pageNation.totalPage-2}">
+                                                    <a class="mpa-pointer" data-page="1">1</a>
+                                                    <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
+                                                    <a class="mpa-pointer" data-page="${pageNation.curPage-1}">${pageNation.curPage-1}</a>
+                                                    <a style="background-color: #E14041;color: #FFFFFF;">${pageNation.curPage}</a>
+                                                    <a class="mpa-pointer" data-page="${pageNation.curPage+1}">${pageNation.curPage+1}</a>
+                                                    <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
+                                                    <a class="mpa-pointer" data-page="${pageNation.totalPage}">${pageNation.totalPage}</a>
+                                                </c:when>
+                                                <c:when test="${pageNation.curPage gt pageNation.totalPage-3}">
+                                                    <a class="mpa-pointer" data-page="1">1</a>
+                                                    <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
+                                                    <c:forEach begin="${pageNation.totalPage-2}" end="${pageNation.totalPage}" step="1" var="pageIndex">
+                                                        <c:choose>
+                                                            <c:when test="${pageIndex eq pageNation.curPage}">
+                                                                <a style="background-color: #E14041;color: #FFFFFF;">${pageIndex}</a>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <a class="mps-pointer" data-page="${pageIndex}">${pageIndex}</a>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </c:forEach>
+                                                </c:when>
                                             </c:choose>
-                                        </c:forEach>
-                                    </c:when>
-                                    <c:when test="${pageNation.totalPage gt 5}">
-                                        <c:choose>
-                                            <c:when test="${pageNation.curPage lt 4}">
-                                                <c:forEach begin="1" end="3" step="1" var="pageIndex">
-                                                    <c:choose>
-                                                        <c:when test="${pageIndex eq pageNation.curPage}">
-                                                            <a style="background-color: #E14041;color: #FFFFFF;">${pageIndex}</a>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <a class="mps-pointer" data-page="${pageIndex}">${pageIndex}</a>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </c:forEach>
-                                                <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
-                                                <a>${pageNation.totalPage}</a>
-                                            </c:when>
-                                            <c:when test="${pageNation.curPage gt 3 and pageNation.curPage lt pageNation.totalPage-2}">
-                                                <a class="mpa-pointer" data-page="1">1</a>
-                                                <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
-                                                <a class="mpa-pointer" data-page="${pageNation.curPage-1}">${pageNation.curPage-1}</a>
-                                                <a style="background-color: #E14041;color: #FFFFFF;">${pageNation.curPage}</a>
-                                                <a class="mpa-pointer" data-page="${pageNation.curPage+1}">${pageNation.curPage+1}</a>
-                                                <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
-                                                <a class="mpa-pointer" data-page="${pageNation.totalPage}">${pageNation.totalPage}</a>
-                                            </c:when>
-                                            <c:when test="${pageNation.curPage gt pageNation.totalPage-3}">
-                                                <a class="mpa-pointer" data-page="1">1</a>
-                                                <span style="height: 30px;line-height: 30px;margin-left: 5px;padding: 0px 10px;color: #333;display: inline-block;">...</span>
-                                                <c:forEach begin="${pageNation.totalPage-2}" end="${pageNation.totalPage}" step="1" var="pageIndex">
-                                                    <c:choose>
-                                                        <c:when test="${pageIndex eq pageNation.curPage}">
-                                                            <a style="background-color: #E14041;color: #FFFFFF;">${pageIndex}</a>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <a class="mps-pointer" data-page="${pageIndex}">${pageIndex}</a>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </c:forEach>
-                                            </c:when>
-                                        </c:choose>
-                                    </c:when>
-                                </c:choose>
+                                        </c:when>
+                                    </c:choose>
 
-                                <a <c:if test='${pageNation.curPage!=pageNation.totalPage}'>class="mps-pointer" data-page="${pageNation.curPage+1}"</c:if>>下一页</a>
-                                <a <c:if test='${pageNation.curPage!=pageNation.totalPage}'>class="mps-pointer" data-page="${pageNation.totalPage}"</c:if>>末页</a>
+                                    <a <c:if test='${pageNation.curPage!=pageNation.totalPage}'>class="mps-pointer" data-page="${pageNation.curPage+1}"</c:if>>下一页</a>
+                                    <a <c:if test='${pageNation.curPage!=pageNation.totalPage}'>class="mps-pointer" data-page="${pageNation.totalPage}"</c:if>>末页</a>
+                                </div>
                             </div>
-                        </div>
+                        </c:if>
                     </div>
                 </div>
             </div>

@@ -10,9 +10,10 @@
 <html>
 <head>
     <title>登录</title>
+    <script src="${pageContext.request.contextPath}/resources/plugins/jquery/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/styles/login.css" />
 </head>
 <body>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/styles/login.css" />
 
     <div class="header">
         <div class="title">
@@ -30,7 +31,7 @@
                     <input type="text" name="usernameM" class="name" placeholder="请输入用户名"/>
                 </p>
                 <p>
-                    <input type="text" name="passwordX" class="password" placeholder="请输入密码"/>
+                    <input type="password" name="passwordX" class="password" placeholder="请输入密码"/>
                 </p>
                 <p>
                     <a class="btn">登录</a>

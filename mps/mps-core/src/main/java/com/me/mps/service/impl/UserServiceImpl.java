@@ -69,4 +69,16 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
         return sqlSessionTemplate.getMapper(UserMapper.class).matchUserForInternetLogin(userDTO);
     }
+
+    public int checkUsernameIsExist(UserDTO userDTO) {
+        logger.debug("Execute Method checkUsernameIsExist...");
+
+        return sqlSessionTemplate.getMapper(UserMapper.class).checkUsernameIsExist(userDTO);
+    }
+
+    public void deleteUserByUserId(Integer userId) {
+        logger.debug("Execute Method deleteUserByUserId...");
+
+        sqlSessionTemplate.getMapper(UserMapper.class).deleteUserByUserId(userId);
+    }
 }

@@ -135,4 +135,42 @@ public class UserController extends BaseController {
 
         return model;
     }
+
+    @RequestMapping("/checkUsernameIsExist")
+    @ResponseBody
+    public Map<String, Object> checkUsernameIsExist(UserDTO userDTO) {
+        logger.debug("Execute Method checkUsernameIsExist...");
+        Map<String, Object> model = Maps.newHashMap();
+
+        if (StringUtils.isNotBlank(userDTO.getUsernameM())) {
+            int count = userService.checkUsernameIsExist(userDTO);
+
+            if (count>0) {
+                model.put("valid", false);
+            } else {
+                model.put("valid", true);
+            }
+        } else {
+            model.put("valid", false);
+        }
+
+        return model;
+    }
+
+    @RequestMapping("/deleteUserByUserId")
+    @ResponseBody
+    public Map<String, Object> deleteUserByUserId(Integer userId) {
+        logger.debug("Execute Method checkUsernameIsExist...");
+        Map<String, Object> model = Maps.newHashMap();
+
+        if (userId!=null) {
+            userService.deleteUserByUserId(userId);
+
+            model.put("msg", "success");
+        } else {
+            model.put("msg", "fail");
+        }
+
+        return model;
+    }
 }

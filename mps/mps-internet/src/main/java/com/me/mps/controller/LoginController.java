@@ -37,7 +37,7 @@ public class LoginController extends BaseController {
             if (matchUser!=null) {
                 session.setAttribute(Constants.USER.SESSION_USER, matchUser);
 
-                return new ModelAndView("redirect:/home");
+                return new ModelAndView("redirect:/product/listProduct");
             } else {
                 model.addObject("msg", "fail");
             }

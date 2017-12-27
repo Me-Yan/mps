@@ -5,6 +5,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fontAwesome/css/font-awesome.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/fileinput/css/fileinput.min.css" />
 
+<style>
+    .fixed-table-body {
+        height: auto;
+    }
+</style>
+
 <!-- scripts -->
 <script src="${pageContext.request.contextPath}/resources/plugins/jquery/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/bootstrap/bootstrap.min.js"></script>
