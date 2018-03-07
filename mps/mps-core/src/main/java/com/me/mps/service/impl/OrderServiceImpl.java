@@ -29,6 +29,16 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
             sqlSessionTemplate.getMapper(OrderItemMapper.class).saveOrderItem(orderDTO.getOrderItemDTOList(), orderDTO.getOrderId());
         }
 
+        List<CartDTO> cartDTOList = sqlSessionTemplate.getMapper(CartMapper.class).listCartByUserId(orderDTO.getUserId());
+        if (!CollectionUtils.isEmpty(cartDTOList)) {
+            for (CartDTO cartDTO : cartDTOList) {
+                ProductDTO productDTO = sqlSessionTemplate.getMapper(ProductMapper.class).getProductByProductId(cartDTO.getProductId());
+                productDTO.setCountN(productDTO.getCountN()-cartDTO.getCountN());
+
+                sqlSessionTemplate.getMapper(ProductMapper.class).updateCountByProductId(productDTO);
+            }
+        }
+
         sqlSessionTemplate.getMapper(CartMapper.class).deleteCartByUserId(orderDTO.getUserId());
     }
 
@@ -47,18 +57,6 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
 
         sqlSessionTemplate.getMapper(UserMapper.class).updateAmount(userDTO);
         sqlSessionTemplate.getMapper(OrderMapper.class).confirmPay(orderDTO);
-
-        List<CartDTO> cartDTOList = sqlSessionTemplate.getMapper(CartMapper.class).listCartByUserId(userDTO.getUserId());
-        if (!CollectionUtils.isEmpty(cartDTOList)) {
-            for (CartDTO cartDTO : cartDTOList) {
-                ProductDTO productDTO = sqlSessionTemplate.getMapper(ProductMapper.class).getProductByProductId(cartDTO.getProductId());
-                productDTO.setCountN(productDTO.getCountN()-cartDTO.getCountN());
-
-                sqlSessionTemplate.getMapper(ProductMapper.class).updateCountByProductId(productDTO);
-            }
-        }
-
-        sqlSessionTemplate.getMapper(CartMapper.class).deleteCartByUserId(userDTO.getUserId());
     }
 
     public int countOrderByCriteria(SearchCriteria searchCriteria) {
