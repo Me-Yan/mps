@@ -120,10 +120,8 @@
               u.crtBy_m AS crtByM,
               u.crtOn_dt AS crtOnDt,
               u.updBy_m AS updByM,
-              u.updOn_dt AS updOnDt,
-              com.name_x AS companyName
+              u.updOn_dt AS updOnDt
         FROM mps_user u
-        LEFT JOIN mps_company com ON u.company_id = com.company_id
         WHERE u.username_m = #{usernameM,jdbcType=VARCHAR} AND u.password_x = #{passwordX,jdbcType=VARCHAR} AND u.authority_x = 'MPS_H' AND u.active_c = 'A'
     </select>
 
