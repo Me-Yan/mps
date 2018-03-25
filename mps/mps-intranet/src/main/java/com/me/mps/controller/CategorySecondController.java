@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Me on 2017/12/8.
+ * 管理二级分类
  */
 @Controller
 @RequestMapping("categorySecond")
@@ -33,6 +33,10 @@ public class CategorySecondController extends BaseController {
     @Autowired
     private CategoryService categoryService;
 
+    /**
+     * 访问二级分类页面
+     * @return
+     */
     @RequestMapping("/listCategorySecond")
     public ModelAndView listCategorySecond() {
         logger.debug("Execute Method listCategorySecond...");
@@ -46,6 +50,11 @@ public class CategorySecondController extends BaseController {
         return model;
     }
 
+    /**
+     * 异步请求获取具体某个一级分类下的所有二级分类信息
+     * @param categoryId
+     * @return
+     */
     @RequestMapping("/listCategorySecondDataByCategoryId")
     @ResponseBody
     public List<CategorySecondDTO> listCategorySecondDataByCategoryId(Integer categoryId) {
@@ -54,6 +63,11 @@ public class CategorySecondController extends BaseController {
         return categorySecondService.listCategorySecondDataByCategoryId(categoryId);
     }
 
+    /**
+     * 添加二级分类
+     * @param categorySecondDTO
+     * @return
+     */
     @RequestMapping("/add")
     @ResponseBody
     public Map<String, Object> add(CategorySecondDTO categorySecondDTO) {
@@ -74,6 +88,11 @@ public class CategorySecondController extends BaseController {
         return model;
     }
 
+    /**
+     * 检查所添加的二级分类是否已经存在
+     * @param categorySecondDTO
+     * @return
+     */
     @RequestMapping("/checkIsExistCategorySecond")
     @ResponseBody
     public Map<String, Object> checkIsExistCategorySecond(CategorySecondDTO categorySecondDTO) {
@@ -94,6 +113,11 @@ public class CategorySecondController extends BaseController {
         return model;
     }
 
+    /**
+     * 修改二级分类
+     * @param categorySecondDTO
+     * @return
+     */
     @RequestMapping("/edit")
     @ResponseBody
     public Map<String, Object> edit(CategorySecondDTO categorySecondDTO) {
@@ -112,6 +136,11 @@ public class CategorySecondController extends BaseController {
         return model;
     }
 
+    /**
+     * 根据二级分类id删除该分类，并删除该分类下的所有商品
+     * @param categorySecondId
+     * @return
+     */
     @RequestMapping("/delete")
     @ResponseBody
     public Map<String, Object> delete(Integer categorySecondId) {

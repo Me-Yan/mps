@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Created by Me on 2017/12/12.
+ * 管理商品展示
  */
 @Controller
 @RequestMapping("product")
@@ -40,6 +40,13 @@ public class ProductController extends BaseController {
     @Autowired
     private NoticeService noticeService;
 
+    /**
+     * 访问商品列表页面
+     * 获取所有商品的数据，并计算分页展示的数据信息
+     * @param searchCriteria
+     * @param request
+     * @return
+     */
     @RequestMapping("/listProduct")
     public ModelAndView listProduct(SearchCriteria searchCriteria, HttpServletRequest request) {
         logger.debug("Execute Method listProduct...");
@@ -67,6 +74,12 @@ public class ProductController extends BaseController {
         return model;
     }
 
+    /**
+     * 查看单个商品的详情
+     * 根据商品id，获取相应商品信息
+     * @param productId
+     * @return
+     */
     @RequestMapping("/detail")
     public ModelAndView detail(Integer productId) {
         logger.debug("Execute Method detail...");

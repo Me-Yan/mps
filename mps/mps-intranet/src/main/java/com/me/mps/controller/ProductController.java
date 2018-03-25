@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Me on 2017/12/9.
+ * 管理商品
  */
 @Controller
 @RequestMapping("product")
@@ -46,6 +46,11 @@ public class ProductController extends BaseController {
     @Autowired
     private ProductService productService;
 
+    /**
+     * 访问商品添加页面
+     * @param productDTO
+     * @return
+     */
     @RequestMapping("/add")
     public ModelAndView addProduct(@ModelAttribute("productForm") ProductDTO productDTO) {
         logger.debug("Execute Method addProduct");
@@ -65,6 +70,13 @@ public class ProductController extends BaseController {
         return model;
     }
 
+    /**
+     * 添加商品，存储商品信息进数据库，并将商品图片上传到服务器
+     * @param productDTO
+     * @param redirectAttributes
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/save")
     public ModelAndView saveProduct(@ModelAttribute("productForm") ProductDTO productDTO, RedirectAttributes redirectAttributes) throws IOException {
         logger.debug("Execute Method saveProduct...");
@@ -83,6 +95,13 @@ public class ProductController extends BaseController {
         return new ModelAndView("redirect:/product/detail");
     }
 
+    /**
+     * 查看商品详情
+     * 根据商品id，查询某个商品的信息
+     * @param productId
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/detail")
     public ModelAndView detail(@ModelAttribute("productId") Integer productId) throws IOException {
         logger.debug("Execute Method detail...");
@@ -95,6 +114,10 @@ public class ProductController extends BaseController {
         return model;
     }
 
+    /**
+     * 访问商品展示列表页面
+     * @return
+     */
     @RequestMapping("/listProduct")
     public ModelAndView listProduct() {
         logger.debug("Execute Method listProduct...");
@@ -114,6 +137,12 @@ public class ProductController extends BaseController {
         return model;
     }
 
+    /**
+     * 异步请求获取商品列表数据
+     * @param searchCriteria
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/listProductByCriteria")
     @ResponseBody
     public List<ProductDTO> listProductByCriteria(SearchCriteria searchCriteria) throws IOException {
@@ -124,6 +153,12 @@ public class ProductController extends BaseController {
         return productDTOList;
     }
 
+    /**
+     * 访问商品修改的页面
+     * 查询出具体商品的数据，并填充进输入框中
+     * @param productDTO
+     * @return
+     */
     @RequestMapping("/edit")
     public ModelAndView edit(@ModelAttribute("productForm") ProductDTO productDTO) {
         logger.debug("Execute Method edit...");
@@ -151,6 +186,14 @@ public class ProductController extends BaseController {
         return model;
     }
 
+    /**
+     * 确认修改商品
+     * 获取修改后商品的信息，并将这些信息封装成对象存储进数据库，最后重定向至商品详情页面
+     * @param productDTO
+     * @param redirectAttributes
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/editConfirm")
     public ModelAndView editConfirm(@ModelAttribute("productForm") ProductDTO productDTO, RedirectAttributes redirectAttributes) throws IOException {
         logger.debug("Execute Method editConfirm...");
@@ -172,6 +215,12 @@ public class ProductController extends BaseController {
         return new ModelAndView("redirect:/product/detail");
     }
 
+    /**
+     * 下架商品
+     * @param productId
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/downProduct")
     @ResponseBody
     public Map<String, Object> downProduct(Integer productId) throws IOException {
@@ -189,6 +238,12 @@ public class ProductController extends BaseController {
         return model;
     }
 
+    /**
+     * 当某个商品的数量需要补充时，则进行数量的补充
+     * @param productDTO
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/supplyProduct")
     @ResponseBody
     public Map<String, Object> supplyProduct(ProductDTO productDTO) throws IOException {

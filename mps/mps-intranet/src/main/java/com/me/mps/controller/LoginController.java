@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by Me on 2017/12/4.
+ * 登录管理
  */
 @Controller
 public class LoginController extends BaseController {
@@ -26,6 +26,12 @@ public class LoginController extends BaseController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 用户登录时，输入信息错误回到登录页面，正确则进入主页
+     * @param userDTO
+     * @param session
+     * @return
+     */
     @RequestMapping("/login")
     public ModelAndView login(UserDTO userDTO, HttpSession session) {
         logger.debug("Execute Method login...");
@@ -48,6 +54,11 @@ public class LoginController extends BaseController {
         return model;
     }
 
+    /**
+     * 退出登录，并清空session中的用户信息
+     * @param session
+     * @return
+     */
     @RequestMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         logger.debug("Execute Method login...");

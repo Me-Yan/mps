@@ -36,11 +36,12 @@
                             <i class="fa fa-user"></i>
                         </div>
                         <div class="form-group help">
-                            <input name="passwordX" type="text" class="form-control" id="password" placeholder="密码">
+                            <input name="passwordX" type="password" class="form-control" id="password" placeholder="密码">
                             <i class="fa fa-lock"></i>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-default" id="submitBtn">立刻登录</button>
+                            <a href="http://localhost:8081/intranet" class="btn btn-default pull-left" target="_blank">访问后勤系统</a>
+                            <button type="button" class="btn btn-default pull-right" id="submitBtn">立刻登录</button>
                         </div>
                     </form>
                 </div>

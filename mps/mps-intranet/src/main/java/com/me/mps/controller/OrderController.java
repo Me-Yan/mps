@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Me on 2017/12/19.
+ * 订单管理
  */
 @Controller
 @RequestMapping("order")
@@ -31,6 +31,13 @@ public class OrderController extends BaseController {
     @Autowired
     private OrderService orderService;
 
+    /**
+     * 访问订单列表页面
+     * 查询所有订单的数据，并进行分页计算
+     * @param searchCriteria
+     * @param request
+     * @return
+     */
     @RequestMapping("/listOrder")
     public ModelAndView listOrder(SearchCriteria searchCriteria, HttpServletRequest request) {
         logger.debug("Execute Method listOrder...");
@@ -50,6 +57,13 @@ public class OrderController extends BaseController {
         return model;
     }
 
+    /**
+     * 更新订单状态
+     * 当用户确认订单或采购完成时，需要更新订单的状态
+     * @param outcome
+     * @param orderId
+     * @return
+     */
     @RequestMapping("/updateOrderStatus")
     public ModelAndView updateOrderStatus(String outcome, Integer orderId) {
         logger.debug("Execute Method updateOrderStatus...");

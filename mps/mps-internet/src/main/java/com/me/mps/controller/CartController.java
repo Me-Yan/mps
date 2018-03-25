@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Me on 2017/12/14.
+ * 负责管理基层用户对购物车进行操作的请求
  */
 @Controller
 @RequestMapping("cart")
@@ -33,6 +33,13 @@ public class CartController extends BaseController {
     @Autowired
     private CartService cartService;
 
+    /**
+     * 将商品添加进购物车
+     * 获取商品id，如果购物车中已经存在该商品，则增加相应的商品数量；如果不存在，则添加该商品。
+     * 并重新计算对应商品的总金额，最终将购物车信息更新进数据库
+     * @param cartDTO
+     * @return
+     */
     @RequestMapping("/add")
     @ResponseBody
     public Map<String, Object> add(CartDTO cartDTO) {
@@ -70,6 +77,11 @@ public class CartController extends BaseController {
         return model;
     }
 
+    /**
+     * 查看购物车列表
+     * 根据用户id，获取相应用户的购物车列表
+     * @return
+     */
     @RequestMapping("/listCart")
     public ModelAndView listCart() {
         logger.debug("Execute Method listCart...");
@@ -85,6 +97,11 @@ public class CartController extends BaseController {
         return model;
     }
 
+    /**
+     * 根据商品id删除购物车中相应的商品
+     * @param cartId
+     * @return
+     */
     @RequestMapping("/delete")
     public ModelAndView deleteCart(Integer cartId) {
         logger.debug("Execute Method deleteCart...");

@@ -135,7 +135,6 @@ a:hover,a:focus{color:#74777b;text-decoration: none;}
 		text-transform: capitalize;
 	}
 	.form-horizontal .btn{
-		float: right;
 		font-size: 14px;
 		color: #fff;
 		background: #00b4ef;

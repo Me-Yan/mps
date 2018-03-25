@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Me on 2017/12/4.
+ * 用户管理
  */
 @Controller
 @RequestMapping("user")
@@ -34,6 +34,10 @@ public class UserController extends BaseController {
     @Autowired
     private CompanyService companyService;
 
+    /**
+     * 访问用户列表页面
+     * @return
+     */
     @RequestMapping("/listUser")
     public ModelAndView listUser() {
         logger.debug("Execute Method listUser...");
@@ -46,6 +50,10 @@ public class UserController extends BaseController {
         return model;
     }
 
+    /**
+     * 异步请求获取用户列表页面数据
+     * @return
+     */
     @RequestMapping("/listUserData")
     @ResponseBody
     public List<UserDTO> listUserData() {
@@ -54,6 +62,11 @@ public class UserController extends BaseController {
         return userService.listUser();
     }
 
+    /**
+     * 添加新的用户并存储进数据库
+     * @param userDTO
+     * @return
+     */
     @RequestMapping("/add")
     @ResponseBody
     public Map<String, Object> addUser(UserDTO userDTO) {
@@ -77,6 +90,12 @@ public class UserController extends BaseController {
         return model;
     }
 
+    /**
+     * 检查新密码是否和旧密码是否一致
+     * @param oldPassword
+     * @param userId
+     * @return
+     */
     @RequestMapping("/checkOldPassword")
     @ResponseBody
     public Map<String, Object> checkOldPassword(String oldPassword, Integer userId) {
@@ -98,6 +117,11 @@ public class UserController extends BaseController {
         return model;
     }
 
+    /**
+     * 重置用户密码
+     * @param userDTO
+     * @return
+     */
     @RequestMapping("/resetPassword")
     @ResponseBody
     public Map<String, Object> resetPassword(UserDTO userDTO) {
@@ -117,6 +141,11 @@ public class UserController extends BaseController {
         return model;
     }
 
+    /**
+     * 补充某个用户的余额
+     * @param userDTO
+     * @return
+     */
     @RequestMapping("/addAmount")
     @ResponseBody
     public Map<String, Object> addAmount(UserDTO userDTO) {
@@ -136,6 +165,11 @@ public class UserController extends BaseController {
         return model;
     }
 
+    /**
+     * 检查所添加用户的用户名是否已经存在
+     * @param userDTO
+     * @return
+     */
     @RequestMapping("/checkUsernameIsExist")
     @ResponseBody
     public Map<String, Object> checkUsernameIsExist(UserDTO userDTO) {
@@ -157,6 +191,11 @@ public class UserController extends BaseController {
         return model;
     }
 
+    /**
+     * 删除某个用户
+     * @param userId
+     * @return
+     */
     @RequestMapping("/deleteUserByUserId")
     @ResponseBody
     public Map<String, Object> deleteUserByUserId(Integer userId) {

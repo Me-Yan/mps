@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 /**
- * Created by Me on 2017/12/20.
+ * 主页展示
  */
 @Controller
 @RequestMapping("main")
@@ -22,6 +22,10 @@ public class MainController extends BaseController {
     @Autowired
     private OrderService orderService;
 
+    /**
+     * 访问主页
+     * @return
+     */
     @RequestMapping("/page")
     public ModelAndView mainPage() {
         logger.debug("Execute Method mainPage...");

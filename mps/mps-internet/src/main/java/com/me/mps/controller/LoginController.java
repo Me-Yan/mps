@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by Me on 2017/12/12.
+ * 管理用户登录
  */
 @Controller
 public class LoginController extends BaseController {
@@ -24,6 +24,14 @@ public class LoginController extends BaseController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 访问登录页面
+     * 如果直接请求登录，则直接进入页面；如果输入登录信息，验证失败重新登录，验证成功则直接进入商品列表页面
+     * 用户信息放入session中
+     * @param userDTO
+     * @param session
+     * @return
+     */
     @RequestMapping("/login")
     public ModelAndView login(UserDTO userDTO, HttpSession session) {
         logger.debug("Execute Method login...");
@@ -46,6 +54,12 @@ public class LoginController extends BaseController {
         return model;
     }
 
+    /**
+     * 退出登录
+     * 用户请求退出，则清空session中的用户信息
+     * @param session
+     * @return
+     */
     @RequestMapping("/logout")
     public ModelAndView logout(HttpSession session) {
         logger.debug("Execute Method login...");

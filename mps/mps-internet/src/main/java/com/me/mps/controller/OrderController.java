@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Me on 2017/12/15.
+ * 管理订单
  */
 @Controller
 @RequestMapping("order")
@@ -41,6 +41,13 @@ public class OrderController extends BaseController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 进行购物车结算
+     * 获取购物车商品信息，并将相应购物车商品信息生成订单，最后清空购物车
+     * @param orderDTO
+     * @param redirectAttributes
+     * @return
+     */
     @RequestMapping("/add")
     public ModelAndView add(@ModelAttribute("orderForm") OrderDTO orderDTO, RedirectAttributes redirectAttributes) {
         logger.debug("Execute Method add");
@@ -59,6 +66,12 @@ public class OrderController extends BaseController {
         return model;
     }
 
+    /**
+     * 访问商品订单付款页面
+     * 根据订单id获取订单信息，进入付款页面
+     * @param orderId
+     * @return
+     */
     @RequestMapping("/pay")
     public ModelAndView pay(@ModelAttribute("orderId") Integer orderId) {
         logger.debug("Execute Method pay");
@@ -75,6 +88,13 @@ public class OrderController extends BaseController {
         return model;
     }
 
+    /**
+     * 付款
+     * 根据订单id获取订单信息，获取用户信息，计算用户余额和商品数量，并将这些信息更新进数据库
+     * @param totalN
+     * @param orderId
+     * @return
+     */
     @RequestMapping("/confirmPay")
     @ResponseBody
     public Map<String, Object> confirmPay(Double totalN, Integer orderId) {
@@ -104,6 +124,10 @@ public class OrderController extends BaseController {
         return model;
     }
 
+    /**
+     * 访问付款成功页面
+     * @return
+     */
     @RequestMapping("/paySuccess")
     public ModelAndView paySuccess() {
         logger.debug("Execute Method paySuccess");
@@ -111,6 +135,13 @@ public class OrderController extends BaseController {
         return new ModelAndView("paySuccess");
     }
 
+    /**
+     * 访问订单列表页面
+     * 根据用户id获取用户的所有订单，并计算分页信息进行分页展示
+     * @param searchCriteria
+     * @param request
+     * @return
+     */
     @RequestMapping("/listOrder")
     public ModelAndView listOrder(SearchCriteria searchCriteria, HttpServletRequest request) {
         logger.debug("Execute Method listOrder...");
@@ -134,6 +165,13 @@ public class OrderController extends BaseController {
         return model;
     }
 
+    /**
+     * 取消订单中某个商品的购买
+     * 当后勤管理人员还未确认订单时，用户需要取消订单中的某个商品，则根据相应订单id和订单项id删除订单中对应商品
+     * @param orderId
+     * @param orderItemId
+     * @return
+     */
     @RequestMapping("/cancelOrderItem")
     @ResponseBody
     public Map<String, Object> cancelOrderItem(Integer orderId,  Integer orderItemId) {
@@ -157,6 +195,12 @@ public class OrderController extends BaseController {
         return model;
     }
 
+    /**
+     * 用户取消或者确认交易成功
+     * 进行该请求时，根据订单id更新订单状态
+     * @param orderDTO
+     * @return
+     */
     @RequestMapping("/updateStatusByOrderId")
     @ResponseBody
     public Map<String, Object> updateStatusByOrderId(OrderDTO orderDTO) {

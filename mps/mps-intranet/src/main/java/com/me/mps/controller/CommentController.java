@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Me on 2017/12/10.
+ * 管理用户留言
  */
 @Controller
 @RequestMapping("comment")
@@ -38,6 +38,10 @@ public class CommentController extends BaseController {
     @Autowired
     private CategoryService categoryService;
 
+    /**
+     * 访问留言列表页面
+     * @return
+     */
     @RequestMapping("/listComment")
     public ModelAndView listComment() {
         logger.debug("Execute Method listProductComment...");
@@ -57,6 +61,11 @@ public class CommentController extends BaseController {
         return model;
     }
 
+    /**
+     * 异步请求留言数据
+     * @param searchCriteria
+     * @return
+     */
     @RequestMapping("/listCommentByCriteria")
     @ResponseBody
     public List<CommentDTO> listCommentByCriteria(SearchCriteria searchCriteria) {
@@ -65,6 +74,11 @@ public class CommentController extends BaseController {
         return commentService.listCommentByCriteria(searchCriteria);
     }
 
+    /**
+     * 访问具体商品的所有留言页面
+     * @param productId
+     * @return
+     */
     @RequestMapping("/listProductComment")
     public ModelAndView listProductComment(Integer productId) {
         logger.debug("Execute Method listProductComment...");
@@ -75,6 +89,11 @@ public class CommentController extends BaseController {
         return model;
     }
 
+    /**
+     * 异步请求具体某个商品的留言数据
+     * @param productId
+     * @return
+     */
     @RequestMapping("/listCommentByProductId")
     @ResponseBody
     public List<CommentDTO> listCommentByProductId(Integer productId) {
@@ -83,6 +102,11 @@ public class CommentController extends BaseController {
         return commentService.listCommentByProductId(productId);
     }
 
+    /**
+     * 当管理人员确认了基层用户的留言后，需要更新相应留言的状态
+     * @param commentId
+     * @return
+     */
     @RequestMapping("/updateStatusByCommentId")
     @ResponseBody
     public Map<String, Object> updateStatusByCommentId(Integer commentId) {

@@ -1,10 +1,8 @@
 package com.me.mps.controller;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.me.mps.dto.CommentDTO;
 import com.me.mps.helper.Constants;
-import com.me.mps.helper.PageNation;
 import com.me.mps.helper.SearchCriteria;
 import com.me.mps.service.CommentService;
 import org.apache.commons.lang.StringUtils;
@@ -21,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Me on 2017/12/20.
+ * 管理用户的留言
  */
 @Controller
 @RequestMapping("comment")
@@ -32,6 +30,12 @@ public class CommentController extends BaseController {
     @Autowired
     private CommentService commentService;
 
+    /**
+     * 添加留言
+     * 获取用户的留言信息，并将相应信息封装成Comment对象存储进数据库
+     * @param commentDTO
+     * @return
+     */
     @RequestMapping("/addComment")
     @ResponseBody
     public Map<String, Object> addComment(CommentDTO commentDTO) {
@@ -54,6 +58,12 @@ public class CommentController extends BaseController {
         return model;
     }
 
+    /**
+     * 访问留言列表页面
+     * @param searchCriteria
+     * @param request
+     * @return
+     */
     @RequestMapping("/listComment")
     public ModelAndView listComment(SearchCriteria searchCriteria, HttpServletRequest request) {
         logger.debug("Execute Method listComment...");
@@ -64,6 +74,11 @@ public class CommentController extends BaseController {
         return model;
     }
 
+    /**
+     * 异步请求获取用户留言数据
+     * 根据用户id获取所有留言
+     * @return
+     */
     @RequestMapping("/listCommentData")
     @ResponseBody
     public List<CommentDTO> listCommentData() {

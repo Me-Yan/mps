@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Me on 2017/12/5.
+ * 管理连队
  */
 @Controller
 @RequestMapping("company")
@@ -29,6 +29,10 @@ public class CompanyController extends BaseController {
     @Autowired
     private CompanyService companyService;
 
+    /**
+     * 访问连队列表页面
+     * @return
+     */
     @RequestMapping("/listCompany")
     public ModelAndView listCompany() {
         logger.debug("Execute Method listCompany...");
@@ -36,6 +40,10 @@ public class CompanyController extends BaseController {
         return new ModelAndView("company");
     }
 
+    /**
+     * 异步请求连队列表数据
+     * @return
+     */
     @RequestMapping("/listCompanyData")
     @ResponseBody
     public List<CompanyDTO> listCompanyData() {
@@ -44,6 +52,11 @@ public class CompanyController extends BaseController {
         return companyService.listCompanyData();
     }
 
+    /**
+     * 添加连队信息
+     * @param companyForm
+     * @return
+     */
     @RequestMapping("/add")
     @ResponseBody
     public Map<String, Object> addCompany(@ModelAttribute("companyForm") CompanyDTO companyForm) {
@@ -65,6 +78,11 @@ public class CompanyController extends BaseController {
         return model;
     }
 
+    /**
+     * 修改某个连队的信息
+     * @param companyForm
+     * @return
+     */
     @RequestMapping("/edit")
     @ResponseBody
     public Map<String, Object> editCompany(@ModelAttribute("companyForm") CompanyDTO companyForm) {
@@ -85,6 +103,11 @@ public class CompanyController extends BaseController {
         return model;
     }
 
+    /**
+     * 删除某个连队，并删除该连队下的所有用户
+     * @param companyId
+     * @return
+     */
     @RequestMapping("/delete")
     @ResponseBody
     public Map<String, Object> deleteCompany(Integer companyId) {
@@ -102,6 +125,11 @@ public class CompanyController extends BaseController {
         return model;
     }
 
+    /**
+     * 添加连队时，检查所添加的连队是否已经存在
+     * @param nameX
+     * @return
+     */
     @RequestMapping("/checkIsExistCompany")
     @ResponseBody
     public Map<String, Object> checkIsExistCompany(String nameX) {
