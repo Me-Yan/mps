@@ -291,7 +291,7 @@
                     <h4 class="modal-title">消息</h4>
                 </div>
                 <div class="modal-body" style="text-align: center;">
-                    <p>支付失败，您的月不足。</p>
+                    <p>支付失败，您的余额不足。</p>
                 </div>
             </div>
         </div>
@@ -328,11 +328,11 @@
                 orderId: orderId
             },
             success: function (data) {
-                $("#orderItemModal").modal("hide");
+                $("#payModal").modal("hide");
                 if ("success" === data.msg) {
                     window.location.href = "${pageContext.request.contextPath}/order/listOrder";
                 } else {
-                    $("#failModal").modal("show");
+                    $("#amountModal").modal("show");
                 }
             }
         });

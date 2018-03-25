@@ -44,27 +44,6 @@
                 </table>
             </div>
         </div>
-        <div style="height: 20px;"></div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12">
-                <div style="text-align:center;padding: 10px 0px;width: 100px;background-color: #393939;color: #FFFFFF;">邮箱通知</div>
-            </div>
-        </div>
-        <div style="height: 20px;"></div>
-        <div class="row">
-            <div class="col-xs-11 col-sm-1 col-xs-offset-1 col-sm-offset-1">
-                <table width="100%">
-                    <tr>
-                        <td>
-                            <textarea id="emailNotice" class="form-control" style="resize: none;height: 250px;width: 520px;"></textarea>
-                        </td>
-                        <td align="left">
-                            <button class="btn btn-primary" id="emailBtn" style="margin-left: 30px;">确认</button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
     </div>
 
     <!-- web Modal -->
@@ -81,40 +60,6 @@
                 <div class="modal-footer" style="text-align: center">
                     <button type="button" class="btn btn-primary" id="webConfirm" data-index="">确认</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- email Modal -->
-    <div id="emailModal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">消息</h4>
-                </div>
-                <div class="modal-body text-center">
-                    <p>确认将该消息以邮箱形式发送给所有用户？</p>
-                </div>
-                <div class="modal-footer" style="text-align: center">
-                    <button type="button" class="btn btn-primary" id="emailConfirm" data-index="">确认</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- message Modal -->
-    <div id="msgModal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">消息</h4>
-                </div>
-                <div class="modal-body text-center">
-                    <p id="msgContent">邮件内容不能为空。</p>
                 </div>
             </div>
         </div>
@@ -141,17 +86,6 @@
            $("#webModal").modal("show");
         });
 
-        $("#emailBtn").on("click", function () {
-            var emailContent = $.trim($("#emailNotice").val());
-            if (emailContent) {
-                $("#emailModal").modal("show");
-            } else {
-                $("#emailNotice").val("");
-                $("#msgContent").text("邮件内容不能为空。");
-                $("#msgModal").modal("show");
-            }
-        });
-
         $("#webConfirm").on("click", function () {
            $.ajax({
                url: "${pageContext.request.contextPath}/notice/edit",
@@ -174,27 +108,6 @@
                    }
                }
            });
-        });
-
-        $("#emailConfirm").on("click", function () {
-            $.ajax({
-                url: "${pageContext.request.contextPath}/notice/send",
-                type: "post",
-                data: {
-                    contentX: $.trim($("#emailNotice").val())
-                },
-                success: function (data) {
-                    $("#emailModal").modal("hide");
-                    if ("success" === data.msg) {
-                        $("#emailNotice").val("");
-                        $("#msgContent").text("邮件发送成功。");
-                        $("#msgModal").modal("show");
-                    } else {
-                        $("#msgContent").text("邮件发送失败。");
-                        $("#msgModal").modal("show");
-                    }
-                }
-            });
         });
     </script>
 </body>

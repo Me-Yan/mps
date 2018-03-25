@@ -33,11 +33,11 @@
                     <div class="count">
                         <span class="sl">数量</span>
                         <a class="less fa fa-minus fa-0.1x"></a>
-                        <input type="text" class="countInput" value="1">
+                        <input type="text" class="countInput" value="1" readonly>
                         <a class="add fa fa-plus"></a>
                         <span class="dw"></span>
                         <span class="qd">1</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;库存剩余${productDTO.countN}</span>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;库存剩余<span id="overage">${productDTO.countN}</span></span>
                     </div>
                     </p>
                     <div class="buy">

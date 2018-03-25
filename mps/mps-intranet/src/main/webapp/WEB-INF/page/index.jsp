@@ -41,7 +41,7 @@
                     <div class="link"><i class="fa fa-mobile"></i>留言<i class="fa fa-chevron-down"></i></div>
                     <ul class="submenu">
                         <li><a href="${pageContext.request.contextPath}/comment/listComment" target="navFrame">留言列表</a></li>
-                        <%--<li><a href="${pageContext.request.contextPath}/notice/notice" target="navFrame">通告</a></li>--%>
+                        <li><a href="${pageContext.request.contextPath}/notice/notice" target="navFrame">通告</a></li>
                     </ul>
                 </li>
                 <li>

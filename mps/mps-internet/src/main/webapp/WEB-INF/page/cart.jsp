@@ -45,7 +45,7 @@
                                     <div class="proPrice"><c:out value="${cart.price}"/><input hidden name="orderItemDTOList[${status.index}].priceN" value="${cart.price}" /></div>
                                     <div class="proNumber">
                                         <a class="less fa fa-minus fa-0.1x"></a>
-                                        <input type="text" class="countInput" name="orderItemDTOList[${status.index}].countN" value="${cart.countN}" />
+                                        <input type="text" class="countInput" name="orderItemDTOList[${status.index}].countN" value="${cart.countN}" readonly/>
                                         <a class="add fa fa-plus"></a>
                                         <span class="left-count" style="display: none;">${cart.leftCount}</span>
                                     </div>

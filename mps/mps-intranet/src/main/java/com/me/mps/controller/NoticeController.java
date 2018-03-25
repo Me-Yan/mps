@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import com.me.mps.dto.NoticeDTO;
 import com.me.mps.dto.UserDTO;
 import com.me.mps.helper.Constants;
-import com.me.mps.helper.EmailHelper;
 import com.me.mps.service.NoticeService;
 import com.me.mps.service.UserService;
 import org.apache.commons.lang.StringUtils;
@@ -60,36 +59,6 @@ public class NoticeController extends BaseController {
             noticeService.saveWebNotice(noticeDTO);
 
             model.put("msg", "success");
-        } else {
-            model.put("msg", "fail");
-        }
-
-        return model;
-    }
-
-    @RequestMapping("/send")
-    @ResponseBody
-    public Map<String, Object> send(NoticeDTO noticeDTO) {
-        logger.debug("Execute Method send...");
-        Map<String, Object> model = Maps.newHashMap();
-
-        if (StringUtils.isNotBlank(noticeDTO.getContentX())) {
-            try {
-                List<String> emailList = userService.listEmailOfAllUser();
-                EmailHelper.sendMultipleMail(emailList, noticeDTO.getContentX());
-
-                noticeDTO.setTypeC(Constants.NOTICE_TYPE.EMAIL);
-                noticeDTO.setActiveC(Constants.IN_ACTIVE.INACTIVE);
-                noticeDTO.setCrtByM(getUserInfo().getUsernameM());
-                noticeDTO.setCrtOnDt(new Date());
-                noticeService.saveEmailNotice(noticeDTO);
-
-                model.put("msg", "success");
-
-            } catch (Exception e) {
-                logger.error("Error...", e);
-                model.put("msg", "fail");
-            }
         } else {
             model.put("msg", "fail");
         }

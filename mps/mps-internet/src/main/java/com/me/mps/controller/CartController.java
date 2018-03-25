@@ -54,6 +54,13 @@ public class CartController extends BaseController {
             CartDTO existCart = cartService.getCartByUserIdAndProductId(getUserInfo().getUserId(), cartDTO.getProductId());
             if (existCart!=null) {
                 Integer count = existCart.getCountN() + cartDTO.getCountN();
+
+                ProductDTO productDTO = productService.getProductByProductId(existCart.getProductId());
+                if (count>productDTO.getCountN()) {
+                    model.put("msg", "fail");
+                    return model;
+                }
+
                 Double total = existCart.getPrice() * count;
 
                 existCart.setCountN(count);

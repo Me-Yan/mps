@@ -83,6 +83,13 @@ public class OrderServiceImpl extends BaseServiceImpl implements OrderService {
         sqlSessionTemplate.getMapper(OrderMapper.class).updateOrderStatusOrTotalByOrderId(orderDTO);
         sqlSessionTemplate.getMapper(OrderItemMapper.class).updateOrderItemStatusByOrderItemId(orderItemDTO.getOrderItemId());
         sqlSessionTemplate.getMapper(UserMapper.class).updateAmount(userDTO);
+
+        ProductMapper productMapper = sqlSessionTemplate.getMapper(ProductMapper.class);
+        ProductDTO productDTO = productMapper.getProductByProductId(orderItemDTO.getProductId());
+
+        int count = orderItemDTO.getCountN() + productDTO.getCountN();
+        productDTO.setCountN(count);
+        productMapper.updateCountByProductId(productDTO);
     }
 
     public int countOrderByCriteriaInIntranet(SearchCriteria searchCriteria) {

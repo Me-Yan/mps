@@ -32,16 +32,4 @@ public class UserController extends BaseController {
 
         return model;
     }
-
-    @RequestMapping("/safety")
-    public ModelAndView safety() {
-        logger.debug("Execute Method safety...");
-        ModelAndView model = new ModelAndView("safety");
-
-        model.addObject("position", "safety");
-
-        return model;
-    }
-
-
 }

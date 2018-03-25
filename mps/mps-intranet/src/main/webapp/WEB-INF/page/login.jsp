@@ -36,6 +36,8 @@
                 <p>
                     <a class="btn">登录</a>
                 </p>
+                <br>
+                <p><a href="http://localhost:8080/internet" target="_blank" style="color: #FFFFFF;text-decoration: underline">访问基层用户系统</a></p>
             </form>
         </div>
     </div>

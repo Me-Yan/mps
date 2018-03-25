@@ -23,8 +23,11 @@ $(function(){
 		} else if(now<q1) {
 			$(this).parent().find(':input').val(q1);
 		} else {
-			now = now + 1;
-			$(this).parent().find(':input').val(now);
+			var overage = parseInt($("#overage").text());
+			if (overage>now) {
+                now = now + 1;
+                $(this).parent().find(':input').val(now);
+			}
 		}
 	});
 });
